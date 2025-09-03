@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import BackgroundDots from "@/components/effects/BackgroundDots";
+import './sections css/hero.css';
+import ParticleAnimation from '../ParticleAnimation/ParticleAnimation';
+
 
 export const Hero: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -23,7 +26,9 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative overflow-hidden">
-      <BackgroundDots />
+      <div className="background-animations" id="background-animations">
+        <ParticleAnimation />
+      </div>
       <div
         ref={ref}
         className="container flex min-h-[80vh] flex-col items-center justify-center py-24 text-center"
@@ -60,6 +65,7 @@ export const Hero: React.FC = () => {
           </Button>
         </div>
       </div>
+      
     </section>
   );
 };
