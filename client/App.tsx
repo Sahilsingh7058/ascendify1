@@ -25,9 +25,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="relative min-h-screen flex flex-col bg-background text-foreground">
-          <div className="absolute inset-0 -z-10">
-            <BackgroundDots />
-          </div>
+          
           <SiteHeader />
           <div className="flex-1">
             <Routes>

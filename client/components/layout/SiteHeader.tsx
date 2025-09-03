@@ -43,7 +43,7 @@ export const SiteHeader: React.FC = () => {
           <span className="text-sky-400">Ascendify</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1 ml-[550px]">
           {nav.map((item) => {
             const active = location.pathname === item.to;
             return (
