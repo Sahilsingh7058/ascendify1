@@ -65,9 +65,9 @@ export const SiteFooter: React.FC = () => {
             </div>
             <ul className="mt-2 space-y-2 text-sm text-white/70">
               <li>
-                <a href="#" className="hover:text-white">
+                <Link to="/community#mentorship" className="hover:text-white">
                   Mentorship
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

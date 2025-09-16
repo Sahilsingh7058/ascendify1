@@ -2,14 +2,18 @@ import React, { useEffect } from 'react';
 import './ParticleAnimation.css';
 
 function ParticleAnimation() {
+  const containerRef = React.useRef(null);
+
   useEffect(() => {
-    const backgroundAnimations = document.getElementById('background-animations');
+    const container = containerRef.current;
+    if (!container) return;
+
     const numParticles = 70;
 
     for (let i = 0; i < numParticles; i++) {
       const particle = document.createElement('div');
       particle.classList.add('particle');
-      backgroundAnimations.appendChild(particle);
+      container.appendChild(particle);
 
       particle.style.left = `${Math.random() * 100}vw`;
       particle.style.top = `${Math.random() * 100}vh`;
@@ -24,7 +28,7 @@ function ParticleAnimation() {
     }
   }, []);
 
-  return <div id="background-animations"></div>;
+  return <div ref={containerRef} className="w-full h-full"></div>;
 }
 
 export default ParticleAnimation;

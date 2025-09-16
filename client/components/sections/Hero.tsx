@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ParticleAnimation from "../ParticleAnimation/ParticleAnimation";
+import MultiStepAssessmentModal from "@/components/assessment/MultiStepAssessmentModal";
 
 export const Hero: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const [open, setOpen] = React.useState(false);
 
   // Simple parallax on mouse move
   useEffect(() => {
@@ -50,25 +52,27 @@ export const Hero: React.FC = () => {
 
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
           <Button
-            asChild
             size="lg"
             variant="gradient"
-            className="shadow-neon rounded-full border-2 border-sky-400/60 
+            className="shadow-neon rounded-full border-2 border-sky-400/60
                        text-white dark:text-white px-8 py-6"
+            onClick={() => setOpen(true)}
           >
-            <Link to="/assessment">Start Free Career Assessment</Link>
+            Start Free Career Assessment
           </Button>
 
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="rounded-full border-2 border-sky-500/60 
+            className="rounded-full border-2 border-sky-500/60
                        text-sky-600 dark:text-sky-400 px-8 py-6 bg-transparent"
           >
             <Link to="/roadmaps">Explore Skill Roadmaps</Link>
           </Button>
         </div>
+
+        <MultiStepAssessmentModal open={open} onOpenChange={setOpen} />
       </div>
     </section>
   );
