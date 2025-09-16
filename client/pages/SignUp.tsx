@@ -5,10 +5,10 @@
 // import { Label } from "@/components/ui/label";
 // import { Button } from "@/components/ui/button";
 
-// export default function SignIn() {
+// export default function SignUp() {
 //   return (
 //     <AuthShell
-//       title="Welcome Back"
+//       title="Create an Account"
 //       footer={
 //         <div className="space-y-4">
 //           <div className="text-center text-xs text-muted-foreground">
@@ -39,15 +39,26 @@
             
 //           </div>
 //           <div className="text-center text-sm text-muted-foreground">
-//             Don’t have an account?{" "}
-//             <Link to="/signup" className="text-blue-600 hover:underline">
-//               Sign Up
+//             Already have an account?{" "}
+//             <Link to="/signin" className="text-blue-600 hover:underline">
+//               Sign In
 //             </Link>
 //           </div>
 //         </div>
 //       }
 //     >
 //       <form className="space-y-4">
+//         <div className="space-y-2">
+//           <Label htmlFor="name">Full Name</Label>
+//           <Input
+//             id="name"
+//             name="name"
+//             type="text"
+//             placeholder="Jane Doe"
+//             className="transition-colors hover:border-blue-300 focus-visible:ring-blue-600"
+//             required
+//           />
+//         </div>
 //         <div className="space-y-2">
 //           <Label htmlFor="email">Email</Label>
 //           <Input
@@ -70,11 +81,22 @@
 //             required
 //           />
 //         </div>
+//         <div className="space-y-2">
+//           <Label htmlFor="confirm">Confirm Password</Label>
+//           <Input
+//             id="confirm"
+//             name="confirm"
+//             type="password"
+//             placeholder="••••••••"
+//             className="transition-colors hover:border-blue-300 focus-visible:ring-blue-600"
+//             required
+//           />
+//         </div>
 //         <Button
 //           type="submit"
 //           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
 //         >
-//           Sign In
+//           Sign Up
 //         </Button>
 //       </form>
 //     </AuthShell>
@@ -87,23 +109,28 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { auth, googleProvider } from "@/lib/firebase";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from "firebase/auth";
 
-export default function SignIn() {
+export default function SignUp() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "", confirm: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleEmailSignIn = async (e: React.FormEvent) => {
+  const handleEmailSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.password !== form.confirm) {
+      alert("Passwords do not match!");
+      return;
+    }
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, form.email, form.password);
-      navigate("/"); // redirect after login
+      const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password);
+      await updateProfile(userCredential.user, { displayName: form.name });
+      navigate("/");
     } catch (error: any) {
       alert(error.message);
     } finally {
@@ -111,7 +138,7 @@ export default function SignIn() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignUp = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
       navigate("/");
@@ -122,14 +149,14 @@ export default function SignIn() {
 
   return (
     <AuthShell
-      title="Welcome Back"
+      title="Create an Account"
       footer={
         <div className="space-y-4">
           <div className="text-center text-xs text-muted-foreground">
             Or continue with
           </div>
           <div className="grid grid-cols-1 gap-3">
-            <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
+            <Button variant="outline" className="w-full" onClick={handleGoogleSignUp}>
               {/* Google Icon */}
               <svg aria-hidden viewBox="0 0 48 48" className="mr-2 h-4 w-4">
                 <path
@@ -141,15 +168,27 @@ export default function SignIn() {
             </Button>
           </div>
           <div className="text-center text-sm text-muted-foreground">
-            Don’t have an account?{" "}
-            <Link to="/signup" className="text-blue-600 hover:underline">
-              Sign Up
+            Already have an account?{" "}
+            <Link to="/signin" className="text-blue-600 hover:underline">
+              Sign In
             </Link>
           </div>
         </div>
       }
     >
-      <form className="space-y-4" onSubmit={handleEmailSignIn}>
+      <form className="space-y-4" onSubmit={handleEmailSignUp}>
+        <div className="space-y-2">
+          <Label htmlFor="name">Full Name</Label>
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Jane Doe"
+            required
+          />
+        </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
           <Input
@@ -174,12 +213,24 @@ export default function SignIn() {
             required
           />
         </div>
+        <div className="space-y-2">
+          <Label htmlFor="confirm">Confirm Password</Label>
+          <Input
+            id="confirm"
+            name="confirm"
+            type="password"
+            value={form.confirm}
+            onChange={handleChange}
+            placeholder="••••••••"
+            required
+          />
+        </div>
         <Button
           type="submit"
           disabled={loading}
           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
         >
-          {loading ? "Signing In..." : "Sign In"}
+          {loading ? "Signing Up..." : "Sign Up"}
         </Button>
       </form>
     </AuthShell>

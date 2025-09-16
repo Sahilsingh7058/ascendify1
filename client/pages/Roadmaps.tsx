@@ -3,30 +3,39 @@ import { BookOpen, Cpu, Code2, Briefcase } from "lucide-react"; // Icons
 
 const roadmaps = [
   {
-    title: "Web Development",
-    description: "Learn HTML, CSS, JavaScript, React, and backend development.",
-    icon: <Code2 className="w-8 h-8 text-blue-500" />,
-    link: "#",
+    title: "Cloud Computing - AWS",
+    description:
+      "Learn core AWS services including EC2, S3, Lambda, IAM, and build scalable cloud-based applications.",
+    icon: <Code2 className="w-8 h-8 text-sky-500" />,
+    link: "/roadmaps/aws",
   },
   {
     title: "AI / Machine Learning",
-    description: "Master Python, ML algorithms, deep learning, and deployment.",
-    icon: <Cpu className="w-8 h-8 text-green-500" />,
-    link: "#",
+    description:
+      "Master Python, machine learning algorithms, deep learning frameworks, and real-world model deployment.",
+    icon: <Cpu className="w-8 h-8 text-sky-500" />,
+    link: "/roadmaps/ml",
   },
   {
     title: "Data Science",
     description:
-      "Build skills in statistics, data analysis, visualization, and big data tools.",
-    icon: <BookOpen className="w-8 h-8 text-purple-500" />,
-    link: "#",
+      "Develop expertise in statistics, data cleaning, visualization, predictive modeling, and big data tools.",
+    icon: <BookOpen className="w-8 h-8 text-sky-500" />,
+    link: "/roadmaps/datascience",
   },
   {
-    title: "Career Growth",
+    title: "Full Stack Development in Java",
     description:
-      "Resume building, freelancing, internships, and job preparation guides.",
-    icon: <Briefcase className="w-8 h-8 text-orange-500" />,
-    link: "#",
+      "Gain hands-on skills in Java, Spring Boot, REST APIs, frontend frameworks, and database integration.",
+    icon: <Briefcase className="w-8 h-8 text-sky-500" />,
+    link: "/roadmaps/java",
+  },
+  {
+    title: "Full Stack Development in .Net",
+    description:
+      "Learn C#, ASP.NET Core, MVC, Entity Framework, frontend integration, and deployment strategies.",
+    icon: <Briefcase className="w-8 h-8 text-sky-500" />,
+    link: "/roadmaps/dotnet",
   },
 ];
 
@@ -37,8 +46,8 @@ export default function Roadmaps() {
         🚀 Explore Roadmaps
       </h1>
       <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-        Choose a roadmap to start your learning journey. Each roadmap is designed
-        step-by-step to take you from beginner to advanced.
+        Choose a roadmap to start your learning journey. Each roadmap is
+        designed step-by-step to take you from beginner to advanced.
       </p>
 
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
