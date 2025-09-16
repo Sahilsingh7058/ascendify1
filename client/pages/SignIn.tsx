@@ -80,13 +80,14 @@
 //     </AuthShell>
 //   );
 // }
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthShell from "@/components/auth/AuthShell";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { auth, googleProvider } from "@/lib/firebase";
+import { auth, googleProvider } from "../../lib/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 export default function SignIn() {

@@ -11,6 +11,10 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_MEASURE_ID,
 };
 
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
