@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import Roadmaps from "./pages/Roadmaps";
 import Assessment from "./pages/Assessment";
 import Contact from "./pages/Contact";
@@ -76,8 +75,6 @@ const App = () => (
                   }
                 />
 
-                {/* Catch-all */}
-                <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
             <SiteFooter />

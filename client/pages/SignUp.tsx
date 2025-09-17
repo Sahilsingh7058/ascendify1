@@ -108,7 +108,7 @@ import AuthShell from "@/components/auth/AuthShell";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { auth, googleProvider } from "@/lib/firebase";
+import { auth, googleProvider } from "../../lib/firebase";
 import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from "firebase/auth";
 
 export default function SignUp() {
