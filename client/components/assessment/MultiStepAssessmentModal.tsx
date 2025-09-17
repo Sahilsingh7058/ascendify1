@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -70,6 +71,14 @@ const TAGS_BY_SKILL: Record<string, string[]> = {
     "SQL Server",
     "Microservices",
   ],
+};
+
+const ROADMAPS_BY_SKILL: Record<string, string> = {
+  "AI / Machine Learning": "/roadmaps/ml",
+  "Cloud Computing": "/roadmaps/aws",
+  "Data Science": "/roadmaps/datascience",
+  "Full Stack Development (Java)": "/roadmaps/java",
+  "Full Stack Development (DotNet)": "/roadmaps/dotnet",
 };
 
 interface MultiStepAssessmentModalProps {
@@ -166,14 +175,16 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
                 exit={{ opacity: 0, y: -10 }}
                 className="space-y-3 text-center py-6"
               >
-                <div className="text-2xl font-semibold text-blue-600">Thank you!</div>
+                <div className="text-2xl font-semibold text-blue-600">Your Perfect Roadmap!</div>
                 <p className="text-sm text-muted-foreground">
-                  Your career assessment has been submitted.
+                  Based on your assessment, we recommend the following roadmap.
                 </p>
                 <div className="pt-2">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => handleClose(false)}>
-                    Close
-                  </Button>
+                  <Link to={ROADMAPS_BY_SKILL[skill] || "/roadmaps"} onClick={() => handleClose(false)}>
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                      View Your Roadmap
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             ) : step === 1 ? (
@@ -206,7 +217,7 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
                 <h3 className="text-xl font-semibold text-center">Select your experience level</h3>
                 <RadioGroup value={experience} onValueChange={(v) => setExperience(v as Experience)} className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
                   {["Basic", "Medium", "Advanced"].map((lvl) => (
-                    <label key={lvl} className={cn("flex items-center gap-2 rounded-md border p-3 cursor-pointer transition-colors", experience === lvl ? "border-blue-600 bg-blue-600/10" : "hover:border-blue-300")}> 
+                    <label key={lvl} className={cn("flex items-center gap-2 rounded-md border p-3 cursor-pointer transition-colors", experience === lvl ? "border-blue-600 bg-blue-600/10" : "hover:border-blue-300")}>
                       <RadioGroupItem value={lvl} id={`exp-${lvl}`} />
                       <span className="text-sm">{lvl}</span>
                     </label>
