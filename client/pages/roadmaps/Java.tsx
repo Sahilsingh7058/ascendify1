@@ -247,7 +247,7 @@ const stepColor: Record<Marker["step"], string> = {
 function generatePath(
   segments: number,
   w = 1200,
-  segH = 400,
+  segH = 200, // Reduced from 400 for a more compact path
   startX = 200,
   topPad = 100,
 ) {
@@ -316,7 +316,7 @@ export default function JavaRoadmap() {
   // Generate path with responsive dimensions
   const { d, viewBox, corners } = useMemo(() => {
     const width = isMobile ? 800 : 1200;
-    const segmentHeight = isMobile ? 300 : 400;
+    const segmentHeight = isMobile ? 150 : 200; // Adjusted for a smaller, more compact roadmap
     const startX = isMobile ? 150 : 200;
     return generatePath(segments, width, segmentHeight, startX, 100);
   }, [segments, isMobile]);
@@ -415,7 +415,7 @@ export default function JavaRoadmap() {
       <section className="relative mx-auto px-2 sm:px-4">
         <div
           className="relative"
-          style={{ height: `${viewBox.h * (isMobile ? 0.6 : 0.8)}px` }}
+          style={{ height: `${viewBox.h * (isMobile ? 0.4 : 0.5)}px` }} // Adjusted multiplier for smaller height
         >
           <svg
             ref={svgRef}
@@ -569,57 +569,57 @@ export default function JavaRoadmap() {
             >
               Go to Course
             </a>
-      {/* Sign In modal shown before navigation */}
-      {showSignIn && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-sky-50 dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full relative">
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-              onClick={() => setShowSignIn(false)}
-            >
-              ×
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Sign In / Sign Up</h2>
-            <p className="text-sm text-muted-foreground mb-4">Sign in to continue to the Java course.</p>
-            <button
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold mb-3"
-              onClick={handleSignIn}
-            >
-              Sign In
-            </button>
-            <button
-              className="w-full bg-gray-200 hover:bg-gray-300 text-gray-900 py-2 rounded-lg font-semibold"
-              onClick={() => handleSignIn()}
-            >
-              Sign Up
-            </button>
           </div>
-        </div>
-      )}
-
-      {/* Level selection popup after sign in */}
-      {showLevelPopup && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-sky-50 dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full relative">
-            <h2 className="text-2xl font-bold mb-6">Your Java understanding level?</h2>
-            <div className="flex flex-col gap-4">
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold text-lg"
-                onClick={() => handleLevelSelect("Basic")}
-              >
-                Basic
-              </button>
-              <button
-                className="bg-blue-400 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold text-lg"
-                onClick={() => handleLevelSelect("Intermediate")}
-              >
-                Intermediate
-              </button>
+          {/* Sign In modal shown before navigation */}
+          {showSignIn && (
+            <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+              <div className="bg-sky-50 dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full relative">
+                <button
+                  className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
+                  onClick={() => setShowSignIn(false)}
+                >
+                  ×
+                </button>
+                <h2 className="text-2xl font-bold mb-4">Sign In / Sign Up</h2>
+                <p className="text-sm text-muted-foreground mb-4">Sign in to continue to the Java course.</p>
+                <button
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold mb-3"
+                  onClick={handleSignIn}
+                >
+                  Sign In
+                </button>
+                <button
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-900 py-2 rounded-lg font-semibold"
+                  onClick={() => handleSignIn()}
+                >
+                  Sign Up
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
-          </div>
+          )}
+
+          {/* Level selection popup after sign in */}
+          {showLevelPopup && (
+            <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+              <div className="bg-sky-50 dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full relative">
+                <h2 className="text-2xl font-bold mb-6">Your Java understanding level?</h2>
+                <div className="flex flex-col gap-4">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold text-lg"
+                    onClick={() => handleLevelSelect("Basic")}
+                  >
+                    Basic
+                  </button>
+                  <button
+                    className="bg-blue-400 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold text-lg"
+                    onClick={() => handleLevelSelect("Intermediate")}
+                  >
+                    Intermediate
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

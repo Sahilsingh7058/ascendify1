@@ -132,7 +132,7 @@ const stepColor: Record<Marker["step"], string> = {
 function generatePath(
   segments: number,
   w = 1200,
-  segH = 400,
+  segH = 250, // Reduced segment height for a more compact path
   startX = 200,
   topPad = 100,
 ) {
@@ -160,7 +160,7 @@ function generatePath(
     corners.push({ x: nextX, y: nextY });
   }
 
-  const viewBox = { w, h: y + 200 };
+  const viewBox = { w, h: y + 100 }; // Reduced viewBox height for less empty space
   return { d, viewBox, corners };
 }
 
@@ -200,7 +200,7 @@ export default function CloudComputingRoadmap() {
   // Generate path with responsive dimensions
   const { d, viewBox, corners } = useMemo(() => {
     const width = isMobile ? 800 : 1200;
-    const segmentHeight = isMobile ? 300 : 400;
+    const segmentHeight = isMobile ? 150 : 250; // Adjusted for a smaller, more compact roadmap
     const startX = isMobile ? 150 : 200;
     return generatePath(segments, width, segmentHeight, startX, 100);
   }, [segments, isMobile]);
@@ -287,7 +287,7 @@ export default function CloudComputingRoadmap() {
       <section className="relative mx-auto px-2 sm:px-4">
         <div
           className="relative"
-          style={{ height: `${viewBox.h * (isMobile ? 0.6 : 0.8)}px` }}
+          style={{ height: `${viewBox.h * (isMobile ? 0.4 : 0.5)}px` }} // Reduced multiplier for smaller height
         >
           <svg
             ref={svgRef}

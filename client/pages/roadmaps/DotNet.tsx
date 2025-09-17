@@ -154,7 +154,7 @@ const stepColor: Record<Step, string> = {
 function generatePath(
   segments: number,
   w = 1200,
-  segH = 320,
+  segH = 200, // Reduced from 320 for a more compact design
   startX = 200,
   topPad = 100,
 ) {
@@ -278,7 +278,7 @@ export default function DotNetRoadmap() {
       </div>
 
       <section className="relative mx-auto">
-        <div className="relative" style={{ height: `${viewBox.h * 0.8}px` }}>
+        <div className="relative" style={{ height: `${viewBox.h * 0.5}px` }}> {/* Reduced multiplier for smaller height */}
           <svg
             ref={svgRef}
             className="absolute inset-0 h-full w-full"
