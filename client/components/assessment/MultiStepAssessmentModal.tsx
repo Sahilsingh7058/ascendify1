@@ -18,6 +18,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export type Experience = "Basic" | "Medium" | "Advanced";
 
@@ -78,13 +79,13 @@ interface MultiStepAssessmentModalProps {
 }
 
 export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiStepAssessmentModalProps) {
+  const navigate = useNavigate();
   const [step, setStep] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [skill, setSkill] = useState<string>("");
   const [experience, setExperience] = useState<Experience | "">("");
   const [tags, setTags] = useState<string[]>([]);
-  const [submitted, setSubmitted] = useState<boolean>(false);
-
+  
   const tagsForSkill = useMemo(() => TAGS_BY_SKILL[skill] || [], [skill]);
   const progress = ((step - 1) / 4) * 100;
 
@@ -94,7 +95,6 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
     setSkill("");
     setExperience("");
     setTags([]);
-    setSubmitted(false);
   }
 
   function handleClose(next: boolean) {
@@ -115,7 +115,7 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
     if (step === 1) return name.trim().length > 0;
     if (step === 2) return !!skill;
     if (step === 3) return !!experience;
-    if (step === 4) return true; // tags optional
+    if (step === 4) return true;
     return true;
   }, [step, name, skill, experience]);
 
@@ -123,8 +123,37 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
     setTags((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
   }
 
+  // Helper function to map skill to roadmap path
+  const getRoadmapPath = (selectedSkill: string) => {
+    switch (selectedSkill) {
+      case "Full Stack Development (Java)":
+        return "/roadmaps/java";
+      case "Cloud Computing":
+        return "/roadmaps/aws";
+      case "AI / Machine Learning":
+        return "/roadmaps/ml";
+      case "Data Science":
+        return "/roadmaps/datascience";
+      case "Full Stack Development (DotNet)":
+        return "/roadmaps/dotnet";
+      default:
+        return "/roadmaps";
+    }
+  };
+
   function submit() {
-    setSubmitted(true);
+    if (experience === "Basic") {
+      // Get the specific roadmap path based on the selected skill
+      const roadmapPath = getRoadmapPath(skill);
+      // Navigate to the specific roadmap page
+      navigate(roadmapPath);
+      onOpenChange(false);
+      return;
+    }
+
+    // Otherwise, proceed to the quiz
+    navigate('/quiz', { state: { skill, difficulty: experience, name, tags } });
+    onOpenChange(false);
   }
 
   return (
@@ -158,25 +187,7 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
         {/* Content */}
         <div className="relative min-h-[220px]">
           <AnimatePresence mode="wait">
-            {submitted ? (
-              <motion.div
-                key="submitted"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="space-y-3 text-center py-6"
-              >
-                <div className="text-2xl font-semibold text-blue-600">Thank you!</div>
-                <p className="text-sm text-muted-foreground">
-                  Your career assessment has been submitted.
-                </p>
-                <div className="pt-2">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => handleClose(false)}>
-                    Close
-                  </Button>
-                </div>
-              </motion.div>
-            ) : step === 1 ? (
+            {step === 1 ? (
               <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
                 <h3 className="text-xl font-semibold text-center">What should we call you?</h3>
                 <div className="space-y-2">
@@ -245,25 +256,27 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
                   <div><span className="font-medium">Experience:</span> {experience || "—"}</div>
                   <div><span className="font-medium">Tags:</span> {tags.length ? tags.join(", ") : "—"}</div>
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={submit}>Submit</Button>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={submit}>
+                  Start Quiz
+                </Button>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
         {/* Footer actions */}
-        {!submitted && (
-          <div className="mt-6 flex items-center justify-between">
-            <Button variant="outline" onClick={prevStep} disabled={step === 1}>
-              Back
+        <div className="mt-6 flex items-center justify-between">
+          <Button variant="outline" onClick={prevStep} disabled={step === 1 || step === 5}>
+            Back
+          </Button>
+          {step < 5 ? (
+            <Button onClick={nextStep} disabled={!canNext} className={cn("bg-blue-600 hover:bg-blue-700 text-white", !canNext && "opacity-50")}>Next</Button>
+          ) : (
+            <Button onClick={submit} className="bg-blue-600 hover:bg-blue-700 text-white">
+              {experience === "Basic" ? "Go to Roadmaps" : "Start Quiz"}
             </Button>
-            {step < 5 ? (
-              <Button onClick={nextStep} disabled={!canNext} className={cn("bg-blue-600 hover:bg-blue-700 text-white", !canNext && "opacity-50")}>Next</Button>
-            ) : (
-              <Button onClick={submit} className="bg-blue-600 hover:bg-blue-700 text-white">Submit</Button>
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );

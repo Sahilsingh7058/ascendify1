@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Community() {
@@ -13,7 +12,7 @@ export default function Community() {
           participate in challenges, and connect with peers.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <article className="rounded-xl border border-border/60 bg-background/60 backdrop-blur p-6">
+          <article className="rounded-xl border border-border/60 bg-background/60 backdrop-blur p-6  dark:bg-gray-900">
             <h2 className="text-lg font-semibold">Study Groups</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Find or create cohorts for specific roadmaps. Keep each other
@@ -25,7 +24,7 @@ export default function Community() {
               </Link>
             </div>
           </article>
-          <article className="rounded-xl border border-border/60 bg-background/60 backdrop-blur p-6">
+          <article className="rounded-xl border border-border/60 bg-background/60 backdrop-blur p-6  dark:bg-gray-900">
             <h2 className="text-lg font-semibold">Mentorship</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Connect with experienced professionals for guidance on careers,
@@ -37,7 +36,7 @@ export default function Community() {
               </Link>
             </div>
           </article>
-          <article className="rounded-xl border border-border/60 bg-background/60 backdrop-blur p-6">
+          <article className="rounded-xl border border-border/60 bg-background/60 backdrop-blur p-6  dark:bg-gray-900">
             <h2 className="text-lg font-semibold">Challenges & Events</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Weekly coding challenges, live workshops, and AMAs to practice and
@@ -58,19 +57,19 @@ export default function Community() {
           Popular groups based on current roadmaps and skills.
         </p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <li className="rounded-lg border border-border/60 p-4">
+          <li className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">Frontend Foundations</div>
             <div className="text-xs text-muted-foreground mt-1">
               HTML • CSS • JavaScript • React
             </div>
           </li>
-          <li className="rounded-lg border border-border/60 p-4">
+          <li className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">Data Analyst Track</div>
             <div className="text-xs text-muted-foreground mt-1">
               SQL • Python • Visualization
             </div>
           </li>
-          <li className="rounded-lg border border-border/60 p-4">
+          <li className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">System Design Prep</div>
             <div className="text-xs text-muted-foreground mt-1">
               Scalability • Architecture • Tradeoffs
@@ -85,19 +84,19 @@ export default function Community() {
           One-on-one guidance for accelerating your growth.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border border-border/60 p-4">
+          <div className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">Career Strategy</div>
             <div className="text-xs text-muted-foreground mt-1">
               Roadmaps • Role targeting • Job search
             </div>
           </div>
-          <div className="rounded-lg border border-border/60 p-4">
+          <div className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">Project Feedback</div>
             <div className="text-xs text-muted-foreground mt-1">
               Code reviews • Portfolio • Demos
             </div>
           </div>
-          <div className="rounded-lg border border-border/60 p-4">
+          <div className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">Interview Coaching</div>
             <div className="text-xs text-muted-foreground mt-1">
               DSA • System design • Behavioral
@@ -112,19 +111,19 @@ export default function Community() {
           Join weekly activities to practice and network.
         </p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <li className="rounded-lg border border-border/60 p-4">
+          <li className="rounded-lg border border-border/60 p-4  dark:bg-gray-900">
             <div className="font-medium">Frontend Friday</div>
             <div className="text-xs text-muted-foreground mt-1">
               Build a UI from a prompt in 90 minutes
             </div>
           </li>
-          <li className="rounded-lg border border-border/60 p-4">
+          <li className="rounded-lg border border-border/60 p-4 dark:bg-gray-900">
             <div className="font-medium">SQL Saturday</div>
             <div className="text-xs text-muted-foreground mt-1">
               Solve real analytics problems
             </div>
           </li>
-          <li className="rounded-lg border border-border/60 p-4">
+          <li className="rounded-lg border border-border/60 p-4 dark:bg-gray-900">
             <div className="font-medium">Mock Interview Night</div>
             <div className="text-xs text-muted-foreground mt-1">
               Practice technical and behavioral rounds

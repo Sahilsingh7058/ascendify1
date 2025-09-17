@@ -399,7 +399,7 @@ export default function JavaRoadmap() {
       <div className="relative z-10 px-4 sm:px-6 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-2 sm:gap-4 mb-4">
-            <div className="h-1 w-6 sm:w-8 bg-sky-400" />
+            
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-sky-400 drop-shadow-[0_0_18px_rgba(56,189,248,0.35)]">
               Full Stack Java Development
             </h1>

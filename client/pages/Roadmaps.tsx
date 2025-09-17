@@ -41,16 +41,16 @@ const roadmaps = [
 
 export default function Roadmaps() {
   return (
-    <div className="container py-20">
-      <h1 className="text-4xl font-bold text-center mb-4">
-        🚀 Explore Roadmaps
+    <div className="container py-16">
+      <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-sky-400 drop-shadow-[0_0_18px_rgba(56,189,248,0.45)]">
+        Explore Roadmaps
       </h1>
-      <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+      <p className="mt-4 max-w-2xl text-muted-foreground pb-5">
         Choose a roadmap to start your learning journey. Each roadmap is
         designed step-by-step to take you from beginner to advanced.
       </p>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 pt-3">
         {roadmaps.map((roadmap, index) => (
           <div
             key={index}

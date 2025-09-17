@@ -1,4 +1,3 @@
-
 import "./global.css";
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot, type Root } from "react-dom/client";
@@ -6,7 +5,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Index from "./pages/Index";
 import Roadmaps from "./pages/Roadmaps";
 import Assessment from "./pages/Assessment";
@@ -21,10 +19,8 @@ import DataScienceRoadmap from "./pages/roadmaps/DataScience";
 import DotNetRoadmap from "./pages/roadmaps/DotNet";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
-import BackgroundDots from "@/components/effects/BackgroundDots";
-import ParticlesBackground from "@/components/effects/ParticlesBackground";
 import JavaCourseLearningPage from "@/pages/JavaCourseLearningPage";
-
+import QuizPage from "@/pages/Test/Quiz";
 import { AuthProvider } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
@@ -38,10 +34,10 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <div className="relative min-h-screen flex flex-col bg-background text-foreground">
-            <div className="absolute inset-0 -z-10">
+            {/* <div className="absolute inset-0 -z-10">
               <BackgroundDots />
               <ParticlesBackground />
-            </div>
+            </div> */}
             <SiteHeader />
             <div className="flex-1">
               <Routes>
@@ -56,8 +52,8 @@ const App = () => (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/quiz" element={<QuizPage />} />
 
-                {/* 🔒 Protected Routes */}
                 <Route
                   path="/community"
                   element={
