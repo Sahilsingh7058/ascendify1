@@ -59,7 +59,7 @@ export default function Assessment() {
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium">Select Experience Level</label>
-            <Select value={experience} onValueChange={setExperience}>
+            <Select value={experience} onValueChange={(val) => setExperience(val as Experience | "")}>
               <SelectTrigger>
                 <SelectValue placeholder="Choose a level" />
               </SelectTrigger>

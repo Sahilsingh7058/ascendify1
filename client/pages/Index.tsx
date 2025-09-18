@@ -1,3 +1,4 @@
+import React from "react";
 import Hero from "@/components/sections/Hero";
 import StatsCounters from "@/components/sections/StatsCounters";
 import WhyChoose from "@/components/sections/WhyChoose";

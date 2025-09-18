@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SignIn from "../SignIn";
-import SignUp from "../SignUp";
-
+import { auth, db } from "../../lib/firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { id } from "date-fns/locale";
 // Data structure for the roadmap
 type Section = {
   step: "Basic" | "Intermediate" | "Advanced";
@@ -343,16 +343,61 @@ export default function JavaRoadmap() {
   const progress = useScrollProgress();
   const [showSignIn, setShowSignIn] = useState(false);
   const [showLevelPopup, setShowLevelPopup] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false);
-  
+
+   // Create/initialize progress on "Go to Course" click (0s)
+  const initializeProgress = async () => {
+    const uid = auth.currentUser?.uid;
+    if (!uid) {
+      return;
+    }
+    const userRef = doc(db, "users", uid);
+    const userSnap = await getDoc(userRef);
+    const progress = userSnap.exists() ? userSnap.data()?.progress : undefined;
+
+    if(!progress || progress.roadmap !== "java"){
+    await setDoc(
+      userRef,
+      {
+        progress: {
+          roadmap: "java",
+          basic: 0,
+          intermediate: 0,
+          advanced: 0,
+          basic_test_score: 0,
+          intermediate_test_score: 0,
+          advanced_test_score: 0
+        },
+      },
+      { merge: true }
+    );
+  }
+};
+
+  const handleGoToCourse = async () => {
+    await initializeProgress();
+      const uid = auth.currentUser?.uid;
+    if (!uid) {
+      return;
+    }
+    const userRef = doc(db, "users", uid);
+    const userSnap = await getDoc(userRef);
+    const progress = userSnap.exists() ? userSnap.data()?.progress : undefined;
+
+    if(!progress || progress.roadmap !== "java"){
+      setShowLevelPopup(true);
+    }else{
+      navigate("/java-course");
+    }
+  };
+
+
   const handleSignIn = () => {
     setShowSignIn(false);
     setShowLevelPopup(true);
   };
 
-  const handleLevelSelect = (level: "Basic" | "Intermediate") => {
-    // navigate to course with auth and level params
-    navigate(`/java-course`);
+   const handleLevelSelect = (level: "Basic" | "Intermediate") => {
+    navigate(`/java-course?level=${encodeURIComponent(level)}`);
   };
   useEffect(() => {
     const update = () => {
@@ -399,7 +444,7 @@ export default function JavaRoadmap() {
       <div className="relative z-10 px-4 sm:px-6 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-2 sm:gap-4 mb-4">
-            
+            <div className="h-1 w-6 sm:w-8 bg-sky-400" />
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-sky-400 drop-shadow-[0_0_18px_rgba(56,189,248,0.35)]">
               Full Stack Java Development
             </h1>
@@ -563,40 +608,13 @@ export default function JavaRoadmap() {
           </div>
           <div className="mt-4 sm:mt-6">
             <a
-              onClick={() => setShowSignIn(true)}
+              onClick={handleGoToCourse}
               //onClick={() => navigate("/java-course")}
               className="inline-block px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white transition"
             >
               Go to Course
             </a>
-      {/* Sign In modal shown before navigation */}
-      {showSignIn && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-sky-50 dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full relative">
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-              onClick={() => setShowSignIn(false)}
-            >
-              ×
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Sign In / Sign Up</h2>
-            <p className="text-sm text-muted-foreground mb-4">Sign in to continue to the Java course.</p>
-            <button
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold mb-3"
-              onClick={handleSignIn}
-            >
-              Sign In
-            </button>
-            <button
-              className="w-full bg-gray-200 hover:bg-gray-300 text-gray-900 py-2 rounded-lg font-semibold"
-              onClick={() => handleSignIn()}
-            >
-              Sign Up
-            </button>
-          </div>
-        </div>
-      )}
-
+      
       {/* Level selection popup after sign in */}
       {showLevelPopup && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">

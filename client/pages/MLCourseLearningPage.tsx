@@ -41,9 +41,10 @@ type Section = {
   [key: string]: any;
 };
 
-type JavaDoc = {
+type MLDoc = {
   _id: string;
   title: string;
+  goal: string;
   sections?: Section[];
   level?: string;
   topic?: string;
@@ -62,8 +63,8 @@ type QuizQuestion = {
   explanation?: string;
 };
 
-const JavaCourseLearningPage: React.FC = () => {
-  const [docs, setDocs] = useState<JavaDoc[]>([]);
+const MLCourseLearningPage: React.FC = () => {
+  const [docs, setDocs] = useState<MLDoc[]>([]);
   const [selected, setSelected] = useState<{ docIdx: number; sectionIdx: number }>({ docIdx: 0, sectionIdx: 0 });
   const [loading, setLoading] = useState(true);
   const [isDark, setIsDark] = useState(true);
@@ -204,22 +205,23 @@ useEffect(() => {
 
   const lvlKey = levelKeyForDoc(docData.level); // "basic" | "intermediate" | "advanced"
   const userRef = firestoreDoc(db, "users", uid);
-
+//visit this section
   const maxCounts = {
-    basic: 55,
-    intermediate: 38,
-    advanced: 67
+    basic: 5,
+    intermediate: 6,
+    advanced: 5
   };
-  // Only increment if not at max and progress.roadmap is 'java'
+  // Only increment if not at max and progress.roadmap is 'ml'
   getDoc(userRef).then((snap) => {
-    if (!snap.exists() || snap.data().progress?.roadmap !== 'java') return;
-    const progress = snap.data().progress || {};
+    if (!snap.exists() || snap.data().progress_ml?.roadmap !== 'ml') return;
+    const progress = snap.exists() ? snap.data().progress_ml || {} : {};
     const current = progress[lvlKey] || 0;
     if (current < maxCounts[lvlKey]) {
       updateDoc(userRef, {
-        [`progress.${lvlKey}`]: increment(1),
+        [`progress_ml.${lvlKey}`]: increment(1),
       })
       .then(() => {
+        // Optimistically update progressCounts state for instant UI feedback
         setProgressCounts(prev => ({
           ...prev,
           [lvlKey]: (prev[lvlKey] || 0) + 1
@@ -229,12 +231,12 @@ useEffect(() => {
         if (error.code === 'failed-precondition') {
           try {
             const userSnap = await getDoc(userRef);
-            if (!userSnap.exists() || userSnap.data().progress?.roadmap !== 'java') return;
-            const currentProgress = userSnap.data()?.progress || {};
+            if (!userSnap.exists() || userSnap.data().progress_ml?.roadmap !== 'ml') return;
+            const currentProgress = userSnap.data()?.progress_ml || {};
             const currentCount = currentProgress[lvlKey] || 0;
             if (currentCount >= maxCounts[lvlKey]) {
               await updateDoc(userRef, {
-                [`progress.${lvlKey}`]: maxCounts[lvlKey]
+                [`progress_ml.${lvlKey}`]: maxCounts[lvlKey]
               });
               setProgressCounts(prev => ({
                 ...prev,
@@ -242,7 +244,7 @@ useEffect(() => {
               }));
             } else {
               await updateDoc(userRef, {
-                [`progress.${lvlKey}`]: increment(1)
+                [`progress_ml.${lvlKey}`]: increment(1)
               });
               setProgressCounts(prev => ({
                 ...prev,
@@ -275,7 +277,7 @@ useEffect(() => {
         return;
       }
 
-      const progress = userSnap.data()?.progress || {};
+      const progress = userSnap.data()?.progress_ml || {};
       
       setProgressCounts({
         basic: progress.basic || 0,
@@ -358,7 +360,7 @@ useEffect(() => {
   if (lvl === 'basic' || lvl === 'intermediate' || lvl === 'advanced') {
     setUserLevel(lvl as any);
   }
-  fetch("http://localhost:8000/api/java-course")
+  fetch("http://localhost:8000/api/ml-course")
     .then((res) => res.json())
     .then((data) => {
       setDocs(data);
@@ -396,13 +398,13 @@ useEffect(() => {
   const fetchQuizQuestions = async (level: string) => {
     setLoadingQuiz(true);
     try {
-      const response = await fetch('http://localhost:8000/api/quiz/generate-questions', {
+      const response = await fetch('http://localhost:8000/api/quiz/ml/generate-questions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          skill: 'java',
+          skill: 'machine learning',
           difficulty: level.toLowerCase(),
           num_questions: 10,
         })
@@ -463,27 +465,30 @@ useEffect(() => {
 
   const updates: Record<string, any> = {};
   if (lvl === "basic") {
-    updates["progress.basic_test_score"] = score;
+    updates["progress_ml.basic_test_score"] = score;
     // updates["progress.basic_certificate_received"] = pass ? 1 : 0;
   } else if (lvl === "intermediate") {
-    updates["progress.intermediate_test_score"] = score;
+    updates["progress_ml.intermediate_test_score"] = score;
     //updates["progress.intermidiate_test_score"] = score; // also set misspelled for compatibility
     // updates["progress.intermidiate_certificate_received"] = pass ? 1 : 0; // requested naming
   } else {
-    updates["progress.advanced_test_score"] = score;
+    updates["progress_ml.advanced_test_score"] = score;
     // updates["progress.advanced_certificate_received"] = pass ? 1 : 0;
   }
 
   try {
     const userSnap = await getDoc(userRef);
-    if (!userSnap.exists() || userSnap.data().progress?.roadmap !== 'java') return;
-    await updateDoc(userRef, { progress: { ...userSnap.data().progress, ...updates } });
+     if (!userSnap.exists() || userSnap.data().progress_ml?.roadmap !== 'ml') return;
+     await updateDoc(userRef, {progress_ml: {...userSnap.data().progress_ml, ...updates}});
+    
   } catch {
-    // ensure base structure exists if needed
     const userSnap = await getDoc(userRef);
-    if (!userSnap.exists() || userSnap.data().progress?.roadmap !== 'java') return;
+    if (!userSnap.exists() || userSnap.data().progress_ml?.roadmap !== 'ml') return;
+    
+    // ensure base structure exists if needed
     await setDoc(userRef, { progress: {} }, { merge: true });
-    await updateDoc(userRef, { progress: { ...userSnap.data().progress, ...updates } });
+    await updateDoc(userRef, {progress_ml: {...userSnap.data().progress_ml, ...updates}});
+    
   }
 };
 
@@ -498,7 +503,7 @@ useEffect(() => {
       }
       acc[level].push({ doc, originalIndex: index });
       return acc;
-    }, {} as Record<string, { doc: JavaDoc; originalIndex: number }[]>);
+    }, {} as Record<string, { doc: MLDoc; originalIndex: number }[]>);
     return grouped;
   };
 
@@ -679,7 +684,7 @@ useEffect(() => {
         </button>
 
         {isExpanded && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-2 border-l-2 border-primary/20 pl-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-2 ml-2 border-l-2 border-primary/20 pl-4">
             {subtopics.map((subtopic, idx) => (
               <div
                 key={idx}
@@ -746,7 +751,7 @@ useEffect(() => {
               Why Use It?
             </h3>
             {Array.isArray(section.why) ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-2">
                 {section.why.map((reason, idx) => (
                   <div key={idx} className="flex items-center gap-3 p-3 bg-white/60 dark:bg-sky-900/30 rounded-lg">
                     <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
@@ -909,7 +914,7 @@ useEffect(() => {
               </div>
               {!sidebarCollapsed && (
                 <div>
-                  <h1 className="text-xl font-bold">Java Course</h1>
+                  <h1 className="text-xl font-bold">ML Course</h1>
                   <p className="text-sidebar-primary-foreground/80 text-sm">Interactive Learning</p>
                 </div>
               )}
@@ -933,9 +938,9 @@ levelOrder.forEach((level, levelIndex) => {
   const levelDocs = groupedDocs[level] || [];
 
   const requiredCounts: Record<string, number> = {
-    basic: 55,
-    intermediate: 38,
-    advanced: 67,
+    basic: 5,
+    intermediate: 6,
+    advanced: 5,
   };
 
   const progressCount = progressCounts[level];
@@ -1275,7 +1280,7 @@ levelOrder.forEach((level, levelIndex) => {
                       if (isFinalLevel && passedTest) {
                         return (
                           <a
-                            href={`/certificate`}
+                            href={`/certificate/${encodeURIComponent("Machine Learning")}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors shadow-lg hover:shadow-xl"
@@ -1389,4 +1394,4 @@ levelOrder.forEach((level, levelIndex) => {
   );
 };
 
-export default JavaCourseLearningPage;
+export default MLCourseLearningPage;

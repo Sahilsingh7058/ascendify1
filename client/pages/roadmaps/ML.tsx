@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../lib/firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 // Data structure for the roadmap
 type Section = {
   step: "Basic" | "Intermediate" | "Advanced";
@@ -125,7 +127,7 @@ const stepColor: Record<Marker["step"], string> = {
 function generatePath(
   segments: number,
   w = 1200,
-  segH = 200,
+  segH = 400,
   startX = 200,
   topPad = 100,
 ) {
@@ -176,7 +178,8 @@ function useScrollProgress() {
   return p;
 }
 
-export default function CloudComputingRoadmap() {
+export default function MLRoadmap() {
+  const navigate = useNavigate();
   // Create enough segments to accommodate all sections
   const segments = sections.length;
   const [isMobile, setIsMobile] = useState(false);
@@ -193,7 +196,7 @@ export default function CloudComputingRoadmap() {
   // Generate path with responsive dimensions
   const { d, viewBox, corners } = useMemo(() => {
     const width = isMobile ? 800 : 1200;
-    const segmentHeight = isMobile ? 100 : 300;
+    const segmentHeight = isMobile ? 300 : 400;
     const startX = isMobile ? 150 : 200;
     return generatePath(segments, width, segmentHeight, startX, 100);
   }, [segments, isMobile]);
@@ -219,6 +222,65 @@ export default function CloudComputingRoadmap() {
   const [scale, setScale] = useState({ x: 1, y: 1, top: 0, left: 0 });
   const progress = useScrollProgress();
 
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showLevelPopup, setShowLevelPopup] = useState(false);
+  
+  // Create/initialize progress on "Go to Course" click (0s)
+  const initializeProgress = async () => {
+      const uid = auth.currentUser?.uid;
+      if (!uid) {
+        return;
+      }
+      const userRef = doc(db, "users", uid);
+      const userSnap = await getDoc(userRef);
+      const progress_ml = userSnap.exists() ? userSnap.data()?.progress_ml : undefined;
+  
+      if(!progress_ml || progress_ml.roadmap !== "ml"){
+      await setDoc(
+        userRef,
+        {
+          progress_ml: {
+            roadmap: "ml",
+            basic: 0,
+            intermediate: 0,
+            advanced: 0,
+            basic_test_score: 0,
+            intermediate_test_score: 0,
+            advanced_test_score: 0
+          },
+        },
+        { merge: true }
+      );
+    }
+  };
+  
+    const handleGoToCourse = async () => {
+      await initializeProgress();
+        const uid = auth.currentUser?.uid;
+      if (!uid) {
+        return;
+      }
+      const userRef = doc(db, "users", uid);
+      const userSnap = await getDoc(userRef);
+      const progress_ml = userSnap.exists() ? userSnap.data()?.progress_ml : undefined;
+  
+      if(!progress_ml || progress_ml.roadmap !== "ml"){
+        setShowLevelPopup(true);
+      }else{
+        navigate("/ml-course");
+      }
+    };
+  
+  
+    const handleSignIn = () => {
+      setShowSignIn(false);
+      setShowLevelPopup(true);
+    };
+  
+     const handleLevelSelect = (level: "Basic" | "Intermediate") => {
+      navigate(`/ml-course?level=${encodeURIComponent(level)}`);
+    };
+  
   useEffect(() => {
     const update = () => {
       if (!pathRef.current || !svgRef.current) return;
@@ -264,7 +326,7 @@ export default function CloudComputingRoadmap() {
       <div className="relative z-10 px-4 sm:px-6 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-2 sm:gap-4 mb-4">
-            
+            <div className="h-1 w-6 sm:w-8 bg-sky-400" />
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-sky-400 drop-shadow-[0_0_18px_rgba(56,189,248,0.35)]">
               Artificial Intelligence and Machine Learning
             </h1>
@@ -279,7 +341,7 @@ export default function CloudComputingRoadmap() {
       <section className="relative mx-auto px-2 sm:px-4">
         <div
           className="relative"
-          style={{ height: `${viewBox.h * (isMobile ? 0.4 : 0.7)}px` }}
+          style={{ height: `${viewBox.h * (isMobile ? 0.6 : 0.8)}px` }}
         >
           <svg
             ref={svgRef}
@@ -418,7 +480,7 @@ export default function CloudComputingRoadmap() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="text-muted-foreground">
             <p className="mb-2 text-sm sm:text-base">
-              🚀 Complete your Cloud Computing & ML journey
+              🚀 Complete your ML journey
             </p>
             <p className="text-xs sm:text-sm">
               Scroll up to explore each section • Hover over titles for detailed
@@ -427,11 +489,33 @@ export default function CloudComputingRoadmap() {
           </div>
           <div className="mt-4 sm:mt-6">
             <a
-              href="#course"
+              onClick={handleGoToCourse}
               className="inline-block px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white transition"
             >
               Go to Course
             </a>
+            {/* Level selection popup after sign in */}
+      {showLevelPopup && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+          <div className="bg-sky-50 dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full relative">
+            <h2 className="text-2xl font-bold mb-6">Your Java understanding level?</h2>
+            <div className="flex flex-col gap-4">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold text-lg"
+                onClick={() => handleLevelSelect("Basic")}
+              >
+                Basic
+              </button>
+              <button
+                className="bg-blue-400 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold text-lg"
+                onClick={() => handleLevelSelect("Intermediate")}
+              >
+                Intermediate
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
           </div>
         </div>
       </div>
