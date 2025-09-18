@@ -32,7 +32,7 @@ API_KEY = "AIzaSyA7370sbYTvrzpz_uHCO0HJ4nIsdW-E1Io"
 if not API_KEY:
     raise ValueError("GOOGLE_API_KEY environment variable not set.")
 
-@router.post("/generate-questions", response_model=QuestionResponse)
+@router.post("/assessment/generate-questions", response_model=QuestionResponse)
 async def generate_questions_endpoint(request: QuestionRequest):
     """
     Generates technical assessment questions based on skill and difficulty.
