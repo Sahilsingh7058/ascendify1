@@ -58,7 +58,7 @@ const QuizPage = () => {
     const fetchQuestions = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:8000/api/quiz/generate-questions', {
+        const response = await fetch('http://localhost:8000/api/quiz/assessment/generate-questions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ skill, difficulty: quizDifficulty }), // Use the mapped difficulty
