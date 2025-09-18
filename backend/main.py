@@ -5,6 +5,7 @@ from bson import ObjectId
 from quiz_gen import router as quiz_gen_router
 from quiz_ml import router as quiz_ml_router
 from quiz_cloud import router as quiz_gen_cloud_router
+from quiz_gen2 import router as quiz_assessment_cloud_router
 app = FastAPI()
 
 # CORS setup (adjust origins as needed)
@@ -20,6 +21,7 @@ app.add_middleware(
 app.include_router(quiz_gen_router)
 app.include_router(quiz_ml_router)
 app.include_router(quiz_gen_cloud_router)
+app.include_router(quiz_assessment_cloud_router)
 # MongoDB connection
 client = MongoClient("mongodb://localhost:27017/")
 db = client["career_assessment_roadmap"]
@@ -63,6 +65,7 @@ def read_root():
             "generate_questions": "/api/quiz/generate-questions",
             "generate_questions_ml": "/api/quiz/ml/generate-questions",
             "generate_questions_cloud": "/api/quiz/cloud/generate-questions",
-             
+            "generate_questions_assessment": "/api/quiz/assessment/generate-questions" 
         }
+
     }
