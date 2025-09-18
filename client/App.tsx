@@ -19,10 +19,25 @@ import DataScienceRoadmap from "./pages/roadmaps/DataScience";
 import DotNetRoadmap from "./pages/roadmaps/DotNet";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
+import BackgroundDots from "@/components/effects/BackgroundDots";
+import ParticlesBackground from "@/components/effects/ParticlesBackground";
 import JavaCourseLearningPage from "@/pages/JavaCourseLearningPage";
+import MLCourseLearningPage from "@/pages/MLCourseLearningPage";
+import Certificate from "./pages/Certificate";
+import CertificateVerified from "./pages/CertificateVerified";
 import QuizPage from "@/pages/Test/Quiz";
 import { AuthProvider } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import CloudCourseLearningPage from "./pages/CloudCourseLearningPage";
+
+
+import "./global.css";
+import { Toaster } from "@/components/ui/toaster";
+import { createRoot, type Root } from "react-dom/client";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +69,7 @@ const App = () => (
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/quiz" element={<QuizPage />} />
 
+                {/* 🔒 Protected Routes */}
                 <Route
                   path="/community"
                   element={
@@ -70,6 +86,39 @@ const App = () => (
                     </ProtectedRoute>
                   }
                 />
+                <Route
+                  path="/cloud-course"
+                  element={
+                    <ProtectedRoute>
+                      <CloudCourseLearningPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/ml-course"
+                  element={
+                    <ProtectedRoute>
+                      <MLCourseLearningPage />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route 
+                path="/certificate/:coursename" 
+                element={
+                    <ProtectedRoute>
+                      <Certificate />
+                    </ProtectedRoute>} />
+                <Route 
+                path="/certificate" 
+                element={
+                    <ProtectedRoute>
+                      <Certificate />
+                    </ProtectedRoute>} />
+                <Route 
+                path="/certificate/verified" 
+                element={<CertificateVerified />} />
+
 
               </Routes>
             </div>
