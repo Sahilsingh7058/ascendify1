@@ -1,0 +1,1195 @@
+[{
+  "_id": {
+    "$oid": "68c1e57cd36ac2e3c516c9b5"
+  },
+  "title": "Machine Learning Fundamentals",
+  "level": "basic",
+  "goal": "To understand the fundamental concepts of Machine Learning, the basic workflow of an ML project, and get comfortable with essential tools. You should be able to implement basic models on clean datasets.",
+  "sections": [
+    {
+      "sectionTitle": "Prerequisites & Tools",
+      "content": {
+        "subsections": [
+          {
+            "title": "Programming: Python",
+            "what_it_is": "Python is the industry-standard programming language for Machine Learning due to its simplicity, readability, and extensive library support.",
+            "why_it_is_used": [
+              "Easy to learn and use.",
+              "Rich ecosystem of ML libraries (NumPy, Pandas, scikit-learn, TensorFlow, PyTorch).",
+              "Strong community support."
+            ],
+            "subtopics": [
+              {
+                "title": "Basic Syntax",
+                "what_it_is": "The fundamental rules for writing Python code.",
+                "why_it_is_used": "To write and execute Python programs.",
+                "example": {
+                  "code": "print(\"Hello, World!\")",
+                  "output": [
+                    "Hello, World!"
+                  ]
+                }
+              },
+              {
+                "title": "Data Structures",
+                "what_it_is": "Ways to organize and store data in Python.",
+                "why_it_is_used": "To handle and manipulate data efficiently.",
+                "types": [
+                  {
+                    "name": "Lists",
+                    "description": "Ordered, mutable collections.",
+                    "example": {
+                      "code": "my_list = [1, 2, 3, \"apple\", \"banana\"]"
+                    }
+                  },
+                  {
+                    "name": "Dictionaries",
+                    "description": "Key-value pairs.",
+                    "example": {
+                      "code": "my_dict = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}"
+                    }
+                  },
+                  {
+                    "name": "Tuples",
+                    "description": "Ordered, immutable collections.",
+                    "example": {
+                      "code": "my_tuple = (1, 2, 3)"
+                    }
+                  },
+                  {
+                    "name": "Sets",
+                    "description": "Unordered, unique elements.",
+                    "example": {
+                      "code": "my_set = {1, 2, 3, 3, 4}  # Output: {1, 2, 3, 4}"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Control Flow",
+                "what_it_is": "Statements that control the execution flow of a program.",
+                "why_it_is_used": "To implement logic and decision-making.",
+                "types": [
+                  {
+                    "name": "If/Else",
+                    "example": {
+                      "code": "age = 18\nif age >= 18:\n    print(\"Adult\")\nelse:\n    print(\"Minor\")"
+                    }
+                  },
+                  {
+                    "name": "Loops",
+                    "example": {
+                      "code": "for i in range(5):\n    print(i)  # Output: 0, 1, 2, 3, 4"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Functions",
+                "what_it_is": "Reusable blocks of code.",
+                "why_it_is_used": "To avoid repetition and improve modularity.",
+                "example": {
+                  "code": "def greet(name):\n    return f\"Hello, {name}!\"\nprint(greet(\"Alice\"))  # Output: Hello, Alice!"
+                }
+              },
+              {
+                "title": "Working with Libraries",
+                "what_it_is": "Using pre-built Python packages.",
+                "why_it_is_used": "To leverage existing tools for data manipulation, visualization, and ML.",
+                "example": {
+                  "code": "import numpy as np\narr = np.array([1, 2, 3])\nprint(arr)"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Mathematics (Intuitive Understanding)",
+            "what_it_is": "Basic mathematical concepts required to understand how ML models work.",
+            "why_it_is_used": [
+              "To represent and manipulate data.",
+              "To understand model training and optimization."
+            ],
+            "subtopics": [
+              {
+                "title": "Linear Algebra",
+                "what_it_is": "Study of vectors, matrices, and operations on them.",
+                "why_it_is_used": "Data in ML is often represented as matrices.",
+                "key_concepts": [
+                  "Vectors: 1D arrays.",
+                  "Matrices: 2D arrays.",
+                  "Operations: Addition, multiplication, dot product."
+                ],
+                "example": {
+                  "code": "import numpy as np\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nprint(A @ B)  # Matrix multiplication"
+                }
+              },
+              {
+                "title": "Calculus",
+                "what_it_is": "Study of change and rates of change.",
+                "why_it_is_used": "To understand how models learn via optimization (gradient descent).",
+                "key_concepts": [
+                  "Derivatives: Rate of change of a function.",
+                  "Gradients: Generalization of derivatives for multi-variable functions."
+                ],
+                "example": {
+                  "code": "def derivative(f, x, h=0.0001):\n    return (f(x + h) - f(x)) / h\nf = lambda x: x**2\nprint(derivative(f, 2))  # Output: ~4.0 (derivative of x^2 at x=2)"
+                }
+              },
+              {
+                "title": "Statistics & Probability",
+                "what_it_is": "Study of data collection, analysis, and interpretation.",
+                "why_it_is_used": "To understand data distributions and model uncertainty.",
+                "key_concepts": [
+                  "Mean, Median, Mode: Measures of central tendency.",
+                  "Variance, Standard Deviation: Measures of spread.",
+                  "Probability Rules: Basic rules for calculating probabilities."
+                ],
+                "example": {
+                  "code": "import numpy as np\ndata = [1, 2, 3, 4, 5]\nprint(\"Mean:\", np.mean(data))\nprint(\"Standard Deviation:\", np.std(data))"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Essential Tools",
+            "what_it_is": "Tools and libraries required for ML development.",
+            "why_it_is_used": [
+              "To set up a reproducible environment.",
+              "To perform numerical computations, data manipulation, and visualization."
+            ],
+            "subtopics": [
+              {
+                "title": "Environment Setup",
+                "what_it_is": "Creating isolated Python environments.",
+                "why_it_is_used": "To manage dependencies and avoid conflicts.",
+                "steps": [
+                  {
+                    "method": "Using venv",
+                    "code": "python -m venv myenv\nsource myenv/bin/activate  # On Linux/Mac\nmyenv\\Scripts\\activate     # On Windows"
+                  },
+                  {
+                    "method": "Using conda",
+                    "code": "conda create --name myenv python=3.8\nconda activate myenv"
+                  }
+                ]
+              },
+              {
+                "title": "Libraries",
+                "what_it_is": "Essential Python libraries for ML.",
+                "libraries": [
+                  {
+                    "name": "NumPy",
+                    "description": "For numerical computations.",
+                    "example": {
+                      "code": "import numpy as np\narr = np.array([1, 2, 3])"
+                    }
+                  },
+                  {
+                    "name": "Pandas",
+                    "description": "For data manipulation.",
+                    "example": {
+                      "code": "import pandas as pd\ndf = pd.DataFrame({\"A\": [1, 2], \"B\": [3, 4]})"
+                    }
+                  },
+                  {
+                    "name": "Matplotlib/Seaborn",
+                    "description": "For data visualization.",
+                    "example": {
+                      "code": "import matplotlib.pyplot as plt\nplt.plot([1, 2, 3], [4, 5, 6])\nplt.show()"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Core Machine Learning Concepts",
+      "content": {
+        "subsections": [
+          {
+            "title": "What is Machine Learning?",
+            "what_it_is": "A subset of AI where models learn patterns from data without being explicitly programmed.",
+            "why_it_is_used": [
+              "To make predictions or decisions based on data.",
+              "To automate tasks and improve efficiency."
+            ],
+            "difference_from_traditional_programming": {
+              "traditional_programming": "Rules are defined by humans.",
+              "machine_learning": "Rules are learned from data."
+            }
+          },
+          {
+            "title": "Types of ML",
+            "what_it_is": "Different approaches to learning from data.",
+            "why_it_is_used": "To choose the right approach for a given problem.",
+            "types": [
+              {
+                "name": "Supervised Learning",
+                "description": "Uses labeled data (e.g., classification, regression)."
+              },
+              {
+                "name": "Unsupervised Learning",
+                "description": "Uses unlabeled data (e.g., clustering, dimensionality reduction)."
+              },
+              {
+                "name": "Reinforcement Learning",
+                "description": "Learns by interacting with an environment (e.g., game AI)."
+              }
+            ]
+          },
+          {
+            "title": "Key Terminology",
+            "what_it_is": "Common terms used in ML.",
+            "why_it_is_used": "To understand and communicate ML concepts effectively.",
+            "terms": [
+              {
+                "term": "Features",
+                "description": "Input variables."
+              },
+              {
+                "term": "Labels",
+                "description": "Output variables."
+              },
+              {
+                "term": "Training",
+                "description": "Process of fitting a model to data."
+              },
+              {
+                "term": "Testing",
+                "description": "Evaluating model performance on unseen data."
+              },
+              {
+                "term": "Prediction",
+                "description": "Output generated by the model."
+              },
+              {
+                "term": "Model",
+                "description": "Mathematical representation of a real-world process."
+              },
+              {
+                "term": "Parameters",
+                "description": "Internal variables of the model."
+              },
+              {
+                "term": "Hyperparameters",
+                "description": "External configurations of the model."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "The ML Project Workflow",
+      "content": {
+        "subsections": [
+          {
+            "title": "Data Collection & Preprocessing",
+            "what_it_is": "Steps to prepare raw data for ML models.",
+            "why_it_is_used": "To ensure data quality and improve model performance.",
+            "subtopics": [
+              {
+                "title": "Handling Missing Values",
+                "what_it_is": "Dealing with missing data points.",
+                "why_it_is_used": "Missing values can distort model training.",
+                "methods": [
+                  {
+                    "name": "Dropping missing values",
+                    "code": "df.dropna()"
+                  },
+                  {
+                    "name": "Imputing missing values",
+                    "code": "df.fillna(df.mean())"
+                  }
+                ]
+              },
+              {
+                "title": "Encoding Categorical Data",
+                "what_it_is": "Converting categorical data into numerical format.",
+                "why_it_is_used": "ML models require numerical input.",
+                "methods": [
+                  {
+                    "name": "Label Encoding",
+                    "code": "from sklearn.preprocessing import LabelEncoder\nle = LabelEncoder()\ndf[\"category\"] = le.fit_transform(df[\"category\"])"
+                  },
+                  {
+                    "name": "One-Hot Encoding",
+                    "code": "pd.get_dummies(df[\"category\"])"
+                  }
+                ]
+              },
+              {
+                "title": "Feature Scaling",
+                "what_it_is": "Standardizing or normalizing features.",
+                "why_it_is_used": "To ensure features contribute equally to model training.",
+                "methods": [
+                  {
+                    "name": "Normalization (Min-Max Scaling)",
+                    "code": "from sklearn.preprocessing import MinMaxScaler\nscaler = MinMaxScaler()\ndf_scaled = scaler.fit_transform(df)"
+                  },
+                  {
+                    "name": "Standardization (Z-Score)",
+                    "code": "from sklearn.preprocessing import StandardScaler\nscaler = StandardScaler()\ndf_scaled = scaler.fit_transform(df)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Model Training & Evaluation",
+            "what_it_is": "Process of training a model and evaluating its performance.",
+            "why_it_is_used": "To build and validate effective ML models.",
+            "subtopics": [
+              {
+                "title": "Splitting Data into Training and Testing Sets",
+                "what_it_is": "Dividing data into training and testing subsets.",
+                "why_it_is_used": "To evaluate model performance on unseen data.",
+                "example": {
+                  "code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)"
+                }
+              },
+              {
+                "title": "Overfitting vs. Underfitting",
+                "what_it_is": "Common issues in model training.",
+                "why_it_is_used": "To diagnose and improve model performance.",
+                "types": [
+                  {
+                    "name": "Overfitting",
+                    "description": "Model performs well on training data but poorly on test data."
+                  },
+                  {
+                    "name": "Underfitting",
+                    "description": "Model performs poorly on both training and test data."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Basic Model Evaluation Metrics",
+            "what_it_is": "Metrics to evaluate model performance.",
+            "why_it_is_used": "To quantify and compare model performance.",
+            "subtopics": [
+              {
+                "title": "Regression Metrics",
+                "metrics": [
+                  {
+                    "name": "Mean Absolute Error (MAE)",
+                    "code": "from sklearn.metrics import mean_absolute_error\nmae = mean_absolute_error(y_true, y_pred)"
+                  },
+                  {
+                    "name": "Mean Squared Error (MSE)",
+                    "code": "from sklearn.metrics import mean_squared_error\nmse = mean_squared_error(y_true, y_pred)"
+                  },
+                  {
+                    "name": "R-squared",
+                    "code": "from sklearn.metrics import r2_score\nr2 = r2_score(y_true, y_pred)"
+                  }
+                ]
+              },
+              {
+                "title": "Classification Metrics",
+                "metrics": [
+                  {
+                    "name": "Accuracy",
+                    "code": "from sklearn.metrics import accuracy_score\naccuracy = accuracy_score(y_true, y_pred)"
+                  },
+                  {
+                    "name": "Precision, Recall, F1-Score",
+                    "code": "from sklearn.metrics import precision_score, recall_score, f1_score\nprecision = precision_score(y_true, y_pred)\nrecall = recall_score(y_true, y_pred)\nf1 = f1_score(y_true, y_pred)"
+                  },
+                  {
+                    "name": "Confusion Matrix",
+                    "code": "from sklearn.metrics import confusion_matrix\ncm = confusion_matrix(y_true, y_pred)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Your First Algorithms",
+      "content": {
+        "subsections": [
+          {
+            "title": "Linear Regression",
+            "what_it_is": "A regression algorithm for predicting continuous values.",
+            "why_it_is_used": "To model linear relationships between features and target.",
+            "example": {
+              "code": "from sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)"
+            }
+          },
+          {
+            "title": "Logistic Regression",
+            "what_it_is": "A classification algorithm for binary outcomes.",
+            "why_it_is_used": "To model the probability of a binary outcome.",
+            "example": {
+              "code": "from sklearn.linear_model import LogisticRegression\nmodel = LogisticRegression()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)"
+            }
+          },
+          {
+            "title": "k-Nearest Neighbors (k-NN)",
+            "what_it_is": "A classification/regression algorithm based on proximity.",
+            "why_it_is_used": "For simple, instance-based learning.",
+            "example": {
+              "code": "from sklearn.neighbors import KNeighborsClassifier\nmodel = KNeighborsClassifier(n_neighbors=3)\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)"
+            }
+          },
+          {
+            "title": "k-Means Clustering",
+            "what_it_is": "An unsupervised learning algorithm for clustering.",
+            "why_it_is_used": "To group similar data points.",
+            "example": {
+              "code": "from sklearn.cluster import KMeans\nmodel = KMeans(n_clusters=3)\nmodel.fit(X)\nlabels = model.labels_"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Projects",
+      "content": [
+        "Predict House Prices: Use Linear Regression.",
+        "Classify Iris Flower Species: Use Logistic Regression or k-NN.",
+        "Cluster Customers Based on Mall Data: Use k-Means Clustering."
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68c1e57cd36ac2e3c516c9b6"
+  },
+  "title": "Intermediate Machine Learning",
+  "level": "intermediate",
+  "goal": "To deepen your understanding of algorithms, handle more complex data, perform rigorous model evaluation, and start working with more powerful models like Neural Networks.",
+  "sections": [
+    {
+      "sectionTitle": "Advanced Data Handling & Feature Engineering",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Advanced Feature Engineering",
+            "what_it_is": "Creating new features or transforming existing ones to improve model performance.",
+            "why_it_is_used": [
+              "To capture more information from raw data.",
+              "To improve model accuracy and interpretability."
+            ],
+            "subsections": [
+              {
+                "title": "Creating New Features",
+                "what_it_is": "Deriving new features from existing data.",
+                "why_it_is_used": "To provide more meaningful input to the model.",
+                "example": {
+                  "code": "# Create a new feature: \"total_spend\" from \"price\" and \"quantity\"\ndf[\"total_spend\"] = df[\"price\"] * df[\"quantity\"]"
+                }
+              },
+              {
+                "title": "Polynomial Features",
+                "what_it_is": "Creating higher-degree features to capture non-linear relationships.",
+                "why_it_is_used": "To improve model flexibility.",
+                "example": {
+                  "code": "from sklearn.preprocessing import PolynomialFeatures\npoly = PolynomialFeatures(degree=2)\nX_poly = poly.fit_transform(X)"
+                }
+              },
+              {
+                "title": "Binning",
+                "what_it_is": "Converting continuous variables into discrete bins.",
+                "why_it_is_used": "To handle non-linear relationships and reduce noise.",
+                "example": {
+                  "code": "df[\"age_group\"] = pd.cut(df[\"age\"], bins=[0, 18, 35, 60, 100], labels=[\"child\", \"young\", \"adult\", \"senior\"])"
+                }
+              },
+              {
+                "title": "Handling Datetime Data",
+                "what_it_is": "Extracting meaningful features from dates and times.",
+                "why_it_is_used": "To capture temporal patterns.",
+                "example": {
+                  "code": "df[\"date\"] = pd.to_datetime(df[\"date\"])\ndf[\"day_of_week\"] = df[\"date\"].dt.dayofweek\ndf[\"month\"] = df[\"date\"].dt.month"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Dimensionality Reduction",
+            "what_it_is": "Reducing the number of features while retaining most of the information.",
+            "why_it_is_used": [
+              "To reduce computational cost.",
+              "To remove noise and improve model performance."
+            ],
+            "subsections": [
+              {
+                "title": "PCA (Principal Component Analysis)",
+                "what_it_is": "A technique to project data into a lower-dimensional space.",
+                "why_it_is_used": "For visualization and noise reduction.",
+                "example": {
+                  "code": "from sklearn.decomposition import PCA\npca = PCA(n_components=2)\nX_pca = pca.fit_transform(X)"
+                }
+              },
+              {
+                "title": "LDA (Linear Discriminant Analysis)",
+                "what_it_is": "A supervised dimensionality reduction technique.",
+                "why_it_is_used": "To maximize class separability.",
+                "example": {
+                  "code": "from sklearn.discriminant_analysis import LinearDiscriminantAnalysis\nlda = LinearDiscriminantAnalysis(n_components=2)\nX_lda = lda.fit_transform(X, y)"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Handling Imbalanced Datasets",
+            "what_it_is": "Techniques to address datasets where classes are not equally represented.",
+            "why_it_is_used": "To prevent bias towards the majority class.",
+            "subsections": [
+              {
+                "title": "SMOTE (Synthetic Minority Over-sampling Technique)",
+                "what_it_is": "Generating synthetic samples for the minority class.",
+                "why_it_is_used": "To balance class distribution.",
+                "example": {
+                  "code": "from imblearn.over_sampling import SMOTE\nsmote = SMOTE()\nX_res, y_res = smote.fit_resample(X, y)"
+                }
+              },
+              {
+                "title": "Undersampling & Oversampling",
+                "what_it_is": "Reducing the majority class or increasing the minority class.",
+                "why_it_is_used": "To balance class distribution.",
+                "example": {
+                  "code": "from imblearn.under_sampling import RandomUnderSampler\nundersampler = RandomUnderSampler()\nX_res, y_res = undersampler.fit_resample(X, y)"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Core Algorithm Deep Dive",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Tree-Based Models",
+            "what_it_is": "Models that make predictions based on decision trees.",
+            "why_it_is_used": [
+              "To handle non-linear relationships.",
+              "To provide interpretable results."
+            ],
+            "subsections": [
+              {
+                "title": "Decision Trees",
+                "what_it_is": "A model that splits data based on feature values.",
+                "why_it_is_used": "For interpretability and simplicity.",
+                "key_concepts": [
+                  "Entropy: Measure of disorder.",
+                  "Information Gain: Reduction in entropy.",
+                  "Gini Impurity: Measure of node purity."
+                ],
+                "example": {
+                  "code": "from sklearn.tree import DecisionTreeClassifier\nmodel = DecisionTreeClassifier()\nmodel.fit(X_train, y_train)"
+                }
+              },
+              {
+                "title": "Ensemble Methods",
+                "what_it_is": "Combining multiple models to improve performance.",
+                "subsections": [
+                  {
+                    "title": "Bagging: Random Forest",
+                    "what_it_is": "Aggregating predictions from multiple decision trees.",
+                    "why_it_is_used": "To reduce variance and improve accuracy.",
+                    "example": {
+                      "code": "from sklearn.ensemble import RandomForestClassifier\nmodel = RandomForestClassifier(n_estimators=100)\nmodel.fit(X_train, y_train)"
+                    }
+                  },
+                  {
+                    "title": "Boosting: Gradient Boosting Machines (GBM)",
+                    "what_it_is": "Sequentially training models to correct errors from previous models.",
+                    "why_it_is_used": "To improve model accuracy.",
+                    "libraries": [
+                      {
+                        "name": "XGBoost",
+                        "code": "from xgboost import XGBClassifier\nmodel = XGBClassifier()\nmodel.fit(X_train, y_train)"
+                      },
+                      {
+                        "name": "LightGBM",
+                        "code": "from lightgbm import LGBMClassifier\nmodel = LGBMClassifier()\nmodel.fit(X_train, y_train)"
+                      },
+                      {
+                        "name": "CatBoost",
+                        "code": "from catboost import CatBoostClassifier\nmodel = CatBoostClassifier()\nmodel.fit(X_train, y_train)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Support Vector Machines (SVM)",
+            "what_it_is": "A model that finds the optimal hyperplane to separate classes.",
+            "why_it_is_used": [
+              "For high-dimensional data.",
+              "For clear margin of separation."
+            ],
+            "key_concepts": [
+              "Maximum Margin Classifier: Maximizes the distance between classes.",
+              "Kernels: Transform data into higher dimensions (Linear, RBF)."
+            ],
+            "example": {
+              "code": "from sklearn.svm import SVC\nmodel = SVC(kernel=\"rbf\")\nmodel.fit(X_train, y_train)"
+            }
+          },
+          {
+            "title": "Naive Bayes",
+            "what_it_is": "A probabilistic model based on Bayes' Theorem.",
+            "why_it_is_used": [
+              "For text classification.",
+              "For simplicity and speed."
+            ],
+            "example": {
+              "code": "from sklearn.naive_bayes import GaussianNB\nmodel = GaussianNB()\nmodel.fit(X_train, y_train)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Model Evaluation & Optimization",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Advanced Validation Techniques",
+            "what_it_is": "Methods to evaluate model performance robustly.",
+            "why_it_is_used": "To ensure the model generalizes well to unseen data.",
+            "subsections": [
+              {
+                "title": "Cross-Validation: k-Fold CV",
+                "what_it_is": "Splitting data into k folds and evaluating the model on each fold.",
+                "why_it_is_used": "To reduce variance in model evaluation.",
+                "example": {
+                  "code": "from sklearn.model_selection import cross_val_score\nscores = cross_val_score(model, X, y, cv=5)"
+                }
+              },
+              {
+                "title": "Stratified k-Fold",
+                "what_it_is": "k-Fold CV that preserves class distribution.",
+                "why_it_is_used": "For imbalanced datasets.",
+                "example": {
+                  "code": "from sklearn.model_selection import StratifiedKFold\nskf = StratifiedKFold(n_splits=5)\nfor train_index, test_index in skf.split(X, y):\n    X_train, X_test = X[train_index], X[test_index]\n    y_train, y_test = y[train_index], y[test_index]"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Hyperparameter Tuning",
+            "what_it_is": "Finding the best hyperparameters for a model.",
+            "why_it_is_used": "To optimize model performance.",
+            "subsections": [
+              {
+                "title": "GridSearchCV",
+                "what_it_is": "Exhaustive search over specified parameter values.",
+                "why_it_is_used": "To find the best combination of hyperparameters.",
+                "example": {
+                  "code": "from sklearn.model_selection import GridSearchCV\nparam_grid = {\"n_estimators\": [50, 100, 200], \"max_depth\": [None, 10, 20]}\ngrid_search = GridSearchCV(RandomForestClassifier(), param_grid, cv=5)\ngrid_search.fit(X_train, y_train)"
+                }
+              },
+              {
+                "title": "RandomizedSearchCV",
+                "what_it_is": "Random search over specified parameter distributions.",
+                "why_it_is_used": "To reduce computational cost compared to GridSearchCV.",
+                "example": {
+                  "code": "from sklearn.model_selection import RandomizedSearchCV\nparam_dist = {\"n_estimators\": [50, 100, 200], \"max_depth\": [None, 10, 20]}\nrandom_search = RandomizedSearchCV(RandomForestClassifier(), param_dist, n_iter=10, cv=5)\nrandom_search.fit(X_train, y_train)"
+                }
+              }
+            ]
+          },
+          {
+            "title": "More Evaluation Metrics",
+            "what_it_is": "Additional metrics to evaluate model performance.",
+            "why_it_is_used": "To gain deeper insights into model strengths and weaknesses.",
+            "subsections": [
+              {
+                "title": "Classification Metrics",
+                "metrics": [
+                  {
+                    "name": "F1-Score",
+                    "description": "Harmonic mean of precision and recall.",
+                    "code": "from sklearn.metrics import f1_score\nf1 = f1_score(y_true, y_pred)"
+                  },
+                  {
+                    "name": "ROC-AUC",
+                    "description": "Area under the Receiver Operating Characteristic curve.",
+                    "code": "from sklearn.metrics import roc_auc_score\nroc_auc = roc_auc_score(y_true, y_pred_proba)"
+                  }
+                ]
+              },
+              {
+                "title": "Regression Metrics",
+                "metrics": [
+                  {
+                    "name": "Adjusted R-squared",
+                    "description": "R-squared adjusted for the number of predictors.",
+                    "code": "from sklearn.metrics import r2_score\nn = X.shape[0]\np = X.shape[1]\nadjusted_r2 = 1 - (1 - r2_score(y_true, y_pred)) * (n - 1) / (n - p - 1)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Introduction to Neural Networks & Deep Learning",
+      "content": {
+        "subtopics": [
+          {
+            "title": "The Perceptron",
+            "what_it_is": "The simplest form of a neural network.",
+            "why_it_is_used": "As the building block of more complex neural networks.",
+            "example": {
+              "code": "import numpy as np\nclass Perceptron:\n    def __init__(self, learning_rate=0.01, n_iterations=1000):\n        self.learning_rate = learning_rate\n        self.n_iterations = n_iterations\n    def fit(self, X, y):\n        self.weights = np.zeros(X.shape[1] + 1)\n        for _ in range(self.n_iterations):\n            for xi, target in zip(X, y):\n                update = self.learning_rate * (target - self.predict(xi))\n                self.weights[1:] += update * xi\n                self.weights[0] += update\n    def predict(self, X):\n        return np.where(np.dot(X, self.weights[1:]) + self.weights[0] >= 0, 1, 0)"
+            }
+          },
+          {
+            "title": "Multi-Layer Perceptrons (MLPs)",
+            "what_it_is": "Neural networks with multiple layers.",
+            "why_it_is_used": "To model complex, non-linear relationships.",
+            "key_concepts": [
+              "Layers: Input, hidden, output.",
+              "Activation Functions: Sigmoid, Tanh, ReLU.",
+              "Backpropagation: Algorithm to update weights."
+            ],
+            "example": {
+              "code": "from tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import Dense\nmodel = Sequential([\n    Dense(64, activation=\"relu\", input_shape=(X_train.shape[1],)),\n    Dense(32, activation=\"relu\"),\n    Dense(1, activation=\"sigmoid\")\n])\nmodel.compile(optimizer=\"adam\", loss=\"binary_crossentropy\", metrics=[\"accuracy\"])\nmodel.fit(X_train, y_train, epochs=10, batch_size=32)"
+            }
+          },
+          {
+            "title": "Training Neural Networks",
+            "what_it_is": "Process of optimizing neural network weights.",
+            "why_it_is_used": "To minimize prediction error.",
+            "subsections": [
+              {
+                "title": "Optimizers",
+                "optimizers": [
+                  {
+                    "name": "SGD (Stochastic Gradient Descent)",
+                    "code": "from tensorflow.keras.optimizers import SGD\noptimizer = SGD(learning_rate=0.01)"
+                  },
+                  {
+                    "name": "Adam",
+                    "code": "from tensorflow.keras.optimizers import Adam\noptimizer = Adam(learning_rate=0.001)"
+                  }
+                ]
+              },
+              {
+                "title": "Loss Functions",
+                "loss_functions": [
+                  "Cross-Entropy: For classification.",
+                  "Mean Squared Error (MSE): For regression."
+                ]
+              },
+              {
+                "title": "Backpropagation",
+                "what_it_is": "Algorithm to compute gradients and update weights.",
+                "why_it_is_used": "To train neural networks efficiently."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Projects",
+      "content": [
+        "Sentiment Analysis on Text Reviews: Use NLP techniques and ML models.",
+        "Digit Recognition with an MLP: Use TensorFlow/PyTorch.",
+        "Predicting Customer Churn: Use Random Forest or Gradient Boosting.",
+        "Building a Recommendation System: Use collaborative filtering."
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68c1e57cd36ac2e3c516c9b7"
+  },
+  "title": "Advanced Machine Learning",
+  "level": "advanced",
+  "goal": "To specialize in cutting-edge areas like Deep Learning, understand research papers, and learn to deploy models into production systems.",
+  "sections": [
+    {
+      "sectionTitle": "Deep Learning Architectures",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Convolutional Neural Networks (CNNs)",
+            "what_it_is": "A class of deep neural networks designed for processing structured grid data, such as images.",
+            "why_it_is_used": [
+              "To automatically and adaptively learn spatial hierarchies of features.",
+              "For tasks like image classification, object detection, and segmentation."
+            ],
+            "key_concepts": [
+              "Convolutions: Filters applied to input data to extract features.",
+              "Pooling: Reducing spatial dimensions (e.g., max pooling, average pooling).",
+              "Padding: Adding zeros around the input to control spatial dimensions."
+            ],
+            "architectures": [
+              {
+                "name": "LeNet",
+                "description": "Early CNN architecture for digit recognition."
+              },
+              {
+                "name": "AlexNet",
+                "description": "Deeper CNN that popularized deep learning."
+              },
+              {
+                "name": "VGG",
+                "description": "Focused on using small 3x3 convolutional filters."
+              },
+              {
+                "name": "ResNet",
+                "description": "Introduced residual connections to train very deep networks."
+              },
+              {
+                "name": "Inception",
+                "description": "Used parallel convolutional layers of different sizes."
+              }
+            ],
+            "applications": [
+              "Image Classification: Identifying objects in images.",
+              "Object Detection: Locating and classifying objects (e.g., YOLO, SSD).",
+              "Segmentation: Classifying each pixel in an image."
+            ],
+            "example": {
+              "code": "from tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense\nmodel = Sequential([\n    Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),\n    MaxPooling2D((2, 2)),\n    Conv2D(64, (3, 3), activation='relu'),\n    MaxPooling2D((2, 2)),\n    Flatten(),\n    Dense(64, activation='relu'),\n    Dense(10, activation='softmax')\n])\nmodel.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])\nmodel.fit(X_train, y_train, epochs=10, batch_size=32)"
+            }
+          },
+          {
+            "title": "Recurrent Neural Networks (RNNs)",
+            "what_it_is": "A class of neural networks designed for sequential data.",
+            "why_it_is_used": [
+              "To model temporal dependencies in sequences.",
+              "For tasks like time series forecasting, text generation, and speech recognition."
+            ],
+            "key_concepts": [
+              "Hidden States: Memory of past inputs.",
+              "Vanishing Gradient Problem: Difficulty in learning long-term dependencies."
+            ],
+            "architectures": [
+              {
+                "name": "LSTMs (Long Short-Term Memory)",
+                "description": "Solves the vanishing gradient problem with gating mechanisms."
+              },
+              {
+                "name": "GRUs (Gated Recurrent Units)",
+                "description": "Simplified version of LSTMs."
+              }
+            ],
+            "applications": [
+              "Time Series Forecasting: Predicting future values based on past data.",
+              "Text Generation: Generating coherent text sequences.",
+              "Speech Recognition: Transcribing spoken language."
+            ],
+            "example": {
+              "code": "from tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import LSTM, Dense\nmodel = Sequential([\n    LSTM(50, activation='tanh', input_shape=(n_steps, n_features)),\n    Dense(1)\n])\nmodel.compile(optimizer='adam', loss='mse')\nmodel.fit(X_train, y_train, epochs=20, batch_size=32)"
+            }
+          },
+          {
+            "title": "Transformers & Attention Mechanisms",
+            "what_it_is": "A neural network architecture based on self-attention mechanisms.",
+            "why_it_is_used": [
+              "To capture long-range dependencies in sequences.",
+              "For state-of-the-art performance in natural language processing (NLP)."
+            ],
+            "key_concepts": [
+              "Self-Attention: Weighing the importance of each word in a sequence relative to others.",
+              "Multi-Head Attention: Multiple attention heads to capture different types of relationships."
+            ],
+            "architectures": [
+              {
+                "name": "BERT (Bidirectional Encoder Representations from Transformers)",
+                "description": "Pre-trained transformer for NLP tasks."
+              },
+              {
+                "name": "GPT (Generative Pre-trained Transformer)",
+                "description": "Auto-regressive transformer for text generation."
+              }
+            ],
+            "applications": [
+              "Translation: Converting text from one language to another.",
+              "Summarization: Condensing long texts into shorter summaries.",
+              "Question Answering: Answering questions based on a given context."
+            ],
+            "example": {
+              "code": "from transformers import BertTokenizer, TFBertForSequenceClassification\nimport tensorflow as tf\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = TFBertForSequenceClassification.from_pretrained('bert-base-uncased')\ninputs = tokenizer(\"Hello, world!\", return_tensors=\"tf\")\noutputs = model(inputs)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Advanced Topics & Specializations",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Generative Models",
+            "what_it_is": "Models that generate new data similar to the training data.",
+            "why_it_is_used": [
+              "To create realistic synthetic data.",
+              "For creative applications like art, music, and text generation."
+            ],
+            "subsection": [
+              {
+                "title": "GANs (Generative Adversarial Networks)",
+                "what_it_is": "Two neural networks (generator and discriminator) competing against each other.",
+                "why_it_is_used": "To generate high-quality synthetic data.",
+                "example": {
+                  "code": "from tensorflow.keras.layers import Dense, Input\nfrom tensorflow.keras.models import Sequential\n# Generator\ngenerator = Sequential([\n    Dense(128, activation='relu', input_dim=100),\n    Dense(784, activation='sigmoid')\n])\n# Discriminator\ndiscriminator = Sequential([\n    Dense(128, activation='relu', input_dim=784),\n    Dense(1, activation='sigmoid')\n])"
+                }
+              },
+              {
+                "title": "VAEs (Variational Autoencoders)",
+                "what_it_is": "Autoencoders that learn a probabilistic latent space.",
+                "why_it_is_used": "To generate new data and perform anomaly detection.",
+                "example": {
+                  "code": "from tensorflow.keras.layers import Input, Dense, Lambda\nfrom tensorflow.keras.models import Model\n# Encoder\ninputs = Input(shape=(784,))\nencoded = Dense(64, activation='relu')(inputs)\nz_mean = Dense(32)(encoded)\nz_log_var = Dense(32)(encoded)\n# Decoder\ndecoder_input = Input(shape=(32,))\ndecoded = Dense(64, activation='relu')(decoder_input)\ndecoded = Dense(784, activation='sigmoid')(decoded)"
+                }
+              },
+              {
+                "title": "Diffusion Models",
+                "what_it_is": "Models that generate data by reversing a gradual noising process.",
+                "why_it_is_used": "For high-quality image generation (e.g., DALL-E, Midjourney)."
+              }
+            ]
+          },
+          {
+            "title": "Reinforcement Learning (RL)",
+            "what_it_is": "A type of machine learning where an agent learns to make decisions by interacting with an environment.",
+            "why_it_is_used": [
+              "To train agents for complex decision-making tasks.",
+              "For applications like robotics, gaming, and resource management."
+            ],
+            "key_concepts": [
+              "Agent: Learns and makes decisions.",
+              "Environment: The world the agent interacts with.",
+              "Actions: Decisions made by the agent.",
+              "Rewards: Feedback from the environment.",
+              "Policy: Strategy the agent uses to select actions."
+            ],
+            "algorithms": [
+              "Q-Learning: Learning the value of actions in states.",
+              "Deep Q-Networks (DQN): Using neural networks to approximate Q-values.",
+              "Policy Gradients: Directly optimizing the policy."
+            ],
+            "example": {
+              "code": "import gym\nfrom stable_baselines3 import DQN\nenv = gym.make('CartPole-v1')\nmodel = DQN('MlpPolicy', env, verbose=1)\nmodel.learn(total_timesteps=10000)\nmodel.save(\"dqn_cartpole\")"
+            }
+          },
+          {
+            "title": "Unsupervised & Self-Supervised Learning",
+            "what_it_is": "Learning from data without explicit labels.",
+            "why_it_is_used": [
+              "To discover hidden patterns in data.",
+              "To leverage large amounts of unlabeled data."
+            ],
+            "techniques": [
+              "Clustering: Grouping similar data points (e.g., k-Means).",
+              "Dimensionality Reduction: Reducing the number of features (e.g., PCA, t-SNE).",
+              "Self-Supervised Learning: Creating pseudo-labels from data (e.g., masked language modeling in BERT)."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "MLOps & Deployment",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Model Deployment",
+            "what_it_is": "Making trained models available for use in production environments.",
+            "why_it_is_used": [
+              "To integrate models into real-world applications.",
+              "To provide predictions as a service."
+            ],
+            "subsection": [
+              {
+                "title": "Creating APIs for Your Model",
+                "what_it_is": "Exposing models as web services.",
+                "why_it_is_used": "To allow other applications to use the model.",
+                "tools": [
+                  "FastAPI",
+                  "Flask"
+                ],
+                "example": {
+                  "code": "from fastapi import FastAPI\nimport pickle\napp = FastAPI()\nmodel = pickle.load(open(\"model.pkl\", \"rb\"))\n\n@app.post(\"/predict\")\ndef predict(data: dict):\n    features = [[data[\"feature1\"], data[\"feature2\"]]]\n    prediction = model.predict(features)\n    return {\"prediction\": prediction[0]}"
+                }
+              },
+              {
+                "title": "Containerizing Your Application",
+                "what_it_is": "Packaging applications into containers for easy deployment.",
+                "why_it_is_used": "To ensure consistency across different environments.",
+                "tool": "Docker",
+                "example": {
+                  "code": "FROM python:3.8\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install -r requirements.txt\nCOPY . .\nCMD [\"uvicorn\", \"main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"80\"]"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Model Management",
+            "what_it_is": "Tracking, versioning, and managing machine learning models.",
+            "why_it_is_used": [
+              "To keep track of model versions and performance.",
+              "To reproduce and deploy models efficiently."
+            ],
+            "tools": [
+              {
+                "name": "MLflow",
+                "description": "For tracking experiments and managing models."
+              },
+              {
+                "name": "Weights & Biases",
+                "description": "For experiment tracking and collaboration."
+              }
+            ],
+            "example": {
+              "code": "import mlflow\nfrom sklearn.ensemble import RandomForestClassifier\nmlflow.set_experiment(\"Random Forest Experiment\")\nwith mlflow.start_run():\n    model = RandomForestClassifier(n_estimators=100)\n    model.fit(X_train, y_train)\n    accuracy = model.score(X_test, y_test)\n    mlflow.log_metric(\"accuracy\", accuracy)\n    mlflow.sklearn.log_model(model, \"model\")"
+            }
+          },
+          {
+            "title": "Cloud ML Services",
+            "what_it_is": "Using cloud platforms to build, train, and deploy ML models.",
+            "why_it_is_used": [
+              "To leverage scalable infrastructure.",
+              "To automate ML pipelines."
+            ],
+            "platforms": [
+              {
+                "name": "AWS SageMaker",
+                "description": "For building, training, and deploying models."
+              },
+              {
+                "name": "Google Vertex AI",
+                "description": "For end-to-end ML workflows."
+              },
+              {
+                "name": "Azure ML",
+                "description": "For ML model management and deployment."
+              }
+            ],
+            "example": {
+              "code": "import sagemaker\nfrom sagemaker.sklearn.estimator import SKLearn\nrole = sagemaker.get_execution_role()\nestimator = SKLearn(\n    entry_script=\"train.py\",\n    role=role,\n    instance_count=1,\n    instance_type=\"ml.m5.large\",\n    framework_version=\"0.23-1\"\n)\nestimator.fit({\"train\": \"s3://bucket/train\"})"
+            }
+          },
+          {
+            "title": "Monitoring & Maintenance",
+            "what_it_is": "Tracking model performance and data quality in production.",
+            "why_it_is_used": [
+              "To ensure models remain accurate over time.",
+              "To detect and address issues like data drift and concept drift."
+            ],
+            "techniques": [
+              {
+                "name": "Data Drift",
+                "description": "Changes in input data distribution."
+              },
+              {
+                "name": "Concept Drift",
+                "description": "Changes in the relationship between input and output."
+              }
+            ],
+            "tools": [
+              {
+                "name": "Evidently AI",
+                "description": "For monitoring model performance."
+              },
+              {
+                "name": "Arize",
+                "description": "For detecting data and concept drift."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "The Cutting Edge",
+      "content": {
+        "subtopics": [
+          {
+            "title": "Reading Research Papers",
+            "what_it_is": "Understanding and implementing ideas from academic research.",
+            "why_it_is_used": [
+              "To stay updated with the latest advancements.",
+              "To implement state-of-the-art techniques."
+            ],
+            "steps": [
+              "Skimming: Read the abstract, introduction, and conclusion.",
+              "Deep Dive: Focus on methodology and experiments.",
+              "Implementation: Replicate results using code."
+            ],
+            "resources": [
+              {
+                "name": "arXiv",
+                "description": "Preprint server for research papers."
+              },
+              {
+                "name": "Papers With Code",
+                "description": "Papers with associated code implementations."
+              }
+            ]
+          },
+          {
+            "title": "Contributing to Open Source",
+            "what_it_is": "Collaborating on open-source ML projects.",
+            "why_it_is_used": [
+              "To improve your skills and gain recognition.",
+              "To contribute to the ML community."
+            ],
+            "steps": [
+              "Find a Project: Choose a library (e.g., scikit-learn, TensorFlow, PyTorch).",
+              "Fork the Repository: Create your copy of the project.",
+              "Make Changes: Implement new features or fix bugs.",
+              "Submit a Pull Request: Propose your changes to the main project."
+            ]
+          },
+          {
+            "title": "Specializing Further",
+            "what_it_is": "Focusing on a specific subfield of ML.",
+            "why_it_is_used": [
+              "To become an expert in a niche area.",
+              "To work on specialized applications."
+            ],
+            "fields": [
+              {
+                "name": "Computer Vision",
+                "description": "Image and video analysis."
+              },
+              {
+                "name": "Natural Language Processing (NLP)",
+                "description": "Text and speech processing."
+              },
+              {
+                "name": "Reinforcement Learning",
+                "description": "Decision-making and control."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Projects",
+      "content": [
+        "Building a Real-Time Object Detection System: Use CNNs and OpenCV.",
+        "Creating a Text-to-Image Generator: Use GANs or Diffusion Models.",
+        "Training a Model to Play a Video Game: Use Reinforcement Learning.",
+        "Deploying a Full ML Pipeline on the Cloud: Use AWS SageMaker or Google Vertex AI."
+      ]
+    }
+  ]
+}]

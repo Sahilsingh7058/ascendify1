@@ -1,0 +1,799 @@
+[{
+  "_id": {
+    "$oid": "68c0a5fb4fbe6a8e7816c9bb"
+  },
+  "title": "The Foundation",
+  "level": "basic",
+  "goal": "Understand cloud computing, AWS core services, and get hands-on experience with foundational AWS services.",
+  "sections": [
+    {
+      "sectionTitle": "What is Cloud Computing?",
+      "content": {
+        "what_it_is": "Cloud computing is the on-demand delivery of IT resources (compute, storage, databases, networking, software) over the internet with pay-as-you-go pricing. Instead of owning physical data centers, you rent resources from AWS.",
+        "why_it_is_used": [
+          "Cost Efficiency: No upfront hardware costs (CAPEX → OPEX).",
+          "Scalability: Scale up/down based on demand.",
+          "Reliability: High availability and disaster recovery.",
+          "Global Reach: Deploy applications in multiple regions worldwide.",
+          "Speed & Agility: Launch resources in minutes."
+        ],
+        "key_terms": {
+          "on_demand": "Pay only for what you use.",
+          "elasticity": "Automatically scale resources.",
+          "multi_tenancy": "Shared infrastructure with isolation."
+        }
+      }
+    },
+    {
+      "sectionTitle": "Deployment Models",
+      "content": {
+        "table": {
+          "headers": [
+            "Model",
+            "Description",
+            "AWS Example"
+          ],
+          "rows": [
+            {
+              "Model": "Public Cloud",
+              "Description": "Services provided by third-party vendors over the internet.",
+              "AWS_Example": "AWS, Azure, GCP"
+            },
+            {
+              "Model": "Private Cloud",
+              "Description": "Dedicated cloud infrastructure for a single organization.",
+              "AWS_Example": "AWS Outposts, VMware Cloud on AWS"
+            },
+            {
+              "Model": "Hybrid Cloud",
+              "Description": "Combines public and private clouds for flexibility and security.",
+              "AWS_Example": "AWS Direct Connect + On-Premise"
+            },
+            {
+              "Model": "Multi-Cloud",
+              "Description": "Uses multiple cloud providers (e.g., AWS + Azure) to avoid vendor lock-in.",
+              "AWS_Example": "AWS + Azure"
+            }
+          ]
+        },
+        "why_it_is_used": [
+          "Public Cloud: Cost-effective, scalable, no maintenance.",
+          "Private Cloud: Full control, security, compliance.",
+          "Hybrid Cloud: Balance between security and scalability.",
+          "Multi-Cloud: Avoid vendor lock-in, leverage best-of-breed services."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Service Models",
+      "content": {
+        "table": {
+          "headers": [
+            "Model",
+            "Description",
+            "AWS Example"
+          ],
+          "rows": [
+            {
+              "Model": "IaaS (Infrastructure as a Service)",
+              "Description": "Rent virtual machines, storage, and networking. You manage OS, apps, and data.",
+              "AWS_Example": "EC2, VPC, S3"
+            },
+            {
+              "Model": "PaaS (Platform as a Service)",
+              "Description": "Managed platform for developing, testing, and deploying apps.",
+              "AWS_Example": "Elastic Beanstalk, RDS"
+            },
+            {
+              "Model": "SaaS (Software as a Service)",
+              "Description": "Ready-to-use software applications.",
+              "AWS_Example": "Amazon WorkMail, Chime"
+            }
+          ]
+        },
+        "why_it_is_used": [
+          "IaaS: Full control over infrastructure (e.g., EC2 for custom apps).",
+          "PaaS: Focus on coding, not infrastructure (e.g., RDS for databases).",
+          "SaaS: No management (e.g., Gmail, Salesforce)."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "The Shared Responsibility Model",
+      "content": {
+        "what_it_is": "AWS manages security OF the cloud (physical infrastructure, hypervisor, networking). You manage security IN the cloud (data, IAM, OS, applications).",
+        "table": {
+          "headers": [
+            "AWS Responsibility",
+            "Your Responsibility"
+          ],
+          "rows": [
+            {
+              "AWS_Responsibility": "Physical security",
+              "Your_Responsibility": "Data encryption"
+            },
+            {
+              "AWS_Responsibility": "Hypervisor",
+              "Your_Responsibility": "IAM policies"
+            },
+            {
+              "AWS_Responsibility": "Networking",
+              "Your_Responsibility": "OS & application security"
+            },
+            {
+              "AWS_Responsibility": "Hardware",
+              "Your_Responsibility": "Firewall configurations (SG/NACL)"
+            }
+          ]
+        },
+        "why_it_matters": [
+          "Helps define security boundaries.",
+          "Ensures compliance (e.g., GDPR, HIPAA)."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Basic Economics: CAPEX vs. OPEX",
+      "content": {
+        "table": {
+          "headers": [
+            "CAPEX (Capital Expenditure)",
+            "OPEX (Operational Expenditure)"
+          ],
+          "rows": [
+            {
+              "CAPEX": "Upfront costs (servers, data centers)",
+              "OPEX": "Pay-as-you-go (EC2, S3, Lambda)"
+            },
+            {
+              "CAPEX": "Depreciation over time",
+              "OPEX": "No long-term commitments"
+            },
+            {
+              "CAPEX": "High risk if demand fluctuates",
+              "OPEX": "Scalable, cost-efficient"
+            }
+          ]
+        },
+        "tco": "Compare on-premise vs. cloud costs using the AWS TCO Calculator."
+      }
+    },
+    {
+      "sectionTitle": "Key AWS Services (Hands-On)",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Compute: Amazon EC2 (Elastic Compute Cloud)",
+            "content": {
+              "what_it_is": "Virtual servers in the cloud.",
+              "why_it_is_used": [
+                "Host websites, run applications, process data.",
+                "Scale up/down based on traffic."
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Launch an EC2 Instance",
+                  "details": [
+                    "Go to EC2 Dashboard → Launch Instance.",
+                    "Choose Amazon Linux 2 AMI (Free Tier eligible).",
+                    "Select t2.micro (Free Tier).",
+                    "Configure security group (allow SSH (Port 22) and HTTP (Port 80)).",
+                    "Launch and connect via SSH: `ssh -i \"key.pem\" ec2-user@<public-ip>`"
+                  ]
+                },
+                {
+                  "step": "Host a Simple Web Server",
+                  "details": [
+                    "Install Apache: `sudo yum install httpd -y`",
+                    "Start Apache: `sudo systemctl start httpd`",
+                    "Access via `<public-ip>` in a browser."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "Storage: Amazon S3 (Simple Storage Service)",
+            "content": {
+              "what_it_is": "Object storage for files, backups, and static websites.",
+              "why_it_is_used": [
+                "Durable (99.999999999% durability).",
+                "Scalable (unlimited storage).",
+                "Cheap ($0.023/GB for Standard)."
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Create a Bucket",
+                  "details": [
+                    "Go to S3 → Create Bucket.",
+                    "Name it (e.g., my-first-bucket-2025).",
+                    "Upload a file (e.g., index.html)."
+                  ]
+                },
+                {
+                  "step": "Host a Static Website",
+                  "details": [
+                    "Enable Static Website Hosting in bucket properties.",
+                    "Set index.html as the default page.",
+                    "Access via the Endpoint URL."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "Networking: Amazon VPC (Virtual Private Cloud)",
+            "content": {
+              "what_it_is": "A private, isolated section of AWS cloud where you launch resources.",
+              "key_components": [
+                "Subnets (Public/Private)",
+                "Route Tables (Traffic rules)",
+                "Security Groups (Firewall for EC2)",
+                "NACLs (Stateless firewall for subnets)"
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Create a VPC",
+                  "details": [
+                    "Go to VPC Dashboard → Create VPC (CIDR: 10.0.0.0/16).",
+                    "Launch EC2 in the VPC: Select the VPC while launching EC2.",
+                    "Assign a Public IP (for internet access)."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "Identity & Access Management (IAM)",
+            "content": {
+              "what_it_is": "Manages user access and permissions.",
+              "why_it_is_used": [
+                "Least Privilege Principle: Grant only necessary permissions.",
+                "Multi-Factor Authentication (MFA): Extra security."
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Create an IAM User",
+                  "details": [
+                    "Go to IAM → Users → Add User (e.g., dev-user).",
+                    "Attach AmazonS3ReadOnlyAccess policy.",
+                    "Test Access: Log in as the new user and verify S3 access."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "Databases: Amazon RDS (Relational Database Service)",
+            "content": {
+              "what_it_is": "Managed databases (MySQL, PostgreSQL, etc.).",
+              "why_it_is_used": [
+                "No manual patching/backups.",
+                "High availability (Multi-AZ deployments)."
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Launch a MySQL DB",
+                  "details": [
+                    "Go to RDS → Create Database.",
+                    "Choose MySQL, Free Tier (db.t2.micro).",
+                    "Set Master Username/Password.",
+                    "Connect via MySQL Workbench: Use the Endpoint from RDS console."
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Actionable Steps for Level 1",
+      "content": {
+        "steps": [
+          "Create an AWS Free Tier Account (Sign Up).",
+          "Set Billing Alerts (Go to Billing Dashboard → Budgets).",
+          "Follow Tutorials: Launch a WordPress Website on EC2, Host a Static Website on S3.",
+          "Take a Free Course: AWS Cloud Practitioner Essentials.",
+          "Get Certified (Optional): AWS Certified Cloud Practitioner (CLF-C02)."
+        ]
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68c0a5fb4fbe6a8e7816c9bc"
+  },
+  "title": "The Builder",
+  "level": "intermediate",
+  "goal": "Design scalable, reliable, and secure cloud applications.",
+  "sections": [
+    {
+      "sectionTitle": "High Availability (HA) & Fault Tolerance",
+      "content": {
+        "what_it_is": "Ensuring applications remain available despite failures.",
+        "key_concepts": {
+          "regions_azs": "A Region (e.g., us-east-1) has multiple AZs (isolated data centers).",
+          "multi_az_deployments": "RDS, EC2 Auto Scaling across AZs."
+        },
+        "why_it_is_used": [
+          "Avoid single points of failure.",
+          "Disaster Recovery (DR): Failover to another AZ/Region."
+        ],
+        "hands_on": [
+          "Deploy a Multi-AZ RDS Database (Enable Multi-AZ in RDS settings)."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Scalability & Elasticity",
+      "content": {
+        "table": {
+          "headers": [
+            "Vertical Scaling",
+            "Horizontal Scaling"
+          ],
+          "rows": [
+            {
+              "Vertical_Scaling": "Increase instance size (e.g., t2.micro → t2.large)",
+              "Horizontal_Scaling": "Add more instances (Auto Scaling)"
+            },
+            {
+              "Vertical_Scaling": "Limitation: Downtime during resize",
+              "Horizontal_Scaling": "Benefit: No downtime, handles traffic spikes"
+            }
+          ]
+        },
+        "key_aws_services": [
+          "Elastic Load Balancer (ELB): Distributes traffic.",
+          "Auto Scaling Group (ASG): Automatically adjusts EC2 instances."
+        ],
+        "hands_on_steps": [
+          {
+            "step": "Set Up an Auto Scaling Group",
+            "details": [
+              "Go to EC2 → Auto Scaling Groups → Create.",
+              "Define Launch Template (AMI, instance type).",
+              "Set Scaling Policies (e.g., CPU > 70% → Add 1 instance)."
+            ]
+          },
+          {
+            "step": "Configure an Application Load Balancer (ALB)",
+            "details": [
+              "Go to EC2 → Load Balancers → Create ALB.",
+              "Attach to the ASG."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Core Networking Deep Dive",
+      "content": {
+        "table": {
+          "headers": [
+            "Component",
+            "Purpose"
+          ],
+          "rows": [
+            {
+              "Component": "Subnets",
+              "Purpose": "Segment VPC (Public for internet, Private for DBs)."
+            },
+            {
+              "Component": "Route Tables",
+              "Purpose": "Define traffic rules (e.g., 0.0.0.0/0 → Internet Gateway)."
+            },
+            {
+              "Component": "Security Groups",
+              "Purpose": "Stateful firewall (allow/deny traffic to EC2)."
+            },
+            {
+              "Component": "NACLs",
+              "Purpose": "Stateless firewall (allow/deny traffic to subnets)."
+            },
+            {
+              "Component": "VPC Peering",
+              "Purpose": "Connect two VPCs privately."
+            },
+            {
+              "Component": "VPN/Direct Connect",
+              "Purpose": "Secure connection to on-premise data centers."
+            }
+          ]
+        },
+        "hands_on": [
+          "Create a Custom VPC with Public & Private Subnets: Public Subnet: EC2 with ALB. Private Subnet: RDS database."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Security Fundamentals",
+      "content": {
+        "table": {
+          "headers": [
+            "Concept",
+            "AWS Service",
+            "Use Case"
+          ],
+          "rows": [
+            {
+              "Concept": "Encryption",
+              "AWS_Service": "KMS (Key Management Service)",
+              "Use_Case": "Encrypt S3 buckets, RDS databases."
+            },
+            {
+              "Concept": "IAM Roles",
+              "AWS_Service": "IAM",
+              "Use_Case": "Grant EC2 access to S3 without keys."
+            },
+            {
+              "Concept": "AssumeRole",
+              "AWS_Service": "STS (Security Token Service)",
+              "Use_Case": "Temporary credentials for cross-account access."
+            }
+          ]
+        },
+        "hands_on": [
+          "Encrypt an S3 Bucket: Go to S3 → Bucket Policy → Enable Default Encryption (SSE-S3 or SSE-KMS).",
+          "Create an IAM Role for EC2: Attach AmazonS3FullAccess policy. Assign the role to an EC2 instance."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Core Application Services",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Serverless: AWS Lambda",
+            "content": {
+              "what_it_is": "Run code without managing servers (pay per execution).",
+              "why_it_is_used": [
+                "Event-Driven: Triggered by S3 uploads, API calls, etc.",
+                "Cost-Effective: Pay only when code runs."
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Create a Lambda Function",
+                  "details": [
+                    "Go to Lambda → Create Function (Python/Node.js).",
+                    "Test with a simple 'Hello World.'"
+                  ]
+                },
+                {
+                  "step": "Trigger Lambda from S3",
+                  "details": [
+                    "Go to S3 → Bucket Events → Add Lambda trigger."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "Containers: Amazon ECS (Elastic Container Service)",
+            "content": {
+              "what_it_is": "Run Docker containers without managing EC2 (Fargate) or on EC2.",
+              "why_it_is_used": [
+                "Microservices: Deploy containerized apps.",
+                "Scalability: Auto-scale containers."
+              ],
+              "hands_on_steps": [
+                {
+                  "step": "Deploy a Docker Container",
+                  "details": [
+                    "Push an image to Amazon ECR (Elastic Container Registry).",
+                    "Create an ECS Task Definition.",
+                    "Run as a Fargate Service."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "Message Queues: Amazon SQS (Simple Queue Service)",
+            "content": {
+              "what_it_is": "Decouple applications using message queues.",
+              "why_it_is_used": [
+                "Asynchronous Processing: Handle spikes in traffic.",
+                "Error Handling: Retry failed messages."
+              ],
+              "hands_on": [
+                "Create an SQS Queue: Go to SQS → Create Queue (Standard/FIFO).",
+                "Send/Receive Messages: Use AWS CLI: `aws sqs send-message --queue-url <URL> --message-body \"Hello\"`"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "DevOps & Automation",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Infrastructure as Code (IaC): AWS CloudFormation & Terraform",
+            "content": {
+              "what_it_is": "Define infrastructure in code (YAML/JSON for CloudFormation, HCL for Terraform).",
+              "why_it_is_used": [
+                "Reproducibility: Same environment every time.",
+                "Version Control: Track changes via Git."
+              ],
+              "hands_on_terraform": [
+                "Install Terraform (Guide).",
+                {
+                  "code": "resource \"aws_instance\" \"web\" {\n  ami           = \"ami-0c55b159cbfafe1f0\"\n  instance_type = \"t2.micro\"\n}",
+                  "commands": [
+                    "terraform init",
+                    "terraform apply"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "CI/CD Pipelines: AWS CodePipeline",
+            "content": {
+              "what_it_is": "Automate code deployments (GitHub → Build → Deploy).",
+              "hands_on_steps": [
+                {
+                  "step": "Create a Pipeline",
+                  "details": [
+                    "Source: GitHub.",
+                    "Build: AWS CodeBuild.",
+                    "Deploy: ECS/EC2/S3."
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Actionable Steps for Level 2",
+      "content": {
+        "steps": [
+          "Build a Full-Stack App: Frontend: S3 + CloudFront (CDN). Backend: EC2/Lambda + RDS/DynamoDB. CI/CD: CodePipeline for auto-deployments.",
+          "Deep Dive into Terraform: Terraform AWS Provider Docs.",
+          "Get Certified: AWS Solutions Architect Associate (SAA-C03)."
+        ]
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68c0a5fb4fbe6a8e7816c9bd"
+  },
+  "title": "The Architect & Specialist",
+  "level": "advanced",
+  "goal": "Specialize in Solutions Architecture, DevOps, Security, or Data/ML.",
+  "sections": [
+    {
+      "sectionTitle": "Solutions Architecture",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Advanced Design Patterns",
+            "content": {
+              "table": {
+                "headers": [
+                  "Pattern",
+                  "Use Case",
+                  "AWS Services"
+                ],
+                "rows": [
+                  {
+                    "Pattern": "Event-Driven",
+                    "Use_Case": "Real-time processing (e.g., IoT)",
+                    "AWS_Services": "SNS, EventBridge, Lambda"
+                  },
+                  {
+                    "Pattern": "Microservices",
+                    "Use_Case": "Decoupled, scalable apps",
+                    "AWS_Services": "ECS, EKS, API Gateway"
+                  },
+                  {
+                    "Pattern": "Data Lake",
+                    "Use_Case": "Big data analytics",
+                    "AWS_Services": "S3, Glue, Athena, Redshift"
+                  },
+                  {
+                    "Pattern": "Disaster Recovery",
+                    "Use_Case": "Backup & failover strategies",
+                    "AWS_Services": "RDS Snapshots, AWS Backup"
+                  }
+                ]
+              },
+              "hands_on": [
+                "Design a Serverless Data Pipeline: S3 → EventBridge → Lambda → DynamoDB."
+              ]
+            }
+          },
+          {
+            "type": "Well-Architected Framework",
+            "content": {
+              "pillars": [
+                "Operational Excellence (CloudWatch, Auto Scaling)",
+                "Security (IAM, KMS, GuardDuty)",
+                "Reliability (Multi-AZ, Backup)",
+                "Performance Efficiency (CDN, Caching)",
+                "Cost Optimization (Spot Instances, Reserved Instances)"
+              ],
+              "tool": "AWS Well-Architected Tool"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "DevOps & Automation",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Advanced CI/CD: Blue/Green & Canary Deployments",
+            "content": {
+              "table": {
+                "headers": [
+                  "Strategy",
+                  "Description",
+                  "AWS Tool"
+                ],
+                "rows": [
+                  {
+                    "Strategy": "Blue/Green",
+                    "Description": "Switch traffic between two identical environments.",
+                    "AWS_Tool": "CodeDeploy"
+                  },
+                  {
+                    "Strategy": "Canary",
+                    "Description": "Gradually roll out updates to a subset of users.",
+                    "AWS_Tool": "CodeDeploy, ALB"
+                  }
+                ]
+              },
+              "hands_on": [
+                "Set Up a Canary Deployment in CodeDeploy."
+              ]
+            }
+          },
+          {
+            "type": "Configuration Management: Ansible",
+            "content": {
+              "what_it_is": "Automate OS/configurations (e.g., install Nginx on EC2).",
+              "hands_on": [
+                "Install Ansible: `sudo yum install ansible -y`",
+                {
+                  "code": "- hosts: webservers\n  tasks:\n    - name: Install Nginx\n      apt: name=nginx state=latest",
+                  "command": "ansible-playbook nginx.yml"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Security Specialization",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Zero-Trust Networking",
+            "content": {
+              "what_it_is": "\"Never trust, always verify\" – strict access controls.",
+              "aws_tools": [
+                "AWS Network Firewall",
+                "IAM Conditions (e.g., restrict by IP)",
+                "AWS Shield (DDoS protection)"
+              ],
+              "hands_on": [
+                "Restrict S3 Bucket Access to a VPC Endpoint."
+              ]
+            }
+          },
+          {
+            "type": "Compliance & Governance",
+            "content": {
+              "table": {
+                "headers": [
+                  "Standard",
+                  "AWS Tool"
+                ],
+                "rows": [
+                  {
+                    "Standard": "HIPAA",
+                    "AWS_Tool": "AWS Artifact, Config Rules"
+                  },
+                  {
+                    "Standard": "PCI DSS",
+                    "AWS_Tool": "AWS Config, GuardDuty"
+                  }
+                ]
+              },
+              "hands_on": [
+                "Enable AWS Config Rules for PCI Compliance."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Data & Machine Learning",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Big Data: Amazon Redshift & EMR",
+            "content": {
+              "table": {
+                "headers": [
+                  "Service",
+                  "Use Case"
+                ],
+                "rows": [
+                  {
+                    "Service": "Redshift",
+                    "Use_Case": "Data warehousing (SQL queries)"
+                  },
+                  {
+                    "Service": "EMR",
+                    "Use_Case": "Big data processing (Hadoop, Spark)"
+                  }
+                ]
+              },
+              "hands_on": [
+                "Load Data into Redshift & Query with SQL."
+              ]
+            }
+          },
+          {
+            "type": "Machine Learning: Amazon SageMaker",
+            "content": {
+              "what_it_is": "Build, train, and deploy ML models.",
+              "hands_on": [
+                "Train a Model: Use a Jupyter Notebook in SageMaker.",
+                "Deploy as an Endpoint: Expose via API Gateway."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Advanced Networking",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Hybrid Cloud: AWS Direct Connect + VPN",
+            "content": {
+              "what_it_is": "Secure connection between AWS and on-premise.",
+              "hands_on": [
+                "Set Up a Site-to-Site VPN."
+              ]
+            }
+          },
+          {
+            "type": "Transit Gateway",
+            "content": {
+              "what_it_is": "Hub-and-spoke model for connecting multiple VPCs.",
+              "hands_on": [
+                "Create a Transit Gateway & Attach VPCs."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Actionable Steps for Level 3",
+      "content": {
+        "steps": [
+          "Work on Complex Projects: Migrate an On-Premise App to AWS (Lift & Shift → Optimize). Optimize Costs: Use AWS Cost Explorer, Reserved Instances.",
+          "Contribute to Open Source: Improve Terraform AWS modules. Write blogs on advanced AWS architectures.",
+          "Get Advanced Certifications: AWS Solutions Architect Professional (SAP-C02), AWS DevOps Engineer Professional (DOP-C02), AWS Security Specialty."
+        ]
+      }
+    }
+  ]
+}]

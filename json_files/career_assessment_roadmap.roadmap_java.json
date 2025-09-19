@@ -1,0 +1,2054 @@
+[{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a0"
+  },
+  "title": "Java Introduction",
+  "sections": [
+    {
+      "sectionTitle": "Java Intro",
+      "content": {
+        "whatIsJava": "Java is a popular programming language, created in 1995. It is owned by Oracle, and more than 3 billion devices run Java.",
+        "usedFor": [
+          "Mobile applications (especially Android apps)",
+          "Desktop applications",
+          "Web applications",
+          "Web servers and application servers",
+          "Games",
+          "Database connection",
+          "And much more"
+        ],
+        "whyUseJava": [
+          "Works on multiple platforms (Windows, Mac, Linux, Raspberry Pi, etc.)",
+          "One of the most popular programming languages",
+          "High demand in job market",
+          "Easy to learn and use",
+          "Open-source and free",
+          "Secure, fast, and powerful",
+          "Huge community support",
+          "Object-oriented, reusable, lowers development cost",
+          "Similar to C++ and C# for easier switching"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java Get Started",
+      "content": {
+        "javaInstall": "Check Java installation via `java -version` in cmd. If not installed, download from oracle.com.",
+        "javaQuickstart": {
+          "description": "Every Java program starts with a class matching the filename. Example: Main.java",
+          "code": "public class Main {\n  public static void main(String[] args) {\n    System.out.println(\"Hello World\");\n  }\n}",
+          "steps": [
+            "Save as Main.java",
+            "Compile using javac Main.java",
+            "Run using java Main",
+            "Output: Hello World"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Java Syntax",
+      "content": {
+        "description": "Java is case-sensitive, class name = file name, every program has main() method.",
+        "codeExample": "public class Main {\n  public static void main(String[] args) {\n    System.out.println(\"Hello World\");\n  }\n}",
+        "notes": [
+          "All code must be inside a class",
+          "main() is required in every program",
+          "System.out.println() prints a line of text",
+          "Each statement must end with a semicolon"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java Output",
+      "content": {
+        "printText": [
+          "System.out.println(\"Hello World!\");",
+          "System.out.println(\"I am learning Java.\");",
+          "System.out.println(\"It is awesome!\");"
+        ],
+        "doubleQuotes": "Text must be wrapped in double quotes, else error occurs.",
+        "printMethod": "print() does not add a new line.",
+        "codeExample": [
+          "System.out.print(\"Hello World! \");",
+          "System.out.print(\"I will print on the same line.\");"
+        ],
+        "printNumbers": [
+          "System.out.println(3);",
+          "System.out.println(358);",
+          "System.out.println(50000);",
+          "System.out.println(3 + 3);",
+          "System.out.println(2 * 5);"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java Comments",
+      "content": {
+        "description": "Comments explain code and improve readability. They can also disable code during testing.",
+        "singleLine": [
+          "// This is a comment",
+          "System.out.println(\"Hello World\"); // This is a comment"
+        ],
+        "multiLine": "/* The code below will print Hello World to the screen */ \nSystem.out.println(\"Hello World\");"
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a1"
+  },
+  "title": "Variables & Data Types",
+  "sections": [
+    {
+      "sectionTitle": "Java Variables",
+      "content": {
+        "whatIsIt": "A variable is a container in Java that stores data values. Each variable has a type (e.g., int, double, String), which defines what kind of data it can hold.",
+        "whyUseIt": [
+          "To store data temporarily in memory.",
+          "To perform operations and reuse values.",
+          "To improve code readability and flexibility."
+        ],
+        "syntax": "type variableName = value;",
+        "exampleCode": "public class Main {\n  public static void main(String[] args) {\n    int age = 25;             // integer variable\n    String name = \"Ravi\";     // string variable\n    double salary = 55000.50; // decimal value\n\n    System.out.println(\"Name: \" + name);\n    System.out.println(\"Age: \" + age);\n    System.out.println(\"Salary: \" + salary);\n  }\n}",
+        "output": [
+          "Name: Ravi",
+          "Age: 25",
+          "Salary: 55000.5"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java Data Types",
+      "content": {
+        "whatIsIt": "Data types specify the kind of data a variable can hold.",
+        "categories": {
+          "primitive": [
+            "int",
+            "double",
+            "char",
+            "boolean"
+          ],
+          "nonPrimitive": [
+            "String",
+            "Arrays",
+            "Classes",
+            "Objects"
+          ]
+        },
+        "syntax": [
+          "int num = 10;          // integer",
+          "double price = 99.99;  // decimal number",
+          "char grade = 'A';      // character",
+          "boolean isJavaFun = true; // true/false",
+          "String city = \"Delhi\"; // non-primitive (class type)"
+        ],
+        "exampleCode": "public class Main {\n  public static void main(String[] args) {\n    int quantity = 100;\n    double discount = 12.5;\n    char currency = '₹';\n    boolean available = true;\n    String product = \"Laptop\";\n\n    System.out.println(product + \" (\" + currency + discount + \")\");\n    System.out.println(\"Quantity: \" + quantity);\n    System.out.println(\"Available: \" + available);\n  }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Type Casting",
+      "content": {
+        "whatIsIt": "Type casting converts a variable from one type to another.",
+        "typesOfCasting": {
+          "widening": "Automatic – Converting smaller type to larger type (int → double).",
+          "narrowing": "Manual – Converting larger type to smaller type (double → int)."
+        },
+        "syntax": [
+          "// Widening Casting\nint num = 10;\ndouble value = num;",
+          "// Narrowing Casting\ndouble price = 10.99;\nint p = (int) price;"
+        ],
+        "exampleCode": "public class Main {\n  public static void main(String[] args) {\n    int x = 100;\n    double y = x; // automatic (int → double)\n    System.out.println(y);\n\n    double a = 9.78;\n    int b = (int) a; // manual (double → int)\n    System.out.println(b);\n  }\n}",
+        "output": [
+          "100.0",
+          "9"
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a2"
+  },
+  "title": "Java Operators",
+  "sections": [
+    {
+      "sectionTitle": "Java Operators Overview",
+      "content": {
+        "what": "Operators are symbols in Java used to perform operations on variables and values.",
+        "why": [
+          "To perform mathematical calculations.",
+          "To compare values and make decisions.",
+          "To combine conditions and manipulate data."
+        ],
+        "types": {
+          "Arithmetic": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "%"
+          ],
+          "Assignment": [
+            "=",
+            "+=",
+            "-=",
+            "*=",
+            "/="
+          ],
+          "Comparison": [
+            "==",
+            "!=",
+            ">",
+            "<",
+            ">=",
+            "<="
+          ],
+          "Logical": [
+            "&&",
+            "||",
+            "!"
+          ],
+          "Unary": [
+            "++",
+            "--"
+          ],
+          "Bitwise": [
+            "&",
+            "|",
+            "^",
+            "~",
+            "<<",
+            ">>"
+          ]
+        },
+        "example": {
+          "code": "\nint x = 10, y = 5;\n\n// Arithmetic\nSystem.out.println(x + y);  // 15\nSystem.out.println(x - y);  // 5\n\n// Assignment\nx += 3;  // x = x + 3\nSystem.out.println(x);  // 13\n\n// Comparison\nSystem.out.println(x > y); // true\n\n// Logical\nSystem.out.println(x > 5 && y < 10); // true\n"
+        }
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a3"
+  },
+  "title": "Java Strings, Math, and Booleans",
+  "sections": [
+    {
+      "sectionTitle": "Java Strings",
+      "content": {
+        "what": "A String in Java is a sequence of characters, stored as an object in the String class.",
+        "why": [
+          "To handle and manipulate text.",
+          "Strings are widely used in input, output, and data storage."
+        ],
+        "syntax": "String txt = \"Hello Java\";",
+        "methods": [
+          "length()",
+          "toUpperCase(), toLowerCase()",
+          "concat()",
+          "equals(), equalsIgnoreCase()",
+          "charAt(index)",
+          "substring(start, end)"
+        ],
+        "example": {
+          "code": "public class Main {\n  public static void main(String[] args) {\n    String str = \"Java Programming\";\n\n    System.out.println(\"Length: \" + str.length());\n    System.out.println(\"Uppercase: \" + str.toUpperCase());\n    System.out.println(\"Lowercase: \" + str.toLowerCase());\n    System.out.println(\"Character at index 5: \" + str.charAt(5));\n    System.out.println(\"Substring (0-4): \" + str.substring(0, 4));\n    System.out.println(\"Equals check: \" + str.equals(\"Java\"));\n  }\n}",
+          "output": [
+            "Length: 16",
+            "Uppercase: JAVA PROGRAMMING",
+            "Lowercase: java programming",
+            "Character at index 5: P",
+            "Substring (0-4): Java",
+            "Equals check: false"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Java Math",
+      "content": {
+        "what": "The Math class in Java provides built-in methods for performing mathematical operations.",
+        "why": [
+          "To perform advanced calculations like square root, power, min/max, absolute values, and random numbers."
+        ],
+        "methods": [
+          "Math.max(a, b)",
+          "Math.min(a, b)",
+          "Math.sqrt(x)",
+          "Math.abs(x)",
+          "Math.pow(a, b)",
+          "Math.random()"
+        ],
+        "example": {
+          "code": "public class Main {\n  public static void main(String[] args) {\n    System.out.println(\"Max: \" + Math.max(10, 20));\n    System.out.println(\"Min: \" + Math.min(10, 20));\n    System.out.println(\"Square Root of 64: \" + Math.sqrt(64));\n    System.out.println(\"Absolute: \" + Math.abs(-25));\n    System.out.println(\"2 power 3: \" + Math.pow(2, 3));\n    System.out.println(\"Random (0-100): \" + (int)(Math.random() * 101));\n  }\n}"
+        }
+      }
+    },
+    {
+      "sectionTitle": "Java Booleans",
+      "content": {
+        "what": "A boolean in Java represents one of two values: true or false.",
+        "why": [
+          "To control the flow of programs using conditions.",
+          "To perform logical decision-making."
+        ],
+        "syntax": "boolean flag = true;",
+        "example": {
+          "code": "public class Main {\n  public static void main(String[] args) {\n    boolean isJavaFun = true;\n    boolean isFishTasty = false;\n\n    System.out.println(\"Is Java Fun? \" + isJavaFun);\n    System.out.println(\"Is Fish Tasty? \" + isFishTasty);\n\n    int x = 10, y = 20;\n    System.out.println(x > y);  // false\n    System.out.println(x < y);  // true\n  }\n}",
+          "output": [
+            "Is Java Fun? true",
+            "Is Fish Tasty? false",
+            "false",
+            "true"
+          ]
+        }
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a4"
+  },
+  "title": "Control Flow in Java",
+  "sections": [
+    {
+      "sectionTitle": "If…Else Statement",
+      "content": {
+        "what": "if and else let you execute code based on conditions.",
+        "why": [
+          "To make decisions in a program.",
+          "To control execution paths."
+        ],
+        "syntax": "\nif (condition) {\n   // code if condition is true\n} else {\n   // code if condition is false\n}",
+        "example": {
+          "code": "\nint age = 18;\nif (age >= 18) {\n    System.out.println(\"You are an adult.\");\n} else {\n    System.out.println(\"You are not an adult.\");\n}",
+          "output": [
+            "You are an adult."
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Else If Ladder",
+      "content": {
+        "what": "Used when you have multiple conditions.",
+        "syntax": "\nif (condition1) {\n   // code\n} else if (condition2) {\n   // code\n} else {\n   // default code\n}",
+        "example": {
+          "code": "\nint marks = 75;\n\nif (marks >= 90) {\n    System.out.println(\"Grade A\");\n} else if (marks >= 60) {\n    System.out.println(\"Grade B\");\n} else {\n    System.out.println(\"Grade C\");\n}",
+          "output": [
+            "Grade B"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Switch Statement",
+      "content": {
+        "what": "switch checks a variable against multiple values (cases).",
+        "why": "Cleaner than many else if statements.",
+        "syntax": "\nswitch (expression) {\n  case value1:\n    // code\n    break;\n  case value2:\n    // code\n    break;\n  default:\n    // default code\n}",
+        "example": {
+          "code": "\nint day = 3;\nswitch (day) {\n  case 1:\n    System.out.println(\"Monday\");\n    break;\n  case 2:\n    System.out.println(\"Tuesday\");\n    break;\n  case 3:\n    System.out.println(\"Wednesday\");\n    break;\n  default:\n    System.out.println(\"Invalid day\");\n}",
+          "output": [
+            "Wednesday"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Loops",
+      "content": {
+        "subtopics": [
+          {
+            "type": "While Loop",
+            "what": "Executes code as long as condition is true.",
+            "example": {
+              "code": "\nint i = 1;\nwhile (i <= 5) {\n    System.out.println(i);\n    i++;\n}",
+              "output": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          {
+            "type": "Do…While Loop",
+            "what": "Runs at least once, then checks condition.",
+            "example": {
+              "code": "\nint i = 1;\ndo {\n    System.out.println(i);\n    i++;\n} while (i <= 5);",
+              "output": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          {
+            "type": "For Loop",
+            "what": "Most common loop with initializer, condition, increment/decrement.",
+            "example": {
+              "code": "\nfor (int i = 1; i <= 5; i++) {\n    System.out.println(i);\n}",
+              "output": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          {
+            "type": "For-Each Loop",
+            "what": "Best for arrays or collections.",
+            "example": {
+              "code": "\nString[] cars = {\"BMW\", \"Audi\", \"Tesla\"};\nfor (String car : cars) {\n    System.out.println(car);\n}",
+              "output": [
+                "BMW",
+                "Audi",
+                "Tesla"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Break and Continue",
+      "content": {
+        "subtopics": [
+          {
+            "type": "Break Statement",
+            "what": "Stops loop immediately.",
+            "example": {
+              "code": "\nfor (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        break;\n    }\n    System.out.println(i);\n}",
+              "output": [
+                "1",
+                "2"
+              ]
+            }
+          },
+          {
+            "type": "Continue Statement",
+            "what": "Skips current iteration, continues with next.",
+            "example": {
+              "code": "\nfor (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        continue;\n    }\n    System.out.println(i);\n}",
+              "output": [
+                "1",
+                "2",
+                "4",
+                "5"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Control Flow Overview",
+      "content": {
+        "what": [
+          "Control flow statements decide which part of the code executes and how many times."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a5"
+  },
+  "title": "Arrays in Java",
+  "sections": [
+    {
+      "sectionTitle": "One-Dimensional (1D) Array",
+      "content": {
+        "what": "A linear collection of elements, accessed using an index (starting from 0).",
+        "syntax": "dataType[] arrayName = new dataType[size];",
+        "example": {
+          "code": "\npublic class Main {\n  public static void main(String[] args) {\n    int[] numbers = {10, 20, 30, 40, 50};\n\n    System.out.println(\"First element: \" + numbers[0]);\n    System.out.println(\"Array length: \" + numbers.length);\n\n    // Looping through array\n    for (int i = 0; i < numbers.length; i++) {\n      System.out.println(numbers[i]);\n    }\n  }\n}",
+          "output": [
+            "First element: 10",
+            "Array length: 5",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Two-Dimensional (2D) Array",
+      "content": {
+        "what": "An array of arrays → like a matrix (rows & columns).",
+        "syntax": "dataType[][] arrayName = new dataType[rows][cols];",
+        "example": {
+          "code": "\npublic class Main {\n  public static void main(String[] args) {\n    int[][] matrix = {\n      {1, 2, 3},\n      {4, 5, 6},\n      {7, 8, 9}\n    };\n\n    // Access element\n    System.out.println(\"Middle element: \" + matrix[1][1]);\n\n    // Loop through 2D array\n    for (int i = 0; i < matrix.length; i++) {\n      for (int j = 0; j < matrix[i].length; j++) {\n        System.out.print(matrix[i][j] + \" \");\n      }\n      System.out.println();\n    }\n  }\n}",
+          "output": [
+            "Middle element: 5",
+            "1 2 3",
+            "4 5 6",
+            "7 8 9"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Array Methods (java.util.Arrays)",
+      "content": {
+        "what": "Java provides the Arrays class with many useful methods.",
+        "methods": [
+          "Arrays.toString(array) → Prints array as a string.",
+          "Arrays.sort(array) → Sorts array in ascending order.",
+          "Arrays.equals(arr1, arr2) → Compares arrays.",
+          "Arrays.copyOf(arr, newLength) → Copies array."
+        ],
+        "example": {
+          "code": "\nimport java.util.Arrays;\n\npublic class Main {\n  public static void main(String[] args) {\n    int[] arr = {5, 2, 8, 1, 3};\n\n    System.out.println(\"Original: \" + Arrays.toString(arr));\n\n    Arrays.sort(arr);\n    System.out.println(\"Sorted: \" + Arrays.toString(arr));\n\n    int[] copy = Arrays.copyOf(arr, arr.length);\n    System.out.println(\"Arrays equal? \" + Arrays.equals(arr, copy));\n  }\n}",
+          "output": [
+            "Original: [5, 2, 8, 1, 3]",
+            "Sorted: [1, 2, 3, 5, 8]",
+            "Arrays equal? true"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "For-Each with Arrays",
+      "content": {
+        "what": "For-Each is the cleanest way to loop through arrays.",
+        "example": {
+          "code": "\npublic class Main {\n  public static void main(String[] args) {\n    String[] fruits = {\"Apple\", \"Banana\", \"Mango\"};\n\n    for (String fruit : fruits) {\n      System.out.println(fruit);\n    }\n  }\n}",
+          "output": [
+            "Apple",
+            "Banana",
+            "Mango"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Arrays Overview",
+      "content": {
+        "what": [
+          "An array is a collection of elements (same type) stored in a single variable. It helps store multiple values instead of declaring many variables."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a6"
+  },
+  "title": "Java Methods",
+  "sections": [
+    {
+      "sectionTitle": "What is a Method?",
+      "content": {
+        "details": [
+          "A method is similar to a function in other programming languages.",
+          "It is executed only when called.",
+          "Can return values or perform actions."
+        ],
+        "syntax": "\nreturnType methodName(parameters) {\n    // body of method\n    return value;  // optional\n}"
+      }
+    },
+    {
+      "sectionTitle": "Defining & Calling a Method",
+      "content": {
+        "example": {
+          "code": "\npublic class Main {\n  // Method definition\n  static void greet() {\n    System.out.println(\"Hello, welcome to Java!\");\n  }\n\n  public static void main(String[] args) {\n    // Method call\n    greet();\n    greet();\n  }\n}",
+          "output": [
+            "Hello, welcome to Java!",
+            "Hello, welcome to Java!"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Method Parameters",
+      "content": {
+        "what": "Methods can accept inputs called parameters. Parameters allow passing values into methods.",
+        "example": {
+          "code": "\npublic class Main {\n  // Method with parameter\n  static void greetUser(String name) {\n    System.out.println(\"Hello, \" + name + \"!\");\n  }\n\n  public static void main(String[] args) {\n    greetUser(\"Alice\");\n    greetUser(\"Bob\");\n  }\n}",
+          "output": [
+            "Hello, Alice!",
+            "Hello, Bob!"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Return Values from Methods",
+      "content": {
+        "what": "Methods can return values using the return keyword.",
+        "example": {
+          "code": "\npublic class Main {\n  // Method with return value\n  static int square(int num) {\n    return num * num;\n  }\n\n  public static void main(String[] args) {\n    int result = square(5);\n    System.out.println(\"Square: \" + result);\n  }\n}",
+          "output": [
+            "Square: 25"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Method Overloading",
+      "content": {
+        "what": "Java allows multiple methods with the same name but different parameters. This is called method overloading.",
+        "example": {
+          "code": "\npublic class Main {\n  // Overloaded methods\n  static int add(int a, int b) {\n    return a + b;\n  }\n\n  static double add(double a, double b) {\n    return a + b;\n  }\n\n  public static void main(String[] args) {\n    System.out.println(\"Int sum: \" + add(5, 10));\n    System.out.println(\"Double sum: \" + add(3.5, 2.5));\n  }\n}",
+          "output": [
+            "Int sum: 15",
+            "Double sum: 6.0"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Recursion in Methods",
+      "content": {
+        "what": "A method can call itself → this is called recursion. Used in problems like factorial, Fibonacci, etc.",
+        "example": {
+          "code": "\npublic class Main {\n  static int factorial(int n) {\n    if (n == 0 || n == 1) {\n      return 1;\n    } else {\n      return n * factorial(n - 1);\n    }\n  }\n\n  public static void main(String[] args) {\n    System.out.println(\"Factorial of 5: \" + factorial(5));\n  }\n}",
+          "output": [
+            "Factorial of 5: 120"
+          ]
+        }
+      }
+    },
+    {
+      "sectionTitle": "Methods Overview",
+      "content": {
+        "what": [
+          "A method in Java is a block of code that performs a specific task. It helps reduce code duplication and makes programs more modular and reusable."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a7"
+  },
+  "title": "Java Method Parameters",
+  "sections": [
+    {
+      "sectionTitle": "Passing Single Parameter",
+      "content": {
+        "code": "public class Main {\n  static void greet(String name) {\n    System.out.println(\"Hello, \" + name + \"!\");\n  }\n\n  public static void main(String[] args) {\n    greet(\"Alice\");\n    greet(\"Bob\");\n  }\n}",
+        "output": "Hello, Alice!\nHello, Bob!"
+      }
+    },
+    {
+      "sectionTitle": "Passing Multiple Parameters",
+      "content": {
+        "code": "public class Main {\n  static void printInfo(String name, int age) {\n    System.out.println(name + \" is \" + age + \" years old.\");\n  }\n\n  public static void main(String[] args) {\n    printInfo(\"John\", 25);\n    printInfo(\"Emma\", 30);\n  }\n}",
+        "output": "John is 25 years old.\nEmma is 30 years old."
+      }
+    },
+    {
+      "sectionTitle": "Pass by Value in Java",
+      "content": {
+        "code": "public class Main {\n  static void changeValue(int num) {\n    num = 50;  // modifies local copy\n  }\n\n  public static void main(String[] args) {\n    int x = 10;\n    changeValue(x);\n    System.out.println(\"Value of x: \" + x);  // remains unchanged\n  }\n}",
+        "output": "Value of x: 10",
+        "note": "Even though we tried to change x, it remains unchanged because Java passes by value."
+      }
+    },
+    {
+      "sectionTitle": "Passing Arrays as Parameters",
+      "content": {
+        "code": "public class Main {\n  static void modifyArray(int[] arr) {\n    arr[0] = 100;  // modifies the original array\n  }\n\n  public static void main(String[] args) {\n    int[] numbers = {1, 2, 3};\n    modifyArray(numbers);\n    System.out.println(numbers[0]);  // updated to 100\n  }\n}",
+        "output": "100"
+      }
+    },
+    {
+      "sectionTitle": "Returning Multiple Values (Workaround)",
+      "content": {
+        "code": "public class Main {\n  static int[] calculate(int a, int b) {\n    int sum = a + b;\n    int product = a * b;\n    return new int[]{sum, product};\n  }\n\n  public static void main(String[] args) {\n    int[] result = calculate(5, 10);\n    System.out.println(\"Sum: \" + result[0]);\n    System.out.println(\"Product: \" + result[1]);\n  }\n}",
+        "output": "Sum: 15\nProduct: 50"
+      }
+    },
+    {
+      "sectionTitle": "Parameters Overview",
+      "content": {
+        "description": [
+          "Parameters let us pass information into methods, making them flexible and reusable. In Java, all arguments are passed by value (a copy of the variable is passed)."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a8"
+  },
+  "title": "Java Method Overloading",
+  "sections": [
+    {
+      "sectionTitle": "Why Use Method Overloading?",
+      "content": {
+        "points": [
+          "Improves readability by using the same method name for related operations.",
+          "Reduces duplicate code.",
+          "Supports compile-time polymorphism (decision is made during compilation)."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Rules for Method Overloading",
+      "content": {
+        "points": [
+          "The method name must be the same.",
+          "The parameter list must differ in one of the following ways:",
+          " - Different number of parameters.",
+          " - Different data types of parameters.",
+          " - Different order of parameters (if types are different).",
+          "Return type alone is not enough to distinguish overloaded methods."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Example: Different Number of Parameters",
+      "content": {
+        "code": "public class Calculator {\n  // Method with 2 parameters\n  static int add(int a, int b) {\n    return a + b;\n  }\n\n  // Method with 3 parameters\n  static int add(int a, int b, int c) {\n    return a + b + c;\n  }\n\n  public static void main(String[] args) {\n    System.out.println(\"Sum of 2 numbers: \" + add(5, 10));\n    System.out.println(\"Sum of 3 numbers: \" + add(2, 4, 6));\n  }\n}",
+        "output": "Sum of 2 numbers: 15\nSum of 3 numbers: 12"
+      }
+    },
+    {
+      "sectionTitle": "Example: Different Data Types",
+      "content": {
+        "code": "public class Calculator {\n  static int add(int a, int b) {\n    return a + b;\n  }\n\n  static double add(double a, double b) {\n    return a + b;\n  }\n\n  public static void main(String[] args) {\n    System.out.println(\"Int sum: \" + add(5, 10));\n    System.out.println(\"Double sum: \" + add(3.5, 2.5));\n  }\n}",
+        "output": "Int sum: 15\nDouble sum: 6.0"
+      }
+    },
+    {
+      "sectionTitle": "Example: Different Order of Parameters",
+      "content": {
+        "code": "public class Display {\n  static void print(String name, int age) {\n    System.out.println(name + \" is \" + age + \" years old.\");\n  }\n\n  static void print(int age, String name) {\n    System.out.println(\"Age: \" + age + \", Name: \" + name);\n  }\n\n  public static void main(String[] args) {\n    print(\"Alice\", 25);\n    print(30, \"Bob\");\n  }\n}",
+        "output": "Alice is 25 years old.\nAge: 30, Name: Bob"
+      }
+    },
+    {
+      "sectionTitle": "What is NOT Method Overloading?",
+      "content": {
+        "note": "Changing only the return type does not count as overloading.",
+        "code": "// ❌ Invalid - only return type differs\nint display(int a) { return a; }\ndouble display(int a) { return a; } // Error!"
+      }
+    },
+    {
+      "sectionTitle": "Definition",
+      "content": {
+        "points": [
+          "Method overloading in Java means having multiple methods with the same name but different parameter lists. This makes programs more readable and flexible."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780a9"
+  },
+  "title": "Java Scope",
+  "sections": [
+    {
+      "sectionTitle": "Types of Variable Scope in Java",
+      "content": {
+        "subsections": [
+          {
+            "type": "Local Variables",
+            "description": [
+              "Declared inside a method, constructor, or block.",
+              "Only accessible within that block.",
+              "Created when the method is invoked and destroyed when it ends."
+            ],
+            "code": "public class Example {\n  public void display() {\n    int x = 10; // local variable\n    System.out.println(\"Local variable x = \" + x);\n  }\n\n  public static void main(String[] args) {\n    Example obj = new Example();\n    obj.display();\n    // System.out.println(x); ❌ Error: x is not accessible here\n  }\n}",
+            "output": "Local variable x = 10"
+          },
+          {
+            "type": "Instance Variables (Object-level)",
+            "description": [
+              "Declared inside a class but outside any method.",
+              "Belong to an object, so each object has its own copy.",
+              "Can be accessed using object references."
+            ],
+            "code": "public class Car {\n  String brand; // instance variable\n\n  public Car(String brandName) {\n    brand = brandName;\n  }\n\n  public void showBrand() {\n    System.out.println(\"Car brand: \" + brand);\n  }\n\n  public static void main(String[] args) {\n    Car c1 = new Car(\"Toyota\");\n    Car c2 = new Car(\"Honda\");\n\n    c1.showBrand();\n    c2.showBrand();\n  }\n}",
+            "output": "Car brand: Toyota\nCar brand: Honda"
+          },
+          {
+            "type": "Static Variables (Class-level)",
+            "description": [
+              "Declared with the static keyword inside a class.",
+              "Shared across all objects of the class.",
+              "Memory is allocated once per class, not per object."
+            ],
+            "code": "public class Counter {\n  static int count = 0; // static variable\n\n  public Counter() {\n    count++;\n    System.out.println(\"Object created. Count = \" + count);\n  }\n\n  public static void main(String[] args) {\n    new Counter();\n    new Counter();\n    new Counter();\n  }\n}",
+            "output": "Object created. Count = 1\nObject created. Count = 2\nObject created. Count = 3"
+          },
+          {
+            "type": "Block Scope",
+            "description": [
+              "Variables declared inside loops, if-else, or any block {} only exist within that block."
+            ],
+            "code": "public class ScopeTest {\n  public static void main(String[] args) {\n    if (true) {\n      int y = 50; // block scope\n      System.out.println(\"Inside block: \" + y);\n    }\n    // System.out.println(y); ❌ Error: y not accessible here\n  }\n}",
+            "output": "Inside block: 50"
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Scope Summary Table",
+      "content": {
+        "table": [
+          {
+            "type": "Local Variable",
+            "declared_in": "Method / block",
+            "accessible_from": "Only inside that method/block",
+            "lifetime": "Until method ends"
+          },
+          {
+            "type": "Instance Variable",
+            "declared_in": "Inside class (outside methods)",
+            "accessible_from": "Through object reference",
+            "lifetime": "Until object is destroyed"
+          },
+          {
+            "type": "Static Variable",
+            "declared_in": "Inside class with static",
+            "accessible_from": "Directly via class name",
+            "lifetime": "Until program ends"
+          },
+          {
+            "type": "Block Variable",
+            "declared_in": "Inside {} block",
+            "accessible_from": "Only inside that block",
+            "lifetime": "Until block execution ends"
+          }
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Why Scope Matters?",
+      "content": {
+        "points": [
+          "Prevents naming conflicts.",
+          "Saves memory (local variables are temporary).",
+          "Controls data access and improves encapsulation."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Definition",
+      "content": {
+        "points": [
+          "The scope of a variable defines where in a program that variable can be accessed or modified. In Java, scope depends on where the variable is declared."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780aa"
+  },
+  "title": "Java Recursion",
+  "sections": [
+    {
+      "sectionTitle": "Why is Recursion Used?",
+      "content": {
+        "points": [
+          "A problem can be broken into smaller, similar sub-problems.",
+          "Solutions require repetitive tasks but with different inputs.",
+          "Problems like factorial, Fibonacci, tree traversal, searching, backtracking, etc. are easier to solve using recursion."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Advantages",
+      "content": {
+        "points": [
+          "Simplifies code for problems with natural recursive structure.",
+          "Makes complex logic (like tree/graph traversal) easier to implement."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Disadvantages",
+      "content": {
+        "points": [
+          "Uses more memory due to recursive call stack.",
+          "May cause StackOverflowError if base case is missing."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Syntax of Recursion in Java",
+      "content": {
+        "code": "returnType methodName(parameters) {\n    if (baseCondition) {\n        // stop recursion\n        return result;\n    } else {\n        // recursive call\n        return methodName(modifiedParameters);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Example 1: Factorial using Recursion",
+      "content": {
+        "code": "public class FactorialRecursion {\n    // Recursive method to calculate factorial\n    static int factorial(int n) {\n        if (n == 0 || n == 1)  // base case\n            return 1;\n        else\n            return n * factorial(n - 1);  // recursive call\n    }\n\n    public static void main(String[] args) {\n        int num = 5;\n        System.out.println(\"Factorial of \" + num + \" = \" + factorial(num));\n    }\n}",
+        "output": "Factorial of 5 = 120"
+      }
+    },
+    {
+      "sectionTitle": "Example 2: Fibonacci Series using Recursion",
+      "content": {
+        "code": "public class FibonacciRecursion {\n    static int fibonacci(int n) {\n        if (n == 0) return 0;  // base case\n        if (n == 1) return 1;  // base case\n        return fibonacci(n - 1) + fibonacci(n - 2);  // recursive call\n    }\n\n    public static void main(String[] args) {\n        int terms = 7;\n        System.out.print(\"Fibonacci Series: \");\n        for (int i = 0; i < terms; i++) {\n            System.out.print(fibonacci(i) + \" \");\n        }\n    }\n}",
+        "output": "Fibonacci Series: 0 1 1 2 3 5 8"
+      }
+    },
+    {
+      "sectionTitle": "Types of Recursion",
+      "content": {
+        "points": [
+          "Direct Recursion – Method calls itself directly.",
+          "Indirect Recursion – Method calls another method, and that method calls the first one."
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Definition",
+      "content": {
+        "points": [
+          "Recursion in Java is the process of a method calling itself directly or indirectly to solve a problem. A recursive method solves a small portion of the problem and delegates the rest to itself, continuing until it reaches a base case (a condition where recursion stops)."
+        ]
+      }
+    }
+  ],
+  "level": "basic"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780ab"
+  },
+  "title": "Object-Oriented Programming (OOP)",
+  "sections": [
+    {
+      "sectionTitle": "Java OOP Concepts",
+      "content": {
+        "what_it_is": "Object-Oriented Programming is a programming paradigm based on the concept of \"objects\" which contain data and methods. Java implements four main OOP principles: encapsulation, inheritance, polymorphism, and abstraction.",
+        "why_it_is_used": "OOP provides a clear modular structure, makes code easier to maintain and modify, promotes code reusability, and models real-world problems more effectively."
+      }
+    },
+    {
+      "sectionTitle": "Java Classes/Objects",
+      "content": {
+        "what_it_is": "A class is a blueprint for creating objects. An object is an instance of a class that has state (attributes) and behavior (methods).",
+        "syntax": "class ClassName {\n    // fields, constructors, methods\n}\nClassName objectName = new ClassName();",
+        "example": "class Car {\n    String color;\n    int maxSpeed;\n    \n    void drive() {\n        System.out.println(\"Car is driving\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Car myCar = new Car();\n        myCar.color = \"Red\";\n        myCar.maxSpeed = 200;\n        myCar.drive(); // Output: Car is driving\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Class Attributes & Methods",
+      "content": {
+        "what_it_is": "Attributes are variables within a class that define its state. Methods are functions that define the behavior of the class.",
+        "syntax": "class ClassName {\n    // Attribute\n    dataType attributeName;\n    \n    // Method\n    returnType methodName(parameters) {\n        // method body\n    }\n}",
+        "example": "class Student {\n    // Attributes\n    String name;\n    int age;\n    \n    // Method\n    void displayInfo() {\n        System.out.println(\"Name: \" + name + \", Age: \" + age);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Constructors",
+      "content": {
+        "what_it_is": "A special method that is called when an object is instantiated. It initializes the object's attributes.",
+        "why_it_is_used": "To ensure objects are created with valid initial states.",
+        "syntax": "class ClassName {\n    // Constructor\n    ClassName(parameters) {\n        // initialization code\n    }\n}",
+        "example": "class Book {\n    String title;\n    String author;\n    \n    // Constructor\n    Book(String t, String a) {\n        title = t;\n        author = a;\n    }\n    \n    void display() {\n        System.out.println(\"Title: \" + title + \", Author: \" + author);\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Book myBook = new Book(\"Java Programming\", \"John Doe\");\n        myBook.display(); // Output: Title: Java Programming, Author: John Doe\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java this Keyword",
+      "content": {
+        "what_it_is": "A reference variable that refers to the current object.",
+        "why_it_is_used": "To differentiate between instance variables and parameters with the same name, to call one constructor from another, or to pass the current object as a parameter.",
+        "example": "class Person {\n    String name;\n    int age;\n    \n    Person(String name, int age) {\n        this.name = name; // this.name refers to instance variable\n        this.age = age;   // this.age refers to instance variable\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Modifiers",
+      "content": {
+        "what_it_is": "Keywords that set access levels for classes, attributes, methods, and constructors.",
+        "types": {
+          "access_modifiers": [
+            "public",
+            "protected",
+            "private",
+            "default (package-private)"
+          ],
+          "non_access_modifiers": [
+            "final",
+            "static",
+            "abstract",
+            "synchronized",
+            "volatile",
+            "transient"
+          ]
+        },
+        "example": "public class Example {\n    public String publicVar = \"Accessible everywhere\";\n    private String privateVar = \"Accessible only within class\";\n    protected String protectedVar = \"Accessible within package and subclasses\";\n    String defaultVar = \"Accessible within package\";\n    \n    public static final double PI = 3.14159; // constant value\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Encapsulation",
+      "content": {
+        "what_it_is": "The bundling of data with the methods that operate on that data, restricting direct access to some of an object's components.",
+        "why_it_is_used": "To protect the internal state of objects and ensure data integrity.",
+        "example": "class BankAccount {\n    private double balance;\n    \n    public double getBalance() {\n        return balance;\n    }\n    \n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n        }\n    }\n    \n    public void withdraw(double amount) {\n        if (amount > 0 && amount <= balance) {\n            balance -= amount;\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Packages / API",
+      "content": {
+        "what_it_is": "A package is a namespace that organizes related classes and interfaces. Java API is a collection of prewritten packages, classes, and interfaces.",
+        "why_it_is_used": "To avoid naming conflicts, control access, and organize code logically.",
+        "syntax": "package packageName;\nimport packageName.ClassName;",
+        "example": "package com.mycompany.mypackage;\nimport java.util.ArrayList;\nimport java.util.List;\npublic class Example {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"Hello\");\n        System.out.println(list.get(0)); // Output: Hello\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Inheritance",
+      "content": {
+        "what_it_is": "A mechanism where a new class (subclass) derives properties and behaviors from an existing class (superclass).",
+        "why_it_is_used": "To promote code reusability and establish a relationship between classes.",
+        "syntax": "class Subclass extends Superclass {\n    // subclass members\n}",
+        "example": "class Animal {\n    void eat() {\n        System.out.println(\"This animal eats food\");\n    }\n}\nclass Dog extends Animal {\n    void bark() {\n        System.out.println(\"Dog barks\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Dog myDog = new Dog();\n        myDog.eat();  // Inherited from Animal\n        myDog.bark(); // Defined in Dog\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Polymorphism",
+      "content": {
+        "what_it_is": "The ability of an object to take many forms. In Java, it allows methods to do different things based on the object it is acting upon.",
+        "types": {
+          "compile_time_polymorphism": "Method overloading",
+          "runtime_polymorphism": "Method overriding"
+        },
+        "example": "class Shape {\n    void draw() {\n        System.out.println(\"Drawing a shape\");\n    }\n}\nclass Circle extends Shape {\n    @Override\n    void draw() {\n        System.out.println(\"Drawing a circle\");\n    }\n}\nclass Square extends Shape {\n    @Override\n    void draw() {\n        System.out.println(\"Drawing a square\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Shape myShape = new Shape();\n        Shape myCircle = new Circle();\n        Shape mySquare = new Square();\n        \n        myShape.draw();  // Output: Drawing a shape\n        myCircle.draw(); // Output: Drawing a circle\n        mySquare.draw(); // Output: Drawing a square\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java super Keyword",
+      "content": {
+        "what_it_is": "A reference variable used to refer to the immediate parent class object.",
+        "why_it_is_used": "To access parent class methods, constructors, and variables.",
+        "example": "class Animal {\n    String name = \"Animal\";\n    \n    Animal() {\n        System.out.println(\"Animal constructor\");\n    }\n    \n    void eat() {\n        System.out.println(\"Animal eats\");\n    }\n}\nclass Dog extends Animal {\n    String name = \"Dog\";\n    \n    Dog() {\n        super(); // calls Animal constructor\n        System.out.println(\"Dog constructor\");\n    }\n    \n    void display() {\n        System.out.println(super.name); // accesses Animal's name\n        super.eat(); // calls Animal's eat method\n    }\n    \n    void eat() {\n        System.out.println(\"Dog eats\");\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Inner Classes",
+      "content": {
+        "what_it_is": "A class defined within another class.",
+        "why_it_is_used": "To logically group classes that are only used in one place, increase encapsulation, and create more readable and maintainable code.",
+        "types": [
+          "Non-static nested classes (inner classes)",
+          "static nested classes",
+          "local classes",
+          "anonymous classes"
+        ],
+        "example": "class OuterClass {\n    int x = 10;\n    \n    class InnerClass {\n        int y = 5;\n        void display() {\n            System.out.println(\"x: \" + x + \", y: \" + y);\n        }\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        OuterClass outer = new OuterClass();\n        OuterClass.InnerClass inner = outer.new InnerClass();\n        inner.display(); // Output: x: 10, y: 5\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Abstraction",
+      "content": {
+        "what_it_is": "The process of hiding implementation details and showing only functionality to the user.",
+        "why_it_is_used": "To reduce complexity and increase efficiency by focusing on essential qualities.",
+        "implementation": "Using abstract classes and interfaces.",
+        "example": "abstract class Animal {\n    abstract void makeSound(); // abstract method\n    \n    void sleep() { // concrete method\n        System.out.println(\"Sleeping\");\n    }\n}\nclass Dog extends Animal {\n    @Override\n    void makeSound() {\n        System.out.println(\"Bark\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Dog myDog = new Dog();\n        myDog.makeSound(); // Output: Bark\n        myDog.sleep();     // Output: Sleeping\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Interface",
+      "content": {
+        "what_it_is": "A reference type that contains only abstract methods (before Java 8), default methods, static methods, and constants.",
+        "why_it_is_used": "To achieve abstraction and multiple inheritance.",
+        "syntax": "interface InterfaceName {\n    // abstract methods\n    // default methods\n    // static methods\n}\nclass ClassName implements InterfaceName {\n    // implementation of interface methods\n}",
+        "example": "interface Animal {\n    void makeSound(); // abstract method\n    \n    default void breathe() { // default method\n        System.out.println(\"Breathing\");\n    }\n}\nclass Dog implements Animal {\n    @Override\n    public void makeSound() {\n        System.out.println(\"Bark\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Dog myDog = new Dog();\n        myDog.makeSound(); // Output: Bark\n        myDog.breathe();   // Output: Breathing\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Enums",
+      "content": {
+        "what_it_is": "A special data type that enables a variable to be a set of predefined constants.",
+        "why_it_is_used": "To define a collection of related constants that are type-safe.",
+        "syntax": "enum EnumName {\n    CONSTANT1, CONSTANT2, CONSTANT3\n}",
+        "example": "enum Day {\n    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY\n}\npublic class Main {\n    public static void main(String[] args) {\n        Day today = Day.MONDAY;\n        \n        switch(today) {\n            case MONDAY:\n                System.out.println(\"Start of work week\");\n                break;\n            case FRIDAY:\n                System.out.println(\"End of work week\");\n                break;\n            default:\n                System.out.println(\"Midweek day\");\n        }\n        \n        // Iterate through all enum values\n        for (Day day : Day.values()) {\n            System.out.println(day);\n        }\n    }\n}"
+      }
+    }
+  ],
+  "level": "intermediate"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780ac"
+  },
+  "title": "Error Handling",
+  "sections": [
+    {
+      "sectionTitle": "Java Errors",
+      "content": {
+        "what_it_is": "Errors represent serious problems that a reasonable application should not try to catch (e.g., OutOfMemoryError, StackOverflowError).",
+        "why_it_is_used": "To indicate problems that are external to the application and that the application cannot anticipate or recover from."
+      }
+    },
+    {
+      "sectionTitle": "Java Debugging",
+      "content": {
+        "what_it_is": "The process of finding and fixing errors in software code.",
+        "why_it_is_used": "To ensure code works correctly and efficiently.",
+        "tools": [
+          "IDE debuggers",
+          "logging",
+          "print statements"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java Exceptions",
+      "content": {
+        "what_it_is": "Events that disrupt the normal flow of program execution.",
+        "types": {
+          "checked_exceptions": "Must be handled at compile time (e.g., IOException)",
+          "unchecked_exceptions": "Occur at runtime (e.g., NullPointerException)"
+        },
+        "syntax": "try {\n    // code that may throw exception\n} catch (ExceptionType e) {\n    // handle exception\n} finally {\n    // code that always executes\n}",
+        "example": "public class Main {\n    public static void main(String[] args) {\n        try {\n            int[] numbers = {1, 2, 3};\n            System.out.println(numbers[5]); // ArrayIndexOutOfBoundsException\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Array index is out of bounds!\");\n        } finally {\n            System.out.println(\"This will always execute\");\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "throw",
+      "content": {
+        "what_it_is": "Used to explicitly throw an exception.",
+        "example": "public class Main {\n    static void checkAge(int age) {\n        if (age < 18) {\n            throw new ArithmeticException(\"Access denied - You must be at least 18 years old.\");\n        } else {\n            System.out.println(\"Access granted\");\n        }\n    }\n    \n    public static void main(String[] args) {\n        checkAge(15); // Throws ArithmeticException\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "throws",
+      "content": {
+        "what_it_is": "Used in method signature to declare that a method might throw an exception.",
+        "example": "import java.io.*;\npublic class Main {\n    public static void readFile() throws IOException {\n        File file = new File(\"nonexistent.txt\");\n        FileReader fr = new FileReader(file); // Might throw IOException\n    }\n    \n    public static void main(String[] args) {\n        try {\n            readFile();\n        } catch (IOException e) {\n            System.out.println(\"An error occurred: \" + e.getMessage());\n        }\n    }\n}"
+      }
+    }
+  ],
+  "level": "intermediate"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780ad"
+  },
+  "title": "File Handling",
+  "sections": [
+    {
+      "sectionTitle": "Java Files",
+      "content": {
+        "what_it_is": "Java provides the java.io package for working with files and directories.",
+        "why_it_is_used": "To perform operations like creating, reading, writing, and deleting files."
+      }
+    },
+    {
+      "sectionTitle": "Java Create/Write Files",
+      "content": {
+        "example": "import java.io.File;\nimport java.io.FileWriter;\nimport java.io.IOException;\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            File myFile = new File(\"filename.txt\");\n            if (myFile.createNewFile()) {\n                System.out.println(\"File created: \" + myFile.getName());\n            } else {\n                System.out.println(\"File already exists.\");\n            }\n            \n            // Write to file\n            FileWriter myWriter = new FileWriter(\"filename.txt\");\n            myWriter.write(\"Hello World!\");\n            myWriter.close();\n            System.out.println(\"Successfully wrote to the file.\");\n        } catch (IOException e) {\n            System.out.println(\"An error occurred.\");\n            e.printStackTrace();\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Read Files",
+      "content": {
+        "example": "import java.io.File;\nimport java.io.FileNotFoundException;\nimport java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            File myFile = new File(\"filename.txt\");\n            Scanner myReader = new Scanner(myFile);\n            while (myReader.hasNextLine()) {\n                String data = myReader.nextLine();\n                System.out.println(data);\n            }\n            myReader.close();\n        } catch (FileNotFoundException e) {\n            System.out.println(\"An error occurred.\");\n            e.printStackTrace();\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Delete Files",
+      "content": {
+        "example": "import java.io.File;\npublic class Main {\n    public static void main(String[] args) {\n        File myFile = new File(\"filename.txt\");\n        if (myFile.delete()) {\n            System.out.println(\"Deleted the file: \" + myFile.getName());\n        } else {\n            System.out.println(\"Failed to delete the file.\");\n        }\n    }\n}"
+      }
+    }
+  ],
+  "level": "intermediate"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780ae"
+  },
+  "title": "Data Structures & Collections",
+  "sections": [
+    {
+      "sectionTitle": "Java Data Structures",
+      "content": {
+        "what_it_is": "Ways to organize and store data for efficient access and modification.",
+        "types": [
+          "Arrays",
+          "Linked Lists",
+          "Stacks",
+          "Queues",
+          "Trees",
+          "Graphs",
+          "Hash Tables"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java Collections Framework",
+      "content": {
+        "what_it_is": "A unified architecture for representing and manipulating collections.",
+        "why_it_is_used": "To provide standardized ways to work with groups of objects.",
+        "core_interfaces": [
+          "Collection",
+          "List",
+          "Set",
+          "Map",
+          "Queue"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Java List / ArrayList / LinkedList",
+      "content": {
+        "what_it_is": "List: An ordered collection that allows duplicate elements.\nArrayList: Resizable array implementation of the List interface.\nLinkedList: Doubly-linked list implementation of the List and Deque interfaces.",
+        "example": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        // ArrayList example\n        List<String> arrayList = new ArrayList<>();\n        arrayList.add(\"Apple\");\n        arrayList.add(\"Banana\");\n        arrayList.add(\"Orange\");\n        System.out.println(\"ArrayList: \" + arrayList);\n        \n        // LinkedList example\n        List<String> linkedList = new LinkedList<>();\n        linkedList.add(\"Red\");\n        linkedList.add(\"Green\");\n        linkedList.add(\"Blue\");\n        System.out.println(\"LinkedList: \" + linkedList);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java List Sorting",
+      "content": {
+        "example": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> numbers = new ArrayList<>();\n        numbers.add(5);\n        numbers.add(2);\n        numbers.add(8);\n        numbers.add(1);\n        \n        System.out.println(\"Before sorting: \" + numbers);\n        \n        // Sort in natural order\n        Collections.sort(numbers);\n        System.out.println(\"After sorting: \" + numbers);\n        \n        // Sort in reverse order\n        Collections.sort(numbers, Collections.reverseOrder());\n        System.out.println(\"Reverse order: \" + numbers);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Set / HashSet / TreeSet / LinkedHashSet",
+      "content": {
+        "what_it_is": "Set: A collection that contains no duplicate elements.\nHashSet: Implements Set interface using a hash table.\nTreeSet: Implements Set interface using a tree structure (sorted).\nLinkedHashSet: Maintains insertion order.",
+        "example": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        // HashSet - no order\n        Set<String> hashSet = new HashSet<>();\n        hashSet.add(\"Apple\");\n        hashSet.add(\"Banana\");\n        hashSet.add(\"Orange\");\n        hashSet.add(\"Apple\"); // Duplicate, won't be added\n        System.out.println(\"HashSet: \" + hashSet);\n        \n        // TreeSet - sorted order\n        Set<String> treeSet = new TreeSet<>();\n        treeSet.add(\"Banana\");\n        treeSet.add(\"Apple\");\n        treeSet.add(\"Orange\");\n        System.out.println(\"TreeSet: \" + treeSet);\n        \n        // LinkedHashSet - insertion order\n        Set<String> linkedHashSet = new LinkedHashSet<>();\n        linkedHashSet.add(\"Banana\");\n        linkedHashSet.add(\"Apple\");\n        linkedHashSet.add(\"Orange\");\n        System.out.println(\"LinkedHashSet: \" + linkedHashSet);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Map / HashMap / TreeMap / LinkedHashMap",
+      "content": {
+        "what_it_is": "Map: An object that maps keys to values. Cannot contain duplicate keys.\nHashMap: Implements Map interface using a hash table.\nTreeMap: Implements Map interface using a tree structure (sorted by keys).\nLinkedHashMap: Maintains insertion order of keys.",
+        "example": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        // HashMap - no order\n        Map<Integer, String> hashMap = new HashMap<>();\n        hashMap.put(3, \"Apple\");\n        hashMap.put(1, \"Banana\");\n        hashMap.put(2, \"Orange\");\n        System.out.println(\"HashMap: \" + hashMap);\n        \n        // TreeMap - sorted by keys\n        Map<Integer, String> treeMap = new TreeMap<>();\n        treeMap.put(3, \"Apple\");\n        treeMap.put(1, \"Banana\");\n        treeMap.put(2, \"Orange\");\n        System.out.println(\"TreeMap: \" + treeMap);\n        \n        // LinkedHashMap - insertion order\n        Map<Integer, String> linkedHashMap = new LinkedHashMap<>();\n        linkedHashMap.put(3, \"Apple\");\n        linkedHashMap.put(1, \"Banana\");\n        linkedHashMap.put(2, \"Orange\");\n        System.out.println(\"LinkedHashMap: \" + linkedHashMap);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Iterator",
+      "content": {
+        "what_it_is": "An object used to cycle through collections.",
+        "why_it_is_used": "To traverse through a collection and access its elements.",
+        "example": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> fruits = new ArrayList<>();\n        fruits.add(\"Apple\");\n        fruits.add(\"Banana\");\n        fruits.add(\"Orange\");\n        \n        // Using iterator\n        Iterator<String> iterator = fruits.iterator();\n        while (iterator.hasNext()) {\n            String fruit = iterator.next();\n            System.out.println(fruit);\n            \n            // Remove element if condition met\n            if (fruit.equals(\"Banana\")) {\n                iterator.remove();\n            }\n        }\n        \n        System.out.println(\"List after removal: \" + fruits);\n    }\n}"
+      }
+    }
+  ],
+  "level": "intermediate"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780af"
+  },
+  "title": "Advanced Java Concepts",
+  "sections": [
+    {
+      "sectionTitle": "Java Wrapper Classes",
+      "content": {
+        "what_it_is": "Classes that wrap primitive data types into objects.",
+        "why_it_is_used": "To use primitives in collections that require objects, and to access utility methods.",
+        "example": "public class Main {\n    public static void main(String[] args) {\n        // Autoboxing: primitive to wrapper\n        Integer intObj = 10;\n        Double doubleObj = 5.5;\n        \n        // Unboxing: wrapper to primitive\n        int intValue = intObj;\n        double doubleValue = doubleObj;\n        \n        System.out.println(\"Integer value: \" + intValue);\n        System.out.println(\"Double value: \" + doubleValue);\n        \n        // Using utility methods\n        String numStr = \"123\";\n        int num = Integer.parseInt(numStr);\n        System.out.println(\"Parsed integer: \" + num);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Generics",
+      "content": {
+        "what_it_is": "A feature that allows type parameters when defining classes, interfaces, and methods.",
+        "why_it_is_used": "To provide type safety and eliminate casting.",
+        "example": "// Generic class\nclass Box<T> {\n    private T content;\n    \n    public void setContent(T content) {\n        this.content = content;\n    }\n    \n    public T getContent() {\n        return content;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        // Integer box\n        Box<Integer> integerBox = new Box<>();\n        integerBox.setContent(10);\n        System.out.println(\"Integer value: \" + integerBox.getContent());\n        \n        // String box\n        Box<String> stringBox = new Box<>();\n        stringBox.setContent(\"Hello Generics\");\n        System.out.println(\"String value: \" + stringBox.getContent());\n        \n        // Generic method example\n        Integer[] intArray = {1, 2, 3, 4, 5};\n        String[] strArray = {\"A\", \"B\", \"C\"};\n        \n        printArray(intArray);\n        printArray(strArray);\n    }\n    \n    // Generic method\n    public static <E> void printArray(E[] array) {\n        for (E element : array) {\n            System.out.print(element + \" \");\n        }\n        System.out.println();\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Annotations",
+      "content": {
+        "what_it_is": "A form of metadata that provides data about a program but is not part of the program itself.",
+        "why_it_is_used": "For compiler instructions, code analysis, and runtime processing.",
+        "example": "// Custom annotation\n@interface MyAnnotation {\n    String value() default \"Default value\";\n    int count() default 0;\n}\n// Using annotations\n@MyAnnotation(value = \"Test\", count = 5)\npublic class Main {\n    \n    @Override\n    public String toString() {\n        return \"Main class\";\n    }\n    \n    @Deprecated\n    public void oldMethod() {\n        System.out.println(\"This method is deprecated\");\n    }\n    \n    @SuppressWarnings(\"unchecked\")\n    public void methodWithWarning() {\n        // This would generate warning without @SuppressWarnings\n    }\n    \n    public static void main(String[] args) {\n        Main obj = new Main();\n        obj.oldMethod(); // Compiler warning: method is deprecated\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Threads (Multithreading)",
+      "content": {
+        "what_it_is": "A thread is a lightweight sub-process that allows concurrent execution of parts of a program.",
+        "why_it_is_used": "To perform multiple operations simultaneously and make efficient use of CPU resources.",
+        "example": "// Extending Thread class\nclass MyThread extends Thread {\n    public void run() {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println(Thread.currentThread().getName() + \": \" + i);\n            try {\n                Thread.sleep(500); // Pause for 500 milliseconds\n            } catch (InterruptedException e) {\n                System.out.println(e);\n            }\n        }\n    }\n}\n// Implementing Runnable interface\nclass MyRunnable implements Runnable {\n    public void run() {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println(Thread.currentThread().getName() + \": \" + i);\n            try {\n                Thread.sleep(500);\n            } catch (InterruptedException e) {\n                System.out.println(e);\n            }\n        }\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        // Using Thread class\n        MyThread thread1 = new MyThread();\n        thread1.setName(\"Thread-1\");\n        \n        // Using Runnable interface\n        Thread thread2 = new Thread(new MyRunnable(), \"Thread-2\");\n        \n        // Start threads\n        thread1.start();\n        thread2.start();\n        \n        // Main thread continues execution\n        for (int i = 1; i <= 5; i++) {\n            System.out.println(Thread.currentThread().getName() + \": \" + i);\n            try {\n                Thread.sleep(500);\n            } catch (InterruptedException e) {\n                System.out.println(e);\n            }\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java RegEx",
+      "content": {
+        "what_it_is": "Regular Expressions are patterns used for searching and manipulating text.",
+        "why_it_is_used": "For validation, searching, and replacing text patterns.",
+        "example": "import java.util.regex.*;\npublic class Main {\n    public static void main(String[] args) {\n        // Pattern matching\n        Pattern pattern = Pattern.compile(\"java\", Pattern.CASE_INSENSITIVE);\n        Matcher matcher = pattern.matcher(\"Learn Java programming\");\n        \n        boolean matchFound = matcher.find();\n        if (matchFound) {\n            System.out.println(\"Match found\");\n        } else {\n            System.out.println(\"Match not found\");\n        }\n        \n        // Email validation\n        String emailRegex = \"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$\";\n        Pattern emailPattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);\n        \n        String[] emails = {\"test@example.com\", \"invalid-email\", \"another.test@domain.co.uk\"};\n        \n        for (String email : emails) {\n            Matcher emailMatcher = emailPattern.matcher(email);\n            System.out.println(email + \" is valid: \" + emailMatcher.matches());\n        }\n        \n        // String splitting\n        String text = \"Java,Python;JavaScript|C++\";\n        String[] languages = text.split(\"[,;|]\");\n        \n        System.out.println(\"Languages:\");\n        for (String lang : languages) {\n            System.out.println(lang);\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Lambda Expressions",
+      "content": {
+        "what_it_is": "A short block of code which takes in parameters and returns a value, similar to methods.",
+        "why_it_is_used": "To implement functional interfaces more concisely.",
+        "syntax": "(parameters) -> expression or (parameters) -> { statements; }",
+        "example": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> names = Arrays.asList(\"John\", \"Alice\", \"Bob\", \"Diana\");\n        \n        // Traditional approach\n        Collections.sort(names, new Comparator<String>() {\n            @Override\n            public int compare(String a, String b) {\n                return a.compareTo(b);\n            }\n        });\n        \n        // Using lambda expression\n        Collections.sort(names, (a, b) -> a.compareTo(b));\n        \n        System.out.println(\"Sorted names: \" + names);\n        \n        // Using forEach with lambda\n        names.forEach(name -> System.out.println(name));\n        \n        // Using method reference\n        names.forEach(System.out::println);\n        \n        // Functional interface with lambda\n        MathOperation addition = (a, b) -> a + b;\n        MathOperation subtraction = (a, b) -> a - b;\n        \n        System.out.println(\"10 + 5 = \" + operate(10, 5, addition));\n        System.out.println(\"10 - 5 = \" + operate(10, 5, subtraction));\n    }\n    \n    interface MathOperation {\n        int operation(int a, int b);\n    }\n    \n    private static int operate(int a, int b, MathOperation mathOperation) {\n        return mathOperation.operation(a, b);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Java Advanced Sorting",
+      "content": {
+        "what_it_is": "Techniques for sorting collections using custom comparators.",
+        "why_it_is_used": "To sort objects based on specific criteria.",
+        "example": "import java.util.*;\nclass Person {\n    private String name;\n    private int age;\n    \n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    public String getName() { return name; }\n    public int getAge() { return age; }\n    \n    @Override\n    public String toString() {\n        return name + \" (\" + age + \")\";\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        List<Person> people = Arrays.asList(\n            new Person(\"John\", 25),\n            new Person(\"Alice\", 30),\n            new Person(\"Bob\", 20),\n            new Person(\"Diana\", 35)\n        );\n        \n        // Sort by age using Comparator\n        Collections.sort(people, new Comparator<Person>() {\n            @Override\n            public int compare(Person p1, Person p2) {\n                return Integer.compare(p1.getAge(), p2.getAge());\n            }\n        });\n        \n        System.out.println(\"Sorted by age: \" + people);\n        \n        // Sort by name using lambda\n        Collections.sort(people, (p1, p2) -> p1.getName().compareTo(p2.getName()));\n        System.out.println(\"Sorted by name: \" + people);\n        \n        // Using Comparator.comparing\n        people.sort(Comparator.comparing(Person::getName));\n        System.out.println(\"Sorted by name (method reference): \" + people);\n        \n        // Reverse order\n        people.sort(Comparator.comparing(Person::getAge).reversed());\n        System.out.println(\"Sorted by age (descending): \" + people);\n        \n        // Multiple criteria\n        people.sort(Comparator.comparing(Person::getName).thenComparing(Person::getAge));\n        System.out.println(\"Sorted by name then age: \" + people);\n    }\n}"
+      }
+    }
+  ],
+  "level": "intermediate"
+},
+{
+  "_id": {
+    "$oid": "68c727473a3246dd869780b0"
+  },
+  "title": "Springboot",
+  "sections": [
+    {
+      "sectionTitle": "Introduction",
+      "content": {
+        "description": "Spring Boot is an open-source Java-based framework used to create stand-alone, production-grade Spring applications with minimal configuration. It provides a faster and more accessible way to set up, configure, and run both simple and web-based applications.",
+        "purpose": "Spring Boot simplifies the development of Spring applications by providing auto-configuration, embedded servers, and starter dependencies that reduce boilerplate code and configuration."
+      }
+    },
+    {
+      "sectionTitle": "Spring vs Spring Boot",
+      "content": {
+        "description": "Spring is a comprehensive framework for enterprise Java development, while Spring Boot is an extension of Spring that simplifies the initial setup and development of Spring applications.",
+        "comparison": "Spring requires manual configuration (XML or Java-based), dependency management, and server setup. Spring Boot provides auto-configuration, embedded servers, and starter dependencies that minimize manual setup.",
+        "example": "// Traditional Spring requires web.xml, dispatcher servlet configuration\n// Spring Boot automatically configures these with @SpringBootApplication"
+      }
+    },
+    {
+      "sectionTitle": "Spring MVC vs Spring Boot",
+      "content": {
+        "description": "Spring MVC is a web framework within Spring for building web applications, while Spring Boot is a way to bootstrap and create Spring applications quickly.",
+        "comparison": "Spring MVC focuses on the Model-View-Controller pattern for web applications and requires configuration. Spring Boot can include Spring MVC but provides auto-configuration and simplifies the overall application setup.",
+        "example": "// Spring MVC requires configuration of ViewResolver, DispatcherServlet\n// Spring Boot auto-configures these based on dependencies"
+      }
+    },
+    {
+      "sectionTitle": "Spring Core Concept",
+      "content": {
+        "description": "To work effectively with Spring Boot, a solid understanding of core Java and essential Spring concepts is important. Knowledge of build tools such as Maven or Gradle, along with databases and SQL for JPA/Hibernate integration, will also help in building robust applications."
+      }
+    },
+    {
+      "sectionTitle": "Inversion of Control",
+      "content": {
+        "description": "Inversion of Control (IoC) is a principle where the control of object creation and lifecycle is transferred from the application to a container or framework.",
+        "purpose": "IoC promotes loose coupling between components, making applications more modular, testable, and maintainable.",
+        "example": "// Instead of: MyService service = new MyServiceImpl();\n// With IoC: The container creates and injects the dependency"
+      }
+    },
+    {
+      "sectionTitle": "Dependency Injection",
+      "content": {
+        "description": "Dependency Injection (DI) is a design pattern that implements IoC, where dependencies are provided to objects rather than objects creating them themselves.",
+        "purpose": "DI reduces coupling between classes and makes code more testable and maintainable.",
+        "types": [
+          "Constructor Injection",
+          "Setter Injection",
+          "Field Injection"
+        ],
+        "example": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    // Constructor Injection\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "BeanFactory vs. ApplicationContext",
+      "content": {
+        "description": "Both are Spring containers that manage beans, but ApplicationContext is a more advanced superset of BeanFactory.",
+        "comparison": "BeanFactory provides basic DI support, while ApplicationContext adds enterprise-specific functionality like AOP, event publication, and application layer context.",
+        "example": "// BeanFactory: XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource(\"beans.xml\"));\n// ApplicationContext: ApplicationContext context = new ClassPathXmlApplicationContext(\"beans.xml\");"
+      }
+    },
+    {
+      "sectionTitle": "Spring Bean Lifecycle",
+      "content": {
+        "description": "The lifecycle of a Spring bean from instantiation to destruction, with various callback methods that can be customized.",
+        "stages": [
+          "Instantiation",
+          "Population of properties",
+          "BeanNameAware",
+          "BeanFactoryAware",
+          "Pre-initialization",
+          "Initialization (afterPropertiesSet)",
+          "Post-initialization",
+          "Destruction"
+        ],
+        "example": "public class MyBean implements InitializingBean, DisposableBean {\n    @Override\n    public void afterPropertiesSet() {\n        // initialization logic\n    }\n    \n    @Override\n    public void destroy() {\n        // destruction logic\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Singleton, Prototype Scope",
+      "content": {
+        "description": "Bean scopes define the lifecycle and visibility of beans in the Spring container.",
+        "scopes": {
+          "Singleton": "One instance per Spring container (default)",
+          "Prototype": "New instance each time it's requested"
+        },
+        "example": "@Component\n@Scope(\"prototype\")\npublic class PrototypeBean {\n    // New instance created each time this bean is requested\n}"
+      }
+    },
+    {
+      "sectionTitle": "Custom Scope",
+      "content": {
+        "description": "Spring allows creating custom scopes for beans beyond the built-in ones.",
+        "purpose": "Custom scopes are useful for scenarios like web applications (request, session scope) or custom lifecycle requirements.",
+        "example": "// Implementing a custom scope\npublic class CustomScope implements Scope {\n    // Implementation of scope methods\n}"
+      }
+    },
+    {
+      "sectionTitle": "Create a Spring Bean",
+      "content": {
+        "description": "Spring beans can be created using various methods: XML configuration, Java configuration, or component scanning.",
+        "methods": [
+          "@Component annotation",
+          "@Bean annotation in configuration class",
+          "XML bean definition"
+        ],
+        "example": "@Configuration\npublic class AppConfig {\n    @Bean\n    public MyService myService() {\n        return new MyServiceImpl();\n    }\n}\n\n// Or using @Component\n@Component\npublic class MyComponent {\n    // Component class\n}"
+      }
+    },
+    {
+      "sectionTitle": "Spring Autowiring",
+      "content": {
+        "description": "Autowiring is Spring's ability to automatically inject dependencies without explicit configuration.",
+        "modes": [
+          "byType",
+          "byName",
+          "constructor",
+          "autodetect"
+        ],
+        "example": "@Service\npublic class UserService {\n    @Autowired\n    private UserRepository userRepository;\n    \n    // Constructor autowiring\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "DispatcherServlet",
+      "content": {
+        "description": "The front controller in Spring MVC that handles all HTTP requests and responses.",
+        "purpose": "DispatcherServlet receives requests and delegates them to appropriate controllers, view resolvers, and exception handlers.",
+        "example": "// In web.xml\n<servlet>\n    <servlet-name>dispatcher</servlet-name>\n    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>\n</servlet>"
+      }
+    },
+    {
+      "sectionTitle": "Spring IoC Container",
+      "content": {
+        "description": "The core container that manages the lifecycle of Spring beans and provides dependency injection.",
+        "purpose": "The IoC container creates objects, wires them together, configures them, and manages their complete lifecycle.",
+        "types": [
+          "BeanFactory",
+          "ApplicationContext"
+        ],
+        "example": "ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);\nMyService service = context.getBean(MyService.class);"
+      }
+    },
+    {
+      "sectionTitle": "Maven/Gradle (project build tools)",
+      "content": {
+        "description": "Build automation tools used for Java projects to manage dependencies, build processes, and project lifecycle.",
+        "purpose": "Maven and Gradle simplify dependency management, compilation, testing, packaging, and deployment of Spring Boot applications.",
+        "example": "// Maven pom.xml dependencies for Spring Boot\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n</dependencies>"
+      }
+    },
+    {
+      "sectionTitle": "Spring Boot Core Features",
+      "content": {
+        "description": "Spring Boot comes with core features like auto-configuration, starter packs, and flexible configuration. These make application setup easier, faster, and more efficient."
+      }
+    },
+    {
+      "sectionTitle": "Architecture",
+      "content": {
+        "description": "Spring Boot follows a layered architecture with clear separation of concerns.",
+        "layers": [
+          "Presentation Layer (Controllers)",
+          "Business Layer (Services)",
+          "Data Access Layer (Repositories)",
+          "Database Layer"
+        ],
+        "example": "// Typical Spring Boot architecture\n@RestController -> @Service -> @Repository -> Database"
+      }
+    },
+    {
+      "sectionTitle": "Annotations",
+      "content": {
+        "description": "Spring Boot uses annotations to configure applications and define components without XML configuration.",
+        "keyAnnotations": [
+          "@SpringBootApplication",
+          "@RestController",
+          "@Service",
+          "@Repository",
+          "@Autowired",
+          "@Configuration",
+          "@Bean"
+        ],
+        "example": "@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Auto-configuration",
+      "content": {
+        "description": "Spring Boot automatically configures your application based on the dependencies you have added.",
+        "purpose": "Auto-configuration reduces the need for manual configuration and boilerplate code.",
+        "example": "// If spring-boot-starter-web is in classpath, Spring Boot auto-configures:\n// - Embedded Tomcat server\n// - Spring MVC\n// - JSON support"
+      }
+    },
+    {
+      "sectionTitle": "Spring Boot Starters",
+      "content": {
+        "description": "Starters are a set of convenient dependency descriptors that include all the necessary dependencies for specific functionalities.",
+        "purpose": "Starters simplify dependency management by providing pre-configured sets of dependencies.",
+        "examples": [
+          "spring-boot-starter-web",
+          "spring-boot-starter-data-jpa",
+          "spring-boot-starter-test"
+        ],
+        "example": "// In pom.xml\n<dependency>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-starter-web</artifactId>\n</dependency>"
+      }
+    },
+    {
+      "sectionTitle": "Create a basic application",
+      "content": {
+        "description": "Creating a basic Spring Boot application involves setting up the project structure, adding dependencies, and creating a main class.",
+        "steps": [
+          "1. Use Spring Initializr to generate project",
+          "2. Add dependencies",
+          "3. Create main class with @SpringBootApplication",
+          "4. Create a simple controller"
+        ],
+        "example": "@SpringBootApplication\npublic class DemoApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(DemoApplication.class, args);\n    }\n}\n\n@RestController\nclass HelloController {\n    @GetMapping(\"/hello\")\n    public String hello() {\n        return \"Hello World!\";\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Best Practices for Spring Boot Application",
+      "content": {
+        "description": "Guidelines and recommendations for developing maintainable, efficient, and production-ready Spring Boot applications.",
+        "practices": [
+          "Use proper packaging structure",
+          "Follow SOLID principles",
+          "Implement proper exception handling",
+          "Use logging effectively",
+          "Write tests",
+          "Use application profiles"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Application Properties",
+      "content": {
+        "description": "Spring Boot uses application.properties or application.yml files to externalize configuration.",
+        "purpose": "Externalized configuration allows changing application behavior without recompiling code.",
+        "example": "# application.properties\nserver.port=8080\nspring.datasource.url=jdbc:mysql://localhost:3306/mydb\nspring.datasource.username=root\nspring.datasource.password=secret"
+      }
+    },
+    {
+      "sectionTitle": "YAML Configuration",
+      "content": {
+        "description": "YAML is a human-readable data serialization format that can be used as an alternative to properties files.",
+        "advantages": [
+          "Hierarchical structure",
+          "Supports lists and maps",
+          "More readable for complex configurations"
+        ],
+        "example": "# application.yml\nserver:\n  port: 8080\nspring:\n  datasource:\n    url: jdbc:mysql://localhost:3306/mydb\n    username: root\n    password: secret"
+      }
+    },
+    {
+      "sectionTitle": "Actuator",
+      "content": {
+        "description": "Spring Boot Actuator provides production-ready features to help you monitor and manage your application.",
+        "features": [
+          "Health checks",
+          "Metrics",
+          "HTTP traces",
+          "Environment details",
+          "Logging configuration"
+        ],
+        "example": "// Add dependency\n<dependency>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-starter-actuator</artifactId>\n</dependency>\n\n// Access endpoints: /actuator/health, /actuator/metrics, /actuator/env"
+      }
+    },
+    {
+      "sectionTitle": "Logging",
+      "content": {
+        "description": "Spring Boot uses Commons Logging for internal logging but can be configured to use various logging frameworks.",
+        "options": [
+          "Logback (default)",
+          "Log4j2",
+          "Java Util Logging"
+        ],
+        "example": "# application.properties\nlogging.level.org.springframework=DEBUG\nlogging.level.com.example=INFO\nlogging.file.name=app.log\nlogging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+      }
+    },
+    {
+      "sectionTitle": "DevTools",
+      "content": {
+        "description": "Spring Boot DevTools provides developer tools for faster application restart, LiveReload, and property defaults.",
+        "features": [
+          "Automatic restart",
+          "LiveReload",
+          "Property defaults",
+          "Remote debugging"
+        ],
+        "example": "// Add dependency\n<dependency>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-devtools</artifactId>\n    <optional>true</optional>\n</dependency>"
+      }
+    },
+    {
+      "sectionTitle": "Spring Boot with REST API",
+      "content": {
+        "description": "Spring Boot makes building RESTful APIs simple and efficient with built-in support for HTTP methods, JSON handling, and easy request mapping. It provides tools to quickly develop, validate, and manage APIs with minimal boilerplate code."
+      }
+    },
+    {
+      "sectionTitle": "Introduction",
+      "content": {
+        "description": "REST (Representational State Transfer) is an architectural style for building web services that use HTTP protocols.",
+        "principles": [
+          "Stateless",
+          "Client-server",
+          "Cacheable",
+          "Uniform interface",
+          "Layered system"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "@RestController",
+      "content": {
+        "description": "A convenience annotation that combines @Controller and @ResponseBody, indicating that the return value should be written directly to the HTTP response body.",
+        "purpose": "Simplifies the creation of RESTful web services by eliminating the need to annotate each method with @ResponseBody.",
+        "example": "@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    @GetMapping\n    public List<User> getAllUsers() {\n        return userService.getAllUsers();\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "@RequestMapping",
+      "content": {
+        "description": "Maps web requests to Spring Controller methods, specifying the URL path and HTTP method.",
+        "attributes": [
+          "value/path",
+          "method",
+          "produces",
+          "consumes",
+          "headers"
+        ],
+        "example": "@RestController\n@RequestMapping(\"/api/books\")\npublic class BookController {\n    @RequestMapping(value = \"/{id}\", method = RequestMethod.GET)\n    public Book getBook(@PathVariable Long id) {\n        return bookService.getBookById(id);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "@GetMapping & @PostMapping",
+      "content": {
+        "description": "Composed annotations that act as shortcuts for @RequestMapping with the specific HTTP method.",
+        "purpose": "Improve code readability by making the HTTP method explicit.",
+        "example": "@RestController\npublic class ProductController {\n    @GetMapping(\"/products\")\n    public List<Product> getProducts() {\n        return productService.getAllProducts();\n    }\n    \n    @PostMapping(\"/products\")\n    public Product createProduct(@RequestBody Product product) {\n        return productService.createProduct(product);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "@PutMapping & @DeleteMapping",
+      "content": {
+        "description": "Composed annotations for HTTP PUT and DELETE methods, used for updating and deleting resources.",
+        "example": "@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    @PutMapping(\"/{id}\")\n    public User updateUser(@PathVariable Long id, @RequestBody User user) {\n        return userService.updateUser(id, user);\n    }\n    \n    @DeleteMapping(\"/{id}\")\n    public void deleteUser(@PathVariable Long id) {\n        userService.deleteUser(id);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "@PathVariable & @RequestParam",
+      "content": {
+        "description": "Annotations to extract values from the URL path and query parameters, respectively.",
+        "difference": "@PathVariable extracts values from the URI template, @RequestParam extracts query parameters.",
+        "example": "@GetMapping(\"/users/{userId}/posts\")\npublic List<Post> getUserPosts(\n    @PathVariable Long userId,\n    @RequestParam(defaultValue = \"0\") int page,\n    @RequestParam(defaultValue = \"10\") int size) {\n    return postService.getUserPosts(userId, page, size);\n}"
+      }
+    },
+    {
+      "sectionTitle": "@RequestBody",
+      "content": {
+        "description": "Annotation indicating that a method parameter should be bound to the body of the web request.",
+        "purpose": "Used to deserialize the request body into a Java object, typically from JSON or XML.",
+        "example": "@PostMapping(\"/users\")\npublic User createUser(@RequestBody User user) {\n    return userService.createUser(user);\n}"
+      }
+    },
+    {
+      "sectionTitle": "REST API",
+      "content": {
+        "description": "A REST API is an application programming interface that conforms to the constraints of REST architectural style.",
+        "characteristics": [
+          "Resource-based",
+          "Uses HTTP methods",
+          "Stateless",
+          "Returns representations (JSON/XML)"
+        ],
+        "example": "// Complete REST controller example\n@RestController\n@RequestMapping(\"/api/books\")\npublic class BookController {\n    \n    @Autowired\n    private BookService bookService;\n    \n    @GetMapping\n    public List<Book> getAllBooks() {\n        return bookService.getAllBooks();\n    }\n    \n    @GetMapping(\"/{id}\")\n    public Book getBook(@PathVariable Long id) {\n        return bookService.getBookById(id);\n    }\n    \n    @PostMapping\n    public Book createBook(@RequestBody Book book) {\n        return bookService.createBook(book);\n    }\n    \n    @PutMapping(\"/{id}\")\n    public Book updateBook(@PathVariable Long id, @RequestBody Book book) {\n        return bookService.updateBook(id, book);\n    }\n    \n    @DeleteMapping(\"/{id}\")\n    public void deleteBook(@PathVariable Long id) {\n        bookService.deleteBook(id);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "JSON Serialization/Deserialization",
+      "content": {
+        "description": "The process of converting Java objects to JSON (serialization) and JSON to Java objects (deserialization).",
+        "libraries": [
+          "Jackson (default in Spring Boot)",
+          "GSON"
+        ],
+        "example": "// Jackson automatically serializes/deserializes objects\n@GetMapping(\"/users/{id}\")\npublic User getUser(@PathVariable Long id) {\n    return userService.getUserById(id); // Automatically converted to JSON\n}\n\n@PostMapping(\"/users\")\npublic User createUser(@RequestBody User user) { // JSON automatically converted to User object\n    return userService.createUser(user);\n}"
+      }
+    },
+    {
+      "sectionTitle": "Exception Handling",
+      "content": {
+        "description": "Spring Boot provides mechanisms to handle exceptions in REST APIs and return appropriate HTTP responses.",
+        "approaches": [
+          "@ExceptionHandler",
+          "@ControllerAdvice",
+          "ResponseEntityExceptionHandler"
+        ],
+        "example": "@ControllerAdvice\npublic class GlobalExceptionHandler {\n    \n    @ExceptionHandler(ResourceNotFoundException.class)\n    public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {\n        ErrorResponse error = new ErrorResponse(\"NOT_FOUND\", ex.getMessage());\n        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);\n    }\n    \n    @ExceptionHandler(Exception.class)\n    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {\n        ErrorResponse error = new ErrorResponse(\"INTERNAL_SERVER_ERROR\", \"An unexpected error occurred\");\n        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Validation",
+      "content": {
+        "description": "Spring Boot supports bean validation using JSR-303/JSR-380 annotations to validate request data.",
+        "annotations": [
+          "@NotNull",
+          "@Size",
+          "@Email",
+          "@Min",
+          "@Max",
+          "@Pattern"
+        ],
+        "example": "public class User {\n    @NotNull\n    @Size(min = 2, max = 30)\n    private String name;\n    \n    @Email\n    private String email;\n    \n    @Min(18)\n    private int age;\n}\n\n@PostMapping(\"/users\")\npublic User createUser(@Valid @RequestBody User user) {\n    return userService.createUser(user);\n}"
+      }
+    },
+    {
+      "sectionTitle": "Spring Boot with Database and Data JPA",
+      "content": {
+        "description": "Spring Boot simplifies database integration by providing seamless support for relational and NoSQL databases. With Spring Data JPA, Hibernate, and JDBC, it enables efficient CRUD operations, repository management, and easy testing using in-memory databases like H2."
+      }
+    },
+    {
+      "sectionTitle": "Integrating Spring Boot with MySQL",
+      "content": {
+        "description": "Spring Boot can easily connect to MySQL databases using Spring Data JPA and appropriate configuration.",
+        "steps": [
+          "1. Add MySQL dependency",
+          "2. Configure database connection in application.properties",
+          "3. Create entity classes",
+          "4. Create repository interfaces"
+        ],
+        "example": "# application.properties\nspring.datasource.url=jdbc:mysql://localhost:3306/mydatabase\nspring.datasource.username=root\nspring.datasource.password=password\nspring.jpa.hibernate.ddl-auto=update\nspring.jpa.show-sql=true\n\n// Entity class\n@Entity\n@Table(name = \"users\")\npublic class User {\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n    private String name;\n    private String email;\n    // getters and setters\n}\n\n// Repository\npublic interface UserRepository extends JpaRepository<User, Long> {\n    List<User> findByName(String name);\n}"
+      }
+    },
+    {
+      "sectionTitle": "PostgreSQL",
+      "content": {
+        "description": "Spring Boot supports PostgreSQL database integration with similar configuration to MySQL.",
+        "example": "# application.properties\nspring.datasource.url=jdbc:postgresql://localhost:5432/mydatabase\nspring.datasource.username=postgres\nspring.datasource.password=password\nspring.jpa.hibernate.ddl-auto=update\nspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect"
+      }
+    },
+    {
+      "sectionTitle": "MongoDB",
+      "content": {
+        "description": "Spring Boot provides support for MongoDB, a popular NoSQL database, through Spring Data MongoDB.",
+        "example": "// Add dependency\n<dependency>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-starter-data-mongodb</artifactId>\n</dependency>\n\n# application.properties\nspring.data.mongodb.uri=mongodb://localhost:27017/mydatabase\n\n// Document class\n@Document(collection = \"users\")\npublic class User {\n    @Id\n    private String id;\n    private String name;\n    private String email;\n    // getters and setters\n}\n\n// Repository\npublic interface UserRepository extends MongoRepository<User, String> {\n    List<User> findByName(String name);\n}"
+      }
+    },
+    {
+      "sectionTitle": "Spring Data JPA",
+      "content": {
+        "description": "Spring Data JPA is part of the larger Spring Data family that makes it easy to implement JPA-based repositories.",
+        "features": [
+          "CRUD operations",
+          "Pagination",
+          "Sorting",
+          "Query methods",
+          "Custom queries"
+        ],
+        "example": "public interface UserRepository extends JpaRepository<User, Long> {\n    // Custom query methods\n    List<User> findByEmail(String email);\n    List<User> findByNameContainingIgnoreCase(String name);\n    \n    // Custom query with @Query\n    @Query(\"SELECT u FROM User u WHERE u.age > :age\")\n    List<User> findUsersOlderThan(@Param(\"age\") int age);\n}"
+      }
+    },
+    {
+      "sectionTitle": "Hibernate Basics",
+      "content": {
+        "description": "Hibernate is an ORM (Object-Relational Mapping) tool that implements the JPA specification.",
+        "features": [
+          "Object-relational mapping",
+          "Caching",
+          "Lazy loading",
+          "Transactions"
+        ],
+        "keyAnnotations": [
+          "@Entity",
+          "@Table",
+          "@Id",
+          "@GeneratedValue",
+          "@Column",
+          "@OneToMany",
+          "@ManyToOne"
+        ],
+        "example": "@Entity\n@Table(name = \"employees\")\npublic class Employee {\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n    \n    @Column(name = \"first_name\")\n    private String firstName;\n    \n    @Column(name = \"last_name\")\n    private String lastName;\n    \n    @ManyToOne\n    @JoinColumn(name = \"department_id\")\n    private Department department;\n    \n    // getters and setters\n}"
+      }
+    },
+    {
+      "sectionTitle": "JDBC",
+      "content": {
+        "description": "Java Database Connectivity (JDBC) is a Java API for connecting and executing queries on databases.",
+        "purpose": "While Spring Data JPA is preferred for most cases, JDBC provides lower-level database access when needed.",
+        "example": "@Repository\npublic class JdbcUserRepository {\n    \n    @Autowired\n    private JdbcTemplate jdbcTemplate;\n    \n    public List<User> findAll() {\n        return jdbcTemplate.query(\"SELECT * FROM users\", \n            (rs, rowNum) -> new User(\n                rs.getLong(\"id\"),\n                rs.getString(\"name\"),\n                rs.getString(\"email\")\n            ));\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "CrudRepository vs. JpaRepository",
+      "content": {
+        "description": "Both are Spring Data interfaces for repository operations, with JpaRepository extending PagingAndSortingRepository which extends CrudRepository.",
+        "comparison": "CrudRepository provides basic CRUD operations. JpaRepository adds JPA-specific methods like flush(), saveAndFlush(), deleteInBatch(), findAll(Sort), findAll(Pageable).",
+        "example": "// CrudRepository provides:\n// save(), findById(), findAll(), count(), delete(), existsById()\n\n// JpaRepository adds:\n// flush(), saveAndFlush(), deleteInBatch(), findAll(Sort), findAll(Pageable)"
+      }
+    },
+    {
+      "sectionTitle": "H2 Database for Testing",
+      "content": {
+        "description": "H2 is an in-memory database that is commonly used for testing Spring Boot applications.",
+        "advantages": [
+          "Fast",
+          "Lightweight",
+          "No installation required",
+          "Resets between test runs"
+        ],
+        "example": "# application-test.properties\nspring.datasource.url=jdbc:h2:mem:testdb\nspring.datasource.driverClassName=org.h2.Driver\nspring.datasource.username=sa\nspring.datasource.password=password\nspring.h2.console.enabled=true\n\n// Test class\n@SpringBootTest\n@ActiveProfiles(\"test\")\npublic class UserServiceTest {\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    public void testCreateUser() {\n        User user = new User(\"John\", \"john@example.com\");\n        User savedUser = userRepository.save(user);\n        assertNotNull(savedUser.getId());\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "CRUD Operations with JPA Repositories",
+      "content": {
+        "description": "Spring Data JPA repositories provide built-in methods for Create, Read, Update, and Delete operations.",
+        "methods": [
+          "save()",
+          "findById()",
+          "findAll()",
+          "deleteById()",
+          "count()",
+          "existsById()"
+        ],
+        "example": "@Service\npublic class UserService {\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    public User createUser(User user) {\n        return userRepository.save(user);\n    }\n    \n    public User getUserById(Long id) {\n        return userRepository.findById(id)\n                .orElseThrow(() -> new ResourceNotFoundException(\"User not found\"));\n    }\n    \n    public List<User> getAllUsers() {\n        return userRepository.findAll();\n    }\n    \n    public User updateUser(Long id, User userDetails) {\n        User user = getUserById(id);\n        user.setName(userDetails.getName());\n        user.setEmail(userDetails.getEmail());\n        return userRepository.save(user);\n    }\n    \n    public void deleteUser(Long id) {\n        User user = getUserById(id);\n        userRepository.delete(user);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Project: Todo List API using Spring Boot and MySQL",
+      "content": {
+        "description": "A practical project to build a complete Todo List API with Spring Boot and MySQL database.",
+        "features": [
+          "Create, read, update, delete todos",
+          "Mark todos as complete",
+          "User authentication",
+          "RESTful endpoints"
+        ],
+        "example": "// Entity\n@Entity\n@Table(name = \"todos\")\npublic class Todo {\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n    private String title;\n    private String description;\n    private boolean completed;\n    private LocalDateTime createdAt;\n    // getters and setters\n}\n\n// Repository\npublic interface TodoRepository extends JpaRepository<Todo, Long> {\n    List<Todo> findByCompleted(boolean completed);\n}\n\n// Service\n@Service\npublic class TodoService {\n    @Autowired\n    private TodoRepository todoRepository;\n    \n    public List<Todo> getAllTodos() {\n        return todoRepository.findAll();\n    }\n    \n    public Todo createTodo(Todo todo) {\n        todo.setCreatedAt(LocalDateTime.now());\n        return todoRepository.save(todo);\n    }\n    \n    // Other CRUD methods\n}\n\n// Controller\n@RestController\n@RequestMapping(\"/api/todos\")\npublic class TodoController {\n    @Autowired\n    private TodoService todoService;\n    \n    @GetMapping\n    public List<Todo> getAllTodos() {\n        return todoService.getAllTodos();\n    }\n    \n    @PostMapping\n    public Todo createTodo(@RequestBody Todo todo) {\n        return todoService.createTodo(todo);\n    }\n    \n    // Other endpoint methods\n}"
+      }
+    },
+    {
+      "sectionTitle": "Advanced Spring Boot Features",
+      "content": {
+        "description": "Spring Boot offers advanced features to handle real-world application needs. From scheduling tasks and sending emails to managing files, caching, and transactions, it provides built-in support and annotations for efficient development and clean architecture."
+      }
+    },
+    {
+      "sectionTitle": "Scheduling Tasks",
+      "content": {
+        "description": "Spring Boot provides support for scheduling tasks using the @Scheduled annotation.",
+        "useCases": [
+          "Periodic data processing",
+          "Sending notifications",
+          "Cleanup tasks",
+          "Report generation"
+        ],
+        "example": "@Configuration\n@EnableScheduling\npublic class SchedulingConfig {\n    // Configuration class\n}\n\n@Component\npublic class ScheduledTasks {\n    \n    private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);\n    \n    @Scheduled(fixedRate = 5000) // Run every 5 seconds\n    public void reportCurrentTime() {\n        log.info(\"The time is now {}\", new Date());\n    }\n    \n    @Scheduled(cron = \"0 0 12 * * ?\") // Run every day at noon\n    public void dailyTask() {\n        log.info(\"Executing daily task\");\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Sending Emails",
+      "content": {
+        "description": "Spring Boot provides easy integration with email services using Spring Mail.",
+        "steps": [
+          "1. Add spring-boot-starter-mail dependency",
+          "2. Configure email properties",
+          "3. Use JavaMailSender to send emails"
+        ],
+        "example": "# application.properties\nspring.mail.host=smtp.gmail.com\nspring.mail.port=587\nspring.mail.username=your-email@gmail.com\nspring.mail.password=your-password\nspring.mail.properties.mail.smtp.auth=true\nspring.mail.properties.mail.smtp.starttls.enable=true\n\n// Service class\n@Service\npublic class EmailService {\n    \n    @Autowired\n    private JavaMailSender mailSender;\n    \n    public void sendEmail(String to, String subject, String text) {\n        SimpleMailMessage message = new SimpleMailMessage();\n        message.setTo(to);\n        message.setSubject(subject);\n        message.setText(text);\n        mailSender.send(message);\n    }\n    \n    public void sendHtmlEmail(String to, String subject, String htmlContent) throws MessagingException {\n        MimeMessage message = mailSender.createMimeMessage();\n        MimeMessageHelper helper = new MimeMessageHelper(message, true);\n        helper.setTo(to);\n        helper.setSubject(subject);\n        helper.setText(htmlContent, true);\n        mailSender.send(message);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "File Handling & Uploading Files",
+      "content": {
+        "description": "Spring Boot provides support for handling file uploads and downloads in web applications.",
+        "approaches": [
+          "MultipartFile for file uploads",
+          "Resource for file downloads"
+        ],
+        "example": "@RestController\npublic class FileController {\n    \n    @PostMapping(\"/upload\")\n    public ResponseEntity<String> uploadFile(@RequestParam(\"file\") MultipartFile file) {\n        try {\n            // Save file to disk or process it\n            String fileName = file.getOriginalFilename();\n            Path path = Paths.get(\"uploads/\" + fileName);\n            Files.write(path, file.getBytes());\n            \n            return ResponseEntity.ok(\"File uploaded successfully: \" + fileName);\n        } catch (IOException e) {\n            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)\n                    .body(\"Failed to upload file: \" + e.getMessage());\n        }\n    }\n    \n    @GetMapping(\"/download/{fileName}\")\n    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName) {\n        try {\n            Path path = Paths.get(\"uploads/\" + fileName);\n            Resource resource = new UrlResource(path.toUri());\n            \n            return ResponseEntity.ok()\n                    .header(HttpHeaders.CONTENT_DISPOSITION, \"attachment; filename=\\\"\" + resource.getFilename() + \"\\\"\")\n                    .body(resource);\n        } catch (Exception e) {\n            return ResponseEntity.notFound().build();\n        }\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Caching",
+      "content": {
+        "description": "Spring Boot provides caching abstraction to improve application performance by storing frequently accessed data.",
+        "annotations": [
+          "@EnableCaching",
+          "@Cacheable",
+          "@CachePut",
+          "@CacheEvict"
+        ],
+        "example": "@Configuration\n@EnableCaching\npublic class CacheConfig {\n    // Configuration class\n}\n\n@Service\npublic class ProductService {\n    \n    @Cacheable(value = \"products\", key = \"#id\")\n    public Product getProductById(Long id) {\n        // This method will be cached, subsequent calls with same id won't execute the method\n        return productRepository.findById(id)\n                .orElseThrow(() -> new ResourceNotFoundException(\"Product not found\"));\n    }\n    \n    @CachePut(value = \"products\", key = \"#product.id\")\n    public Product updateProduct(Product product) {\n        // Update product and update cache\n        return productRepository.save(product);\n    }\n    \n    @CacheEvict(value = \"products\", key = \"#id\")\n    public void deleteProduct(Long id) {\n        // Delete product and remove from cache\n        productRepository.deleteById(id);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Caching with other Providers",
+      "content": {
+        "description": "Spring Boot supports various caching providers like EhCache, Redis, Hazelcast, etc.",
+        "example": "# application.properties for Redis\nspring.cache.type=redis\nspring.redis.host=localhost\nspring.redis.port=6379\n\n// Configuration for Redis\n@Configuration\n@EnableCaching\npublic class RedisConfig extends CachingConfigurerSupport {\n    \n    @Bean\n    public RedisConnectionFactory redisConnectionFactory() {\n        return new LettuceConnectionFactory();\n    }\n    \n    @Bean\n    public RedisTemplate<String, Object> redisTemplate() {\n        RedisTemplate<String, Object> template = new RedisTemplate<>();\n        template.setConnectionFactory(redisConnectionFactory());\n        template.setKeySerializer(new StringRedisSerializer());\n        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());\n        return template;\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Transaction Management",
+      "content": {
+        "description": "Spring Boot provides declarative transaction management using the @Transactional annotation.",
+        "purpose": "Ensures data integrity by grouping multiple database operations into a single atomic unit.",
+        "example": "@Service\npublic class OrderService {\n    \n    @Autowired\n    private OrderRepository orderRepository;\n    \n    @Autowired\n    private PaymentRepository paymentRepository;\n    \n    @Transactional\n    public Order createOrder(Order order, Payment payment) {\n        // Both operations will be in a single transaction\n        Order savedOrder = orderRepository.save(order);\n        payment.setOrderId(savedOrder.getId());\n        paymentRepository.save(payment);\n        \n        return savedOrder;\n    }\n    \n    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, \n                   rollbackFor = Exception.class, timeout = 30)\n    public void complexOperation() {\n        // Transaction with specific properties\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "DTO Mapping",
+      "content": {
+        "description": "Data Transfer Objects (DTOs) are used to transfer data between layers without exposing the internal entity structure.",
+        "purpose": "Decouple the internal entity model from the external API, improve security, and optimize data transfer.",
+        "libraries": [
+          "MapStruct",
+          "ModelMapper",
+          "Manual mapping"
+        ],
+        "example": "// DTO class\npublic class UserDTO {\n    private String name;\n    private String email;\n    // getters and setters\n}\n\n// Manual mapping in service\n@Service\npublic class UserService {\n    \n    public UserDTO convertToDTO(User user) {\n        UserDTO dto = new UserDTO();\n        dto.setName(user.getName());\n        dto.setEmail(user.getEmail());\n        return dto;\n    }\n    \n    public User convertToEntity(UserDTO dto) {\n        User user = new User();\n        user.setName(dto.getName());\n        user.setEmail(dto.getEmail());\n        return user;\n    }\n}\n\n// Using MapStruct\n@Mapper(componentModel = \"spring\")\npublic interface UserMapper {\n    UserDTO toDTO(User user);\n    User toEntity(UserDTO userDTO);\n}"
+      }
+    },
+    {
+      "sectionTitle": "Microservices with Spring Boot",
+      "content": {
+        "description": "Spring Boot simplifies building microservices by providing lightweight, independent, and easily deployable components. With features like service communication, containerization, and cloud deployment, it enables developers to build scalable and production-ready systems efficiently."
+      }
+    },
+    {
+      "sectionTitle": "Introduction",
+      "content": {
+        "description": "Microservices architecture involves developing an application as a collection of small, independent services that communicate with each other.",
+        "characteristics": [
+          "Loosely coupled",
+          "Independently deployable",
+          "Organized around business capabilities",
+          "Decentralized data management"
+        ]
+      }
+    },
+    {
+      "sectionTitle": "Communication Between Spring Microservices",
+      "content": {
+        "description": "Microservices can communicate using synchronous protocols (HTTP/REST) or asynchronous protocols (message brokers).",
+        "methods": [
+          "REST APIs",
+          "Spring Cloud OpenFeign",
+          "Message brokers (RabbitMQ, Kafka)",
+          "gRPC"
+        ],
+        "example": "// Using Feign for service-to-service communication\n@FeignClient(name = \"user-service\")\npublic interface UserServiceClient {\n    @GetMapping(\"/users/{id}\")\n    User getUserById(@PathVariable(\"id\") Long id);\n}\n\n// In another service\n@Service\npublic class OrderService {\n    \n    @Autowired\n    private UserServiceClient userServiceClient;\n    \n    public Order createOrder(Order order) {\n        // Call user service to validate user\n        User user = userServiceClient.getUserById(order.getUserId());\n        if (user == null) {\n            throw new RuntimeException(\"User not found\");\n        }\n        \n        // Process order\n        return orderRepository.save(order);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Deploy Java Microservices on AWS Elastic Beanstalk",
+      "content": {
+        "description": "AWS Elastic Beanstalk is a service that makes it easy to deploy and scale web applications.",
+        "steps": [
+          "1. Package application as JAR",
+          "2. Create Elastic Beanstalk environment",
+          "3. Configure environment variables",
+          "4. Deploy application"
+        ],
+        "example": "// Build configuration in pom.xml\n<build>\n    <plugins>\n        <plugin>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-maven-plugin</artifactId>\n        </plugin>\n    </plugins>\n</build>\n\n# application.properties for production\nspring.datasource.url=${RDS_URL}\nspring.datasource.username=${RDS_USERNAME}\nspring.datasource.password=${RDS_PASSWORD}\n\n# Elastic Beanstalk configuration (.ebextensions/options.config)\noption_settings:\n  aws:elasticbeanstalk:application:environment:\n    SPRING_PROFILES_ACTIVE: production\n  aws:elasticbeanstalk:container:tomcat:jvmoptions:\n    Xms: 512m\n    Xmx: 1024m"
+      }
+    },
+    {
+      "sectionTitle": "Spring Boot Testing",
+      "content": {
+        "description": "Testing is an important part of building reliable Spring Boot applications. It involves unit testing with JUnit, mocking dependencies using Mockito, performing integration tests with MockMVC, and automating tests with tools like ZeroCode to ensure your application behaves as expected."
+      }
+    },
+    {
+      "sectionTitle": "Unit Testing with JUnit",
+      "content": {
+        "description": "Unit testing focuses on testing individual components in isolation from the rest of the application.",
+        "annotations": [
+          "@Test",
+          "@BeforeEach",
+          "@AfterEach",
+          "@BeforeAll",
+          "@AfterAll",
+          "@DisplayName"
+        ],
+        "example": "class UserServiceTest {\n    \n    private UserService userService;\n    private UserRepository userRepository;\n    \n    @BeforeEach\n    void setUp() {\n        userRepository = mock(UserRepository.class);\n        userService = new UserService(userRepository);\n    }\n    \n    @Test\n    @DisplayName(\"Should create user successfully\")\n    void shouldCreateUser() {\n        // Given\n        User user = new User(\"John\", \"john@example.com\");\n        when(userRepository.save(any(User.class))).thenReturn(user);\n        \n        // When\n        User savedUser = userService.createUser(user);\n        \n        // Then\n        assertNotNull(savedUser);\n        assertEquals(\"John\", savedUser.getName());\n        verify(userRepository, times(1)).save(any(User.class));\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Testing with Mockito",
+      "content": {
+        "description": "Mockito is a mocking framework used to create mock objects for testing dependencies.",
+        "annotations": [
+          "@Mock",
+          "@InjectMocks",
+          "@ExtendWith(MockitoExtension.class)"
+        ],
+        "example": "@ExtendWith(MockitoExtension.class)\nclass UserServiceTest {\n    \n    @Mock\n    private UserRepository userRepository;\n    \n    @InjectMocks\n    private UserService userService;\n    \n    @Test\n    void shouldGetUserById() {\n        // Given\n        User user = new User(1L, \"John\", \"john@example.com\");\n        when(userRepository.findById(1L)).thenReturn(Optional.of(user));\n        \n        // When\n        User foundUser = userService.getUserById(1L);\n        \n        // Then\n        assertNotNull(foundUser);\n        assertEquals(\"John\", foundUser.getName());\n        verify(userRepository, times(1)).findById(1L);\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Integration Testing with MockMVC",
+      "content": {
+        "description": "Integration testing focuses on testing the interaction between different components, including HTTP endpoints.",
+        "purpose": "Verify that the application works correctly as a whole, including controllers, services, and repositories.",
+        "example": "@SpringBootTest\n@AutoConfigureMockMvc\nclass UserControllerIntegrationTest {\n    \n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    @Test\n    void shouldReturnUserWhenExists() throws Exception {\n        // Given\n        User user = new User(1L, \"John\", \"john@example.com\");\n        when(userService.getUserById(1L)).thenReturn(user);\n        \n        // When & Then\n        mockMvc.perform(get(\"/api/users/1\"))\n                .andExpect(status().isOk())\n                .andExpect(jsonPath(\"$.name\").value(\"John\"))\n                .andExpect(jsonPath(\"$.email\").value(\"john@example.com\"));\n    }\n    \n    @Test\n    void shouldReturnNotFoundWhenUserNotExists() throws Exception {\n        // Given\n        when(userService.getUserById(1L))\n                .thenThrow(new ResourceNotFoundException(\"User not found\"));\n        \n        // When & Then\n        mockMvc.perform(get(\"/api/users/1\"))\n                .andExpect(status().isNotFound());\n    }\n}"
+      }
+    },
+    {
+      "sectionTitle": "Using ZeroCode for Testing",
+      "content": {
+        "description": "ZeroCode is an open-source automation framework for testing REST APIs and microservices with minimal code.",
+        "advantages": [
+          "JSON/YAML based tests",
+          "Easy to write and maintain",
+          "Supports complex scenarios"
+        ],
+        "example": "// Sample ZeroCode test scenario\n{\n  \"scenarioName\": \"Test User API\",\n  \"steps\": [\n    {\n      \"name\": \"create_user\",\n      \"url\": \"/api/users\",\n      \"method\": \"POST\",\n      \"request\": {\n        \"body\": {\n          \"name\": \"John Doe\",\n          \"email\": \"john.doe@example.com\"\n        }\n      },\n      \"verify\": {\n        \"status\": 201,\n        \"body\": {\n          \"name\": \"John Doe\",\n          \"email\": \"john.doe@example.com\"\n        }\n      }\n    },\n    {\n      \"name\": \"get_user\",\n      \"url\": \"/api/users/1\",\n      \"method\": \"GET\",\n      \"verify\": {\n        \"status\": 200,\n        \"body\": {\n          \"id\": 1,\n          \"name\": \"John Doe\",\n          \"email\": \"john.doe@example.com\"\n        }\n      }\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "level": "advanced"
+}]
