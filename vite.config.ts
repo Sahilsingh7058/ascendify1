@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     fs: {
-      allow: [".","F:/acendify/ascendify1","./ascendify1/client", "./ascendify1/shared"],
+      allow: [".","F:/acendify/ascendify1","./ascendify1/client", "./ascendify1/shared", "/ascendify1.onrender.com/"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
     },
   },
@@ -37,3 +37,4 @@ function expressPlugin(): Plugin {
     },
   };
 }
+
