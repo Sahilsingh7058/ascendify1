@@ -27,7 +27,7 @@ router = APIRouter(
 )
 
 # Get the API key from environment variables for security
-API_KEY = "AIzaSyA7370sbYTvrzpz_uHCO0HJ4nIsdW-E1Io"
+API_KEY = os.getenv("GOOGLE_API_KEY")
 
 if not API_KEY:
     raise ValueError("GOOGLE_API_KEY environment variable not set.")
