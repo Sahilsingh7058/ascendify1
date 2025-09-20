@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from bson import ObjectId
-from quiz_gen import router as quiz_gen_router
-from quiz_ml import router as quiz_ml_router
-from quiz_cloud import router as quiz_gen_cloud_router
-from quiz_gen2 import router as quiz_router
+from .quiz_gen import router as quiz_gen_router
+from .quiz_ml import router as quiz_ml_router
+from .quiz_cloud import router as quiz_gen_cloud_router
+from .quiz_gen2 import router as quiz_router
 app = FastAPI()
 
 # CORS setup (adjust origins as needed)
@@ -68,4 +68,5 @@ def read_root():
             "generate_questions_assessment": "/api/quiz/assessment/generate-questions"
              
         }
+
     }
