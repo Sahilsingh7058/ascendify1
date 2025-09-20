@@ -34,7 +34,7 @@ router = APIRouter(
 )
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://rasikathakur303_db_user:ycHpj7gTS45vPSTA@career-assessment-roadm.gsqeija.mongodb.net/?retryWrites=true&w=majority&appName=career-assessment-roadmap")
 db = client["career_assessment_roadmap"]
 collection = db["roadmap_cloud"]
 
