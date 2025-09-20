@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -19,7 +18,6 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 export type Experience = "Basic" | "Medium" | "Advanced";
 
@@ -74,27 +72,19 @@ const TAGS_BY_SKILL: Record<string, string[]> = {
   ],
 };
 
-const ROADMAPS_BY_SKILL: Record<string, string> = {
-  "AI / Machine Learning": "/roadmaps/ml",
-  "Cloud Computing": "/roadmaps/aws",
-  "Data Science": "/roadmaps/datascience",
-  "Full Stack Development (Java)": "/roadmaps/java",
-  "Full Stack Development (DotNet)": "/roadmaps/dotnet",
-};
-
 interface MultiStepAssessmentModalProps {
   open: boolean;
   onOpenChange: (next: boolean) => void;
 }
 
 export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiStepAssessmentModalProps) {
-  const navigate = useNavigate();
   const [step, setStep] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [skill, setSkill] = useState<string>("");
   const [experience, setExperience] = useState<Experience | "">("");
   const [tags, setTags] = useState<string[]>([]);
-  
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
   const tagsForSkill = useMemo(() => TAGS_BY_SKILL[skill] || [], [skill]);
   const progress = ((step - 1) / 4) * 100;
 
@@ -104,6 +94,7 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
     setSkill("");
     setExperience("");
     setTags([]);
+    setSubmitted(false);
   }
 
   function handleClose(next: boolean) {
@@ -124,7 +115,7 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
     if (step === 1) return name.trim().length > 0;
     if (step === 2) return !!skill;
     if (step === 3) return !!experience;
-    if (step === 4) return true;
+    if (step === 4) return true; // tags optional
     return true;
   }, [step, name, skill, experience]);
 
@@ -132,37 +123,8 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
     setTags((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
   }
 
-  // Helper function to map skill to roadmap path
-  const getRoadmapPath = (selectedSkill: string) => {
-    switch (selectedSkill) {
-      case "Full Stack Development (Java)":
-        return "/roadmaps/java";
-      case "Cloud Computing":
-        return "/roadmaps/aws";
-      case "AI / Machine Learning":
-        return "/roadmaps/ml";
-      case "Data Science":
-        return "/roadmaps/datascience";
-      case "Full Stack Development (DotNet)":
-        return "/roadmaps/dotnet";
-      default:
-        return "/roadmaps";
-    }
-  };
-
   function submit() {
-    if (experience === "Basic") {
-      // Get the specific roadmap path based on the selected skill
-      const roadmapPath = getRoadmapPath(skill);
-      // Navigate to the specific roadmap page
-      navigate(roadmapPath);
-      onOpenChange(false);
-      return;
-    }
-
-    // Otherwise, proceed to the quiz
-    navigate('/quiz', { state: { skill, difficulty: experience, name, tags } });
-    onOpenChange(false);
+    setSubmitted(true);
   }
 
   return (
@@ -196,7 +158,25 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
         {/* Content */}
         <div className="relative min-h-[220px]">
           <AnimatePresence mode="wait">
-            {step === 1 ? (
+            {submitted ? (
+              <motion.div
+                key="submitted"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="space-y-3 text-center py-6"
+              >
+                <div className="text-2xl font-semibold text-blue-600">Thank you!</div>
+                <p className="text-sm text-muted-foreground">
+                  Your career assessment has been submitted.
+                </p>
+                <div className="pt-2">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => handleClose(false)}>
+                    Close
+                  </Button>
+                </div>
+              </motion.div>
+            ) : step === 1 ? (
               <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
                 <h3 className="text-xl font-semibold text-center">What should we call you?</h3>
                 <div className="space-y-2">
@@ -226,7 +206,7 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
                 <h3 className="text-xl font-semibold text-center">Select your experience level</h3>
                 <RadioGroup value={experience} onValueChange={(v) => setExperience(v as Experience)} className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
                   {["Basic", "Medium", "Advanced"].map((lvl) => (
-                    <label key={lvl} className={cn("flex items-center gap-2 rounded-md border p-3 cursor-pointer transition-colors", experience === lvl ? "border-blue-600 bg-blue-600/10" : "hover:border-blue-300")}>
+                    <label key={lvl} className={cn("flex items-center gap-2 rounded-md border p-3 cursor-pointer transition-colors", experience === lvl ? "border-blue-600 bg-blue-600/10" : "hover:border-blue-300")}> 
                       <RadioGroupItem value={lvl} id={`exp-${lvl}`} />
                       <span className="text-sm">{lvl}</span>
                     </label>
@@ -265,27 +245,25 @@ export default function MultiStepAssessmentModal({ open, onOpenChange }: MultiSt
                   <div><span className="font-medium">Experience:</span> {experience || "—"}</div>
                   <div><span className="font-medium">Tags:</span> {tags.length ? tags.join(", ") : "—"}</div>
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={submit}>
-                  Start Quiz
-                </Button>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={submit}>Submit</Button>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
         {/* Footer actions */}
-        <div className="mt-6 flex items-center justify-between">
-          <Button variant="outline" onClick={prevStep} disabled={step === 1 || step === 5}>
-            Back
-          </Button>
-          {step < 5 ? (
-            <Button onClick={nextStep} disabled={!canNext} className={cn("bg-blue-600 hover:bg-blue-700 text-white", !canNext && "opacity-50")}>Next</Button>
-          ) : (
-            <Button onClick={submit} className="bg-blue-600 hover:bg-blue-700 text-white">
-              {experience === "Basic" ? "Go to Roadmaps" : "Start Quiz"}
+        {!submitted && (
+          <div className="mt-6 flex items-center justify-between">
+            <Button variant="outline" onClick={prevStep} disabled={step === 1}>
+              Back
             </Button>
-          )}
-        </div>
+            {step < 5 ? (
+              <Button onClick={nextStep} disabled={!canNext} className={cn("bg-blue-600 hover:bg-blue-700 text-white", !canNext && "opacity-50")}>Next</Button>
+            ) : (
+              <Button onClick={submit} className="bg-blue-600 hover:bg-blue-700 text-white">Submit</Button>
+            )}
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

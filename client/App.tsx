@@ -1,3 +1,4 @@
+
 import "./global.css";
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot, type Root } from "react-dom/client";
@@ -5,7 +6,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
 import Roadmaps from "./pages/Roadmaps";
 import Assessment from "./pages/Assessment";
 import Contact from "./pages/Contact";
@@ -30,15 +33,6 @@ import { AuthProvider } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import CloudCourseLearningPage from "./pages/CloudCourseLearningPage";
 
-
-import "./global.css";
-import { Toaster } from "@/components/ui/toaster";
-import { createRoot, type Root } from "react-dom/client";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -49,10 +43,10 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <div className="relative min-h-screen flex flex-col bg-background text-foreground">
-            {/* <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10">
               <BackgroundDots />
               <ParticlesBackground />
-            </div> */}
+            </div>
             <SiteHeader />
             <div className="flex-1">
               <Routes>
@@ -119,7 +113,8 @@ const App = () => (
                 path="/certificate/verified" 
                 element={<CertificateVerified />} />
 
-
+                {/* Catch-all */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
             <SiteFooter />
