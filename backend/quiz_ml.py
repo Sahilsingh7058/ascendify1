@@ -39,8 +39,8 @@ db = client["career_assessment_roadmap"]
 collection = db["roadmap_ml"]
 
 # Get the API key from environment variables for security
-API_KEY = "AIzaSyA7370sbYTvrzpz_uHCO0HJ4nIsdW-E1Io"
-print("hello:"+API_KEY)
+API_KEY = os.getenv("GOOGLE_API_KEY")
+
 if not API_KEY:
     print("Warning: GOOGLE_API_KEY environment variable not set. AI generation may not work.")
 
@@ -527,4 +527,5 @@ async def get_sample_enhanced_quiz(skill: str, difficulty: str, num_questions: i
         request = QuestionRequest(skill=skill, difficulty=difficulty, num_questions=num_questions)
         return await generate_questions_endpoint(request)
     except Exception as e:
+
         raise HTTPException(status_code=500, detail=f"Failed to generate sample quiz: {str(e)}")
